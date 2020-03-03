@@ -1,0 +1,43 @@
+/**
+ * _divider.scss
+ * @author [Keisuke Suzuki](https://github.com/Ks5810)
+ */
+
+
+.divider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .divider-line {
+        width: 90%;
+        height: 0.25rem;
+        background-color: $secondary !important;
+        border-radius: 1rem;
+
+        &:first-child {
+            margin-right: 1rem;
+        }
+        &:last-child {
+            margin-left: 1rem;
+        }
+    }
+    .divider-icon {
+        color: $secondary !important;
+        font-size: 2rem;
+    }
+    .divider-button {
+        background-color: $secondary;
+        border: none;
+
+        &:active,
+        &:focus {
+            outline: 0;
+            box-shadow: none !important;
+            background-color: $primary;
+        }
+        &:hover {
+            background-color: $primary;
+        }
+    }
+}

@@ -1,0 +1,68 @@
+/**
+ * _projects.scss
+ * @author [Keisuke Suzuki](https://github.com/Ks5810)
+ */
+
+.projects {
+    padding-top: $m-size;
+    color: $primary;
+}
+
+.projects-heading {
+    padding-bottom: 1rem;
+    color: $primary;
+    text-align: center;
+}
+
+.projects-list {
+    padding-top: 1rem;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-bottom: 2rem;
+}
+
+.projects-list-item {
+    @extend .projects-list;
+    padding: 1rem;
+    background-color: lighten($back-ground, 17%);
+    color: lighten($secondary, 7.5%);
+    border-width: 10px !important;
+    border-color: lighten($back-ground, 5%) !important;
+    border-radius: $border-radius !important;
+    max-height: 20rem;
+    overflow: hidden;
+
+    @include media-breakpoint-up(md) {
+        width: 18rem;
+    }
+}
+
+.projects-list-item-header {
+    @extend .projects-list-item;
+    width: auto;
+    margin-bottom: auto;
+    display: flex;
+    padding: 0.8rem;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+
+    h4 {
+        text-align: center;
+        color: darken($primary, 5%);
+    }
+
+    a {
+        color: $secondary;
+        &:active,
+        &:focus {
+            outline: none;
+            box-shadow: none !important;
+        }
+        &:hover {
+            color: $primary;
+        }
+    }
+}
+

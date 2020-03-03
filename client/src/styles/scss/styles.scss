@@ -1,0 +1,15 @@
+@import "base/variables";
+@import "~bootstrap/scss/bootstrap";
+@import "../fontawesome-free/scss/fontawesome";
+@import "../fontawesome-free/scss/solid";
+@import "../fontawesome-free/scss/brands";
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,700");
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic");
+
+@import "base/page";
+@import "components/divider";
+@import "components/projects";
+@import "components/about";
+@import "components/navbar";
+@import "components/contact";
+@import "components/footer";

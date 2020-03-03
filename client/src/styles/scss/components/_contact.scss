@@ -1,0 +1,47 @@
+/**
+ * _contact.scss
+ * @author [Keisuke Suzuki](https://github.com/Ks5810)
+ */
+
+.contact {
+    color: $primary;
+    padding-top: $m-size;
+    @include media-breakpoint-up(lg){
+        padding-top: $l-size;
+    }
+}
+.contact-heading {
+    text-align: center;
+}
+
+.contact-alert {
+    background-color: $success;
+    margin: 1rem 0;
+}
+
+.contact-button{
+    color: darken($secondary, 10%);
+    background-color: $primary;
+    border-color: darken($primary, 15%);
+    border-width: 1.5px !important;
+    &:active,
+    &:focus {
+        background-color: $focus;
+        outline: 0;
+        box-shadow: none !important;
+    }
+    &:hover {
+        color: lighten($primary, 10%);
+        background-color: $focus;
+        border-color: darken($focus, 5%);
+    }
+}
+
+.form-control {
+    background-color: lighten($primary, 5%);
+    border: 0;
+    &:active,
+    &:focus {
+        border: $secondary;
+    }
+}

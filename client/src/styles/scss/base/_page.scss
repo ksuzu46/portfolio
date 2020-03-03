@@ -1,0 +1,13 @@
+/**
+ * _page.scss
+ * @author [Keisuke Suzuki](https://github.com/Ks5810)
+ */
+
+
+.page {
+    background-color: $back-ground;
+    padding-top: $m-size;
+    @include media-breakpoint-up(lg) {
+        padding-top: $l-size;
+    }
+}

@@ -1,0 +1,86 @@
+/**
+ * _navbar.scss
+ * @author [Keisuke Suzuki](https://github.com/Ks5810)
+ * @description Styling for the navbar
+ */
+
+.navbar {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background: $secondary;
+    font-family: $headings-font-family;
+    font-weight: $headings-font-weight;
+
+    .navbar-brand {
+        color: $primary;
+
+        &:hover {
+            color: $focus;
+        }
+
+        &:active,
+        &:focus {
+            color: $focus;
+            outline: 0;
+            box-shadow: none !important;
+        }
+    }
+    .navbar-nav {
+        margin-top: 1rem;
+
+        .nav-link {
+            cursor: pointer;
+        }
+        .nav-item {
+            color: $primary;
+            &:hover {
+                color: $focus;
+            }
+            &:focus {
+                color: $focus;
+                cursor: pointer;
+            }
+        }
+    }
+    .navbar-toggler {
+        font-size: 100%;
+        padding: 0.6rem 1.5rem;
+        background: $primary;
+        color: $secondary;
+        font-weight: bold;
+
+        &:focus {
+            outline: 0;
+            box-shadow: none !important;
+        }
+        &:hover {
+            background: $focus;
+        }
+    }
+    @include media-breakpoint-up(lg) {
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+        transition: padding-top 0.3s, padding-bottom 0.3s;
+
+        .navbar-brand {
+            font-size: 1.75em;
+            transition: font-size 0.3s;
+        }
+        .navbar-nav {
+            margin-top: 1rem;
+        }
+        .navbar-shrink {
+            padding-top: 0.9rem;
+            padding-bottom: 0.9rem;
+
+            .navbar-brand {
+                font-size: 1.5em;
+
+                &:active,
+                &:focus {
+                    color: $focus;
+                }
+            }
+        }
+    }
+}
