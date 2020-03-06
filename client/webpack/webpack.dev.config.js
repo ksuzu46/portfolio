@@ -17,20 +17,18 @@ module.exports = merge(common, {
     devtool: 'cheap-module-source-map',
     devServer: {
         contentBase: path.resolve('./public'),
+        publicPath: 'http://localhost/3000/bundles/',
         historyApiFallback: true,
         hot: true,
         host: 'localhost',
         inline: true,
         port: 3000,
-        proxy: {
-            "api/*": "http://localhost:4444/"
-        },
+
     },
     optimization: {
         noEmitOnErrors: true
     },
     plugins: [
-        
         new webpack.HotModuleReplacementPlugin({ multiStep: true })
     ]
 });
