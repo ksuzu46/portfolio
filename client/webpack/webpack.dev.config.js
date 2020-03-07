@@ -1,7 +1,6 @@
 /**
  *  dev.js
- *  @author [Aisha Khoja, Keisuke Suzuki, Tommi Ann Tsuruga
- *  ](https://github.com/aishak7, https://github.com/Ks5810, https://github.com/tommi-tsuruga)
+ *  @author [Keisuke Suzuki](https://github.com/Ks5810)
  */
 
 const path = require('path');
@@ -14,16 +13,18 @@ module.exports = merge(common, {
     entry: [
         './src/app.js'
     ],
+    output: {
+        filename: "bundle.js"     // No dev-build so no path needed
+    },
     devtool: 'cheap-module-source-map',
     devServer: {
         contentBase: path.resolve('./public'),
-        publicPath: 'http://localhost/3000/bundles/',
-        historyApiFallback: true,
+        publicPath: '/bundles/',  // http:..:../bundle/[output_filename]/
+        liveReload: false,        // Always turn off when HMR is enabled
+        historyApiFallback: true, // Will fallback to bundle.js in memory
         hot: true,
-        host: 'localhost',
         inline: true,
         port: 3000,
-
     },
     optimization: {
         noEmitOnErrors: true
