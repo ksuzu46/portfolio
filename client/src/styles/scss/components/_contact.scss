@@ -6,7 +6,7 @@
 .contact {
     color: $primary;
     padding-top: $m-size;
-    @include media-breakpoint-up(lg){
+    @include media-breakpoint-up(lg) {
         padding-top: $l-size;
     }
 }
@@ -43,5 +43,8 @@
     &:active,
     &:focus {
         border: $secondary;
+    }
+    @include media-breakpoint-up(md) {
+
     }
 }
