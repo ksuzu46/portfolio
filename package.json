@@ -1,23 +1,30 @@
 {
   "name": "my-portfolio",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "server.mjs",
   "author": "Keisuke Suzuki",
   "license": "MIT",
   "scripts": {
-    "start": "node server.js",
-    "start:dev": "NODE_ENV=development nodemon server.js"
+    "start": "node -r esm server.mjs",
+    "start:dev": "NODE_ENV=development nodemon -r esm server.mjs"
   },
   "dependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.8.6",
+    "@babel/node": "^7.8.7",
     "@babel/preset-env": "^7.8.6",
+    "apollo-fetch": "^0.7.0",
+    "axios": "^0.19.2",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-graphql-tag": "^2.5.0",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
-    "exphbs": "^1.2.0",
+    "esm": "^3.2.25",
     "express": "^4.17.1",
     "express-handlebars": "^3.1.0",
+    "graphql": "^14.6.0",
+    "graphql-tag": "^2.10.3",
     "nodemailer": "^6.4.2"
   },
   "devDependencies": {
