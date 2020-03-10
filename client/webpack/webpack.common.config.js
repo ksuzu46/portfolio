@@ -1,11 +1,11 @@
 /**
- * webpack.common.config.js
+ * webpack.common.conf.mjs
  * @author [Keisuke Suzuki](https://github.com/Ks5810)
  */
 
+const DotEnv = require('dotenv-webpack');
 const path = require('path');
 const webpack = require('webpack');
-const Dotenv = require('dotenv-webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
@@ -13,7 +13,7 @@ module.exports = {
     mode: 'none',
     context: path.resolve(__dirname, '../'),
     module: {
-        rules: [ {
+        rules: [{
             loader: 'babel-loader',
             test: /\.js$/,
             exclude: /node_modules/
@@ -29,12 +29,11 @@ module.exports = {
             use: "url-loader"
         }, {
             test: /\.(ttf|eot|svg|gif)(\?[\s\S]+)?$/,
-            use: 'file-loader'
-        },
-        ]
+            use: 'url-loader'
+        }]
     },
     plugins: [
-        new Dotenv(),
+        new DotEnv(),
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin()
     ]

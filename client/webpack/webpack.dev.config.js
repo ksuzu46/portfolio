@@ -14,19 +14,24 @@ module.exports = merge(common, {
         './src/app.js'
     ],
     output: {
-        filename: "bundle.js"     // No dev-build so no path needed
+        filename: "bundle.js",
     },
     devtool: 'cheap-module-source-map',
     devServer: {
         contentBase: path.resolve('./public'),
-        publicPath: '/bundles/',  // http:..:../bundle/[output_filename]/
+        publicPath: '/bundles/',  // http:..:../bundles/[output_filename]/
         liveReload: false,        // Always turn off when HMR is enabled
         historyApiFallback: true, // Will fallback to bundle.js in memory
         hot: true,
         inline: true,
         port: 3000,
+        proxy: {
+            '/api/gh': 'http://localhost:4444',
+            '/api/mailer': 'http://localhost:4444'
+        }
     },
     optimization: {
+        nodeEnv: 'development',
         noEmitOnErrors: true
     },
     plugins: [
