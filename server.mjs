@@ -4,12 +4,12 @@
  * @description Express app serving nodemailer and react frontend
  */
 
-
-const express = require('express');
-const path = require('path');
 require('dotenv').config();
-const bodyParser = require('body-parser');
-const nodemailer = require('nodemailer');
+import express from 'express';
+import path from 'path';
+import  bodyParser from 'body-parser';
+import nodemailer from 'nodemailer';
+import { fetchGhData } from './ghGraphQL.mjs';
 
 const app = express();
 const api = express();
@@ -17,12 +17,21 @@ const publicPath = path.resolve(__dirname, 'client', 'public');
 const port = process.env.PORT;
 app.use(express.static(publicPath));
 api.use(bodyParser.urlencoded({ extended: true }));
+
 api.use(bodyParser.json());
-
-
 api.get('/', (req, res) =>
 {
     res.send('api root');
+})
+
+api.get('/gh', async (req, res) => {
+    try{
+        const response = await fetchGhData();
+        const data = await response.data;
+        res.send(data);
+    } catch(error) {
+        res.send(error);
+    }
 })
 
 api.post('/mailer', (req, res) =>

@@ -1,29 +1,13 @@
 /**
- * apolloClient.js
+ * ghGraphQL.js
  * @author [Keisuke Suzuki](https://github.com/Ks5810)
- * @description Appolo client configuration for github graphql api
  */
-import ApolloClient, { gql } from 'apollo-boost';
-import config from "./config";
+import { graphqlUrl, ghUsername } from "./conf"
+import gql from 'graphql-tag';
+import { print } from 'graphql';
+import axios from "axios"
 
-
-const { GH_TOKEN } = process.env;
-const { graphqlUrl, ghUsername } = config;
-
-export const client = new ApolloClient({
-    uri: graphqlUrl,
-    request: (operation) =>
-    {
-        operation.setContext({
-            headers: {
-                "content-type": "application/json",
-                authorization: `Bearer ${ GH_TOKEN }`
-            }
-        });
-    }
-});
-
-export const MY_GH_DATA = gql`
+export const query = gql`
     {
         user(login: ${ ghUsername }) {
             bio
@@ -51,3 +35,20 @@ export const MY_GH_DATA = gql`
             url
         }
     }`;
+
+export const fetchGhData = async() => {
+    try
+    {
+        const res = await axios.post(graphqlUrl, { query: print(query) },
+            {
+                headers: {
+                    'Authorization': `Bearer ${ process.env.GH_TOKEN }`
+                }
+            });
+        return res.data;
+    } catch(error)
+    {
+        console.log(error);
+        return error;
+    }
+}
