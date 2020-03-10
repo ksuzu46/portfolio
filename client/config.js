@@ -1,5 +1,5 @@
 /**
- * config.js
+ * conf.mjs
  * @author [Keisuke Suzuki](https://github.com/Ks5810)
  */
 
@@ -15,9 +15,8 @@ const config =
         linkedinUrl: "https://www.linkedin.com/in/keisuke-suzuki-b77600bb/",
         myGmail: "e40keisuke@gmail.com",
         where: "New York, NY",
-        graphqlUrl: "https://api.github.com/graphql",
-        mailerUrl: process.env.MAILER_URL,
-        ghUsername: `"Ks5810"`,
+        mailerUrl: process.env.MAILER_URL
+        
     };
 
 export default config;
