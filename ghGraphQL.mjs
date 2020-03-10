@@ -1,13 +1,13 @@
 /**
- * ghGraphQL.js
+ * ghGraphQL.mjs
  * @author [Keisuke Suzuki](https://github.com/Ks5810)
  */
-import { graphqlUrl, ghUsername } from "./conf"
 import gql from 'graphql-tag';
 import { print } from 'graphql';
-import axios from "axios"
+import axios from "axios";
+import { ghUsername, graphqlUrl } from "./conf.mjs";
 
-export const query = gql`
+const query = gql`
     {
         user(login: ${ ghUsername }) {
             bio
@@ -36,7 +36,7 @@ export const query = gql`
         }
     }`;
 
-export const fetchGhData = async() => {
+const fetchGhData = async() => {
     try
     {
         const res = await axios.post(graphqlUrl, { query: print(query) },
@@ -52,3 +52,5 @@ export const fetchGhData = async() => {
         return error;
     }
 }
+
+export { fetchGhData }
