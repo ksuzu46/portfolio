@@ -7,8 +7,6 @@ import React, {
     createRef, useEffect, useLayoutEffect, useRef, useState
 } from "react";
 import axios from "axios";
-import { useQuery } from "@apollo/react-hooks";
-import { MY_GH_DATA } from "../../apolloClient";
 import { convertRem2Pix, requestConfig } from "../lib";
 import config from "../../config.js";
 import Projects from "./Projects";
@@ -17,6 +15,9 @@ import NavBar from "./NavBar";
 import Contact from "./Contact";
 import Footer from "./Footer";
 import Divider from "./Divider";
+import Media from "react-bootstrap/Media";
+import Icons from "./Icons";
+import loader from "../../public/images/loader-334px.gif"
 
 
 // Bootstrap default breakpoint
@@ -27,27 +28,60 @@ const { mailerUrl } = config;
 const childComponents = [ About, Projects, Contact ];
 const children = [ "about", "projects", "contact" ];
 
+
 const Page = () =>
 {
     /**
-     * Fetch from github gql api
+     * Fetch from gh data from the endpoint
      */
-    const { loading, error, data } = useQuery(MY_GH_DATA);
-    const [ projectData, setProjectData ] = useState(null);
+    const [ ghData, setGhData ] = useState({
+        data: null,
+        loading: false,
+        error: false,
+        complete: false
+    });
     const [ isFetched, setIsFetched ] = useState(false);
+    
+    const fetchGhData = async() =>
+    {
+        setGhData(prevState => ({ ...prevState, loading: true, }));
+        try
+        {
+            const tmp = await axios.get("/api/gh", requestConfig());
+            await setGhData(prevState => ({
+                ...prevState,
+                data: tmp.data,
+                loading: false,
+                complete: true
+            }));
+        } catch(error)
+        {
+            await setGhData(prevState => ({
+                ...prevState,
+                error: error.response,
+                loading: false,
+                complete: true,
+            }));
+        }
+    };
     
     useEffect(() =>
     {
-        if(!loading && data)
+        fetchGhData();
+    }, []);
+    
+    useLayoutEffect(() => {
+        if(ghData.complete)
         {
-            const { user } = data;
+            console.log(ghData);
+            const { user } = ghData.data;
             const { pinnedItems } = user;
             const { edges } = pinnedItems;
             const projects = edges.map(edge => edge.node);
-            setProjectData({ ...user, projects });
-            !error && setIsFetched(true);
+            setGhData({ ...user, projects });
+            !ghData.loading && setIsFetched(true);
         }
-    }, [ loading ]);
+    }, [ghData.complete])
     
     
     /**
@@ -143,20 +177,24 @@ const Page = () =>
                 children={ children }
             />
             {
-                isFetched && childComponents.map((Component, index) => (
-                    <div key={ index }>
-                        <Component
-                            ref={ ref => (refs.current[index] = ref) }
-                            projectData={ projectData }
-                            res={ res }
-                            scrollToContact={() => scrollToInd(2)}
-                            sendEmail={ data => sendEmail(data) }
-                        />
-                        <Divider />
-                    </div>
-                ))
+                ghData.loading ?
+                <Media className="loader"><img
+                    src={loader} alt="loading..."/>
+                </Media>
+                : isFetched && childComponents.map((Component, index) => (
+                                   <div key={ index }>
+                                       <Component
+                                           ref={ ref => (refs.current[index] = ref) }
+                                           projectData={ ghData }
+                                           res={ res }
+                                           scrollToContact={ () => scrollToInd(2) }
+                                           sendEmail={ data => sendEmail(data) }
+                                       />
+                                       <Divider/>
+                                   </div>
+                               ))
             }
-            { isFetched && <Footer projectData={ projectData }/> }
+            { isFetched && <Footer projectData={ ghData }/> }
         </div>
     )
 }

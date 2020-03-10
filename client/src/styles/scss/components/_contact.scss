@@ -28,7 +28,6 @@
     &:focus {
         background-color: $focus;
         outline: 0;
-        box-shadow: none !important;
     }
     &:hover {
         color: lighten($primary, 10%);
@@ -37,14 +36,12 @@
     }
 }
 
-.form-control {
-    background-color: lighten($primary, 5%);
-    border: 0;
+.contact-form-control {
+    background-color: $primary !important;
     &:active,
     &:focus {
-        border: $secondary;
-    }
-    @include media-breakpoint-up(md) {
-
+        border: 0 !important;
+        outline: none !important;
     }
 }
+

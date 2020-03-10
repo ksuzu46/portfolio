@@ -32,10 +32,14 @@ const Contact = React.forwardRef(({ res, sendEmail }, ref) =>
                 className="contact-form"
                 onSubmit={ onSubmit }
             >
-                <FormGroup controlId="nameValidation">
+                <FormGroup
+                    controlId="nameValidation"
+                    className='contact-form-group'
+                >
                     <FormLabel> Your Name </FormLabel>
                     <FormControl
                         required
+                        className='contact-form-control'
                         onChange={ e => setName(e.target.value) }
                         type="text"
                         placeholder="Your Name"
@@ -44,9 +48,13 @@ const Contact = React.forwardRef(({ res, sendEmail }, ref) =>
                         Please enter your name.
                     </FormControl.Feedback>
                 </FormGroup>
-                <FormGroup controlId="emailValidation">
+                <FormGroup
+                    controlId="emailValidation"
+                    className='contact-form-group'
+                >
                     <FormLabel> Your Email </FormLabel>
                     <FormControl
+                        className='contact-form-control'
                         required
                         onChange={ e => setEmail(e.target.value) }
                         type="email"
@@ -56,10 +64,14 @@ const Contact = React.forwardRef(({ res, sendEmail }, ref) =>
                         Please enter valid email address.
                     </FormControl.Feedback>
                 </FormGroup>
-                <FormGroup controlId="messageValidation">
+                <FormGroup
+                    className='contact-form-group'
+                    controlId="messageValidation"
+                >
                     <FormLabel> Your Message </FormLabel>
                     <FormControl
                         required
+                        className='contact-form-control'
                         onChange={ e => setMessage(e.target.value) }
                         as="textarea"
                         placeholder="Please write your message here"

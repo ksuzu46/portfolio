@@ -11,8 +11,9 @@ $navy: #0f3b64 !default;
 $purple-baseline: #161748 !default;
 $pink-highlight: #f95d9b !default;
 $blue-light: #39a0ca !default;
-$back-ground: #404b69 !default;
-$focus: #00818a !default;
+$back-ground: #3b4368 !default;
+$focus: #689cc5 !default;
+$back-ground-list: #5e6fa3 !default;
 
 // Navbar size
 $s-size: 4.5rem;
@@ -22,11 +23,11 @@ $xl-size: 7.5rem;
 
 
 // Override Bootstrap colors
-$primary: #dbedf3 !default;
-$secondary: #283149 !default;
-$success: $blue-light !default;
+$primary: #d9dbee !default;
+$secondary: #191d3a !default;
+$success: #93dbe9 !default;
 $danger: $pink-highlight !default;
-$info: $focus !default;
+$info: #b3b7e2 !default;
 
 
 // Override Bootstrap font variables
@@ -43,7 +44,7 @@ $headings-font-weight: 800 !default;
 
 
 // Override Bootstrap border variables
-$border-width: 0.125rem !default;
+$border-width: 0.025rem !default;
 $border-radius: 0.5rem !default;
 $border-radius-lg: 0.75rem !default;
 $border-radius-sm: 0.25rem !default;

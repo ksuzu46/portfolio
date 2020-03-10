@@ -24,13 +24,15 @@
 .projects-list-item {
     @extend .projects-list;
     padding: 1rem;
-    background-color: lighten($back-ground, 17%);
-    color: lighten($secondary, 7.5%);
-    border-width: 10px !important;
-    border-color: lighten($back-ground, 5%) !important;
+    background-color: $back-ground-list ;
     border-radius: $border-radius !important;
+    box-shadow: 5px 5px 15px rgba($back-ground, .5) !important;
     max-height: 20rem;
     overflow: hidden;
+    &:hover {
+        background-color: darken($back-ground-list, 5%);
+        box-shadow: 5px 5px 15px darken(rgba($back-ground, .5), 5%) !important;
+    }
 
     @include media-breakpoint-up(md) {
         width: 18rem;
@@ -38,7 +40,6 @@
 }
 
 .projects-list-item-header {
-    @extend .projects-list-item;
     width: auto;
     margin-bottom: auto;
     display: flex;
@@ -46,7 +47,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-
+    box-shadow: none !important;
 
     h4 {
         text-align: center;
@@ -58,11 +59,15 @@
         &:active,
         &:focus {
             outline: none;
-            box-shadow: none !important;
         }
         &:hover {
             color: $primary;
         }
     }
+}
+
+.projects-list-item-description {
+    color: darken($primary, 11%);
+    line-height: 1.2rem;
 }
 
