@@ -6,6 +6,9 @@
 .projects {
     padding-top: $m-size;
     color: $primary;
+    @include media-breakpoint-down(sm) {
+        padding-top: 1.7rem;
+    }
 }
 
 .projects-heading {

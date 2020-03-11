@@ -7,20 +7,38 @@ const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const common = require('./webpack.common.config');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 
 module.exports = merge(common, {
     mode: 'production',
-    entry: './src/app.js',
+    entry: {
+        app: './src/app.js',
+    },
+    module: {
+        rules: [
+            {
+                test: /\.s[ac]ss$/i,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    'sass-loader',
+                ],
+            },
+        ],
+    },
     output: {
         path: path.resolve('./public', 'bundles'),
-        filename: "bundle.js"
+        filename: '[name].bundle.js',
     },
-    devtool: 'source-map',
-    optimization: {
-        nodeEnv: 'production',
-        minimize: true
-    },
+    devtool: '',
     plugins: [
-        new webpack.optimize.AggressiveMergingPlugin()
+        new MiniCssExtractPlugin({
+            // Options similar to the same options in webpackOptions.output
+            // both options are optional
+            filename: '[name].css',
+            chunkFilename: '[id].css',
+        }),
+        new webpack.optimize.AggressiveMergingPlugin(),
     ]
 });

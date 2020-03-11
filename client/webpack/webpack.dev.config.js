@@ -14,7 +14,20 @@ module.exports = merge(common, {
         './src/app.js'
     ],
     output: {
-        filename: "bundle.js",
+        filename: 'bundle.js',
+        publicPath: './public/bundles/'
+    },
+    module: {
+        rules: [
+            {
+                test: /\.s[ac]ss$/i,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'sass-loader',
+                ],
+            },
+        ],
     },
     devtool: 'cheap-module-source-map',
     devServer: {

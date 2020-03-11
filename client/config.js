@@ -1,5 +1,5 @@
 /**
- * conf.mjs
+ * config.mjs
  * @author [Keisuke Suzuki](https://github.com/Ks5810)
  */
 

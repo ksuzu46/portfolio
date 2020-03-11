@@ -1,29 +1,40 @@
 /**
- * server.js
+ * server.mjs
  * @author [Keisuke Suzuki](https://github.com/Ks5810)
  * @description Express app serving nodemailer and react frontend
  */
 
-require('dotenv').config();
-import express from 'express';
+import {} from 'dotenv/config'
 import path from 'path';
-import  bodyParser from 'body-parser';
+import { fileURLToPath } from 'url';
+import express from 'express';
 import nodemailer from 'nodemailer';
+import  bodyParser from 'body-parser';
 import { fetchGhData } from './ghGraphQL.mjs';
 
 const app = express();
 const api = express();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const publicPath = path.resolve(__dirname, 'client', 'public');
 const port = process.env.PORT;
-app.use(express.static(publicPath));
-api.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(express.static(publicPath));
+
+// For Node mailer
+api.use(bodyParser.urlencoded({ extended: true }));
 api.use(bodyParser.json());
+
+
+// Root
 api.get('/', (req, res) =>
 {
     res.send('api root');
 })
 
+
+// Gh-gql-api
 api.get('/gh', async (req, res) => {
     try{
         const response = await fetchGhData();
@@ -34,6 +45,8 @@ api.get('/gh', async (req, res) => {
     }
 })
 
+
+// Mailer
 api.post('/mailer', (req, res) =>
 {
     const data = req.body;

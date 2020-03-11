@@ -13,7 +13,7 @@ const Divider = () =>
             <div className="divider-line"/>
             <div className="divider-icon">
                 <Button className="divider-button">
-                    <i className="fas fa-chevron-down"/>
+                    <i className="fas fa-x fa-chevron-down"/>
                 </Button>
             </div>
             <div className="divider-line"/>

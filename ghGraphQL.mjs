@@ -5,7 +5,7 @@
 import gql from 'graphql-tag';
 import { print } from 'graphql';
 import axios from "axios";
-import { ghUsername, graphqlUrl } from "./conf.mjs";
+import { ghUsername, graphqlUrl } from "./config.mjs";
 
 const query = gql`
     {

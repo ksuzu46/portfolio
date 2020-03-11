@@ -17,7 +17,8 @@ import Footer from "./Footer";
 import Divider from "./Divider";
 import Media from "react-bootstrap/Media";
 import Icons from "./Icons";
-import loader from "../../public/images/loader-334px.gif"
+import loader from '../../public/images/loader-334px.gif'
+import Loader from "./Loader";
 
 
 // Bootstrap default breakpoint
@@ -171,16 +172,13 @@ const Page = () =>
     
     
     return (
-        <div className="page">
+        <>
             <NavBar
                 handleScroll={ i => scrollToInd(i) }
                 children={ children }
             />
             {
-                ghData.loading ?
-                <Media className="loader"><img
-                    src={loader} alt="loading..."/>
-                </Media>
+                ghData.loading ? <Loader/>
                 : isFetched && childComponents.map((Component, index) => (
                                    <div key={ index }>
                                        <Component
@@ -195,7 +193,7 @@ const Page = () =>
                                ))
             }
             { isFetched && <Footer projectData={ ghData }/> }
-        </div>
+        </>
     )
 }
 

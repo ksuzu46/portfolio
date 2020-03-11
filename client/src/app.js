@@ -10,7 +10,9 @@ import "./styles/scss/styles.scss";
 
 
 const App = () => (
-    <Page/>
+    <div className="page">
+        <Page/>
+    </div>
 );
 
 ReactDOM.render(<App/>, document.getElementById('app'));

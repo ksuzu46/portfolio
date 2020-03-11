@@ -6,6 +6,9 @@
 .contact {
     color: $primary;
     padding-top: $m-size;
+    @include media-breakpoint-down(sm) {
+        padding-top: $s-size;
+    }
     @include media-breakpoint-up(lg) {
         padding-top: $l-size;
     }
@@ -27,7 +30,7 @@
     &:active,
     &:focus {
         background-color: $focus;
-        outline: 0;
+        outline: 0 !important;
     }
     &:hover {
         color: lighten($primary, 10%);
@@ -36,10 +39,22 @@
     }
 }
 
+.contact-form {
+}
+
+.contact-form-group {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
 .contact-form-control {
-    background-color: $primary !important;
+    @extend .contact-form-group;
+
+    background-color: darken($primary, 10%) !important;
     &:active,
     &:focus {
+        background-color: $primary !important;
         border: 0 !important;
         outline: none !important;
     }

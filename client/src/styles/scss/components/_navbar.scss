@@ -5,6 +5,9 @@
  */
 
 .navbar {
+    @include media-breakpoint-down(sm) {
+        padding: 1.3rem;
+    }
     padding-top: 1rem;
     padding-bottom: 1rem;
     background: $secondary;
