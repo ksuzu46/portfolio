@@ -15,9 +15,6 @@ import NavBar from "./NavBar";
 import Contact from "./Contact";
 import Footer from "./Footer";
 import Divider from "./Divider";
-import Media from "react-bootstrap/Media";
-import Icons from "./Icons";
-import loader from '../../public/images/loader-334px.gif'
 import Loader from "./Loader";
 
 
@@ -35,54 +32,55 @@ const Page = () =>
     /**
      * Fetch from gh data from the endpoint
      */
-    const [ ghData, setGhData ] = useState({
+    const [ ghFetch, setGhFetch ] = useState({
         data: null,
-        loading: false,
+        loading: true,
         error: false,
         complete: false
     });
+    const [ ghData, setGhData ] = useState(null);
     const [ isFetched, setIsFetched ] = useState(false);
     
-    const fetchGhData = async() =>
-    {
-        setGhData(prevState => ({ ...prevState, loading: true, }));
-        try
-        {
-            const tmp = await axios.get("/api/gh", requestConfig());
-            await setGhData(prevState => ({
-                ...prevState,
-                data: tmp.data,
-                loading: false,
-                complete: true
-            }));
-        } catch(error)
-        {
-            await setGhData(prevState => ({
-                ...prevState,
-                error: error.response,
-                loading: false,
-                complete: true,
-            }));
-        }
-    };
     
     useEffect(() =>
     {
+        const fetchGhData = async() =>
+        {
+            setGhFetch(prevState => ({ ...prevState, loading: true, }));
+            try
+            {
+                const tmp = await axios.get("/api/gh", requestConfig());
+                setGhFetch(prevState => ({
+                    ...prevState,
+                    data: tmp.data,
+                    loading: false,
+                    complete: true
+                }));
+            } catch(error)
+            {
+                setGhFetch(prevState => ({
+                    ...prevState,
+                    error: error.response,
+                    loading: false,
+                    complete: true,
+                }));
+            }
+        };
         fetchGhData();
     }, []);
     
-    useLayoutEffect(() => {
-        if(ghData.complete)
+    useLayoutEffect(() =>
+    {
+        if(ghFetch.complete)
         {
-            console.log(ghData);
-            const { user } = ghData.data;
+            const { user } = ghFetch.data;
             const { pinnedItems } = user;
             const { edges } = pinnedItems;
             const projects = edges.map(edge => edge.node);
             setGhData({ ...user, projects });
-            !ghData.loading && setIsFetched(true);
+            setIsFetched(true);
         }
-    }, [ghData.complete])
+    }, [ghFetch.complete])
     
     
     /**
@@ -157,16 +155,12 @@ const Page = () =>
     {
         window.addEventListener("resize", updateHeights);
         window.addEventListener("scroll", onScroll);
+        updateHeights();
         return () =>
         {
             window.removeEventListener("resize", updateHeights);
             window.removeEventListener("scroll", onScroll);
         };
-    }, []);
-    
-    useEffect(() =>
-    {
-        updateHeights();
     }, [ document.body.scrollHeight, document.documentElement.scrollHeight,
          isFetched, height ]);
     
@@ -178,21 +172,23 @@ const Page = () =>
                 children={ children }
             />
             {
-                ghData.loading ? <Loader/>
-                : isFetched && childComponents.map((Component, index) => (
-                                   <div key={ index }>
-                                       <Component
-                                           ref={ ref => (refs.current[index] = ref) }
-                                           projectData={ ghData }
-                                           res={ res }
-                                           scrollToContact={ () => scrollToInd(2) }
-                                           sendEmail={ data => sendEmail(data) }
-                                       />
-                                       <Divider/>
-                                   </div>
-                               ))
+                isFetched ? <> {
+                              childComponents.map((Component, index) => (
+                                  <div key={ index }>
+                                      <Component
+                                          ref={ ref => (refs.current[index] =
+                                              ref) }
+                                          projectData={ ghData }
+                                          res={ res }
+                                          scrollToContact={ () => scrollToInd(2) }
+                                          sendEmail={ data => sendEmail(data) }
+                                      />
+                                      <Divider/>
+                                  </div>
+                              ))
+                          } <Footer projectData={ ghData }/></>
+                          : <Loader/>
             }
-            { isFetched && <Footer projectData={ ghData }/> }
         </>
     )
 }

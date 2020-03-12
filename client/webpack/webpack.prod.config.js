@@ -31,11 +31,20 @@ module.exports = merge(common, {
         path: path.resolve('./public', 'bundles'),
         filename: '[name].bundle.js',
     },
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                commons: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: 'vendors',
+                    chunks: 'all'
+                }
+            }
+        }
+    },
     devtool: '',
     plugins: [
         new MiniCssExtractPlugin({
-            // Options similar to the same options in webpackOptions.output
-            // both options are optional
             filename: '[name].css',
             chunkFilename: '[id].css',
         }),

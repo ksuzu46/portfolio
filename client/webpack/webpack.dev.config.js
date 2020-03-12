@@ -15,7 +15,7 @@ module.exports = merge(common, {
     ],
     output: {
         filename: 'bundle.js',
-        publicPath: './public/bundles/'
+        path: path.join(__dirname, 'dist', 'bundles')
     },
     module: {
         rules: [
@@ -31,7 +31,7 @@ module.exports = merge(common, {
     },
     devtool: 'cheap-module-source-map',
     devServer: {
-        contentBase: path.resolve('./public'),
+        contentBase: path.join(__dirname, 'dist'),
         publicPath: '/bundles/',  // http:..:../bundles/[output_filename]/
         liveReload: false,        // Always turn off when HMR is enabled
         historyApiFallback: true, // Will fallback to bundle.js in memory
@@ -48,6 +48,6 @@ module.exports = merge(common, {
         noEmitOnErrors: true
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin({ multiStep: true })
+        new webpack.HotModuleReplacementPlugin({ multiStep: true }),
     ]
 });
