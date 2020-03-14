@@ -9,7 +9,7 @@ import {
 } from "react-bootstrap";
 
 
-const Contact = React.forwardRef(({ res, sendEmail }, ref) =>
+const Contact = React.forwardRef(({ emailStatus, sendEmail }, ref) =>
 {
     const [ name, setName ] = useState(null);
     const [ email, setEmail ] = useState(null);
@@ -81,11 +81,11 @@ const Contact = React.forwardRef(({ res, sendEmail }, ref) =>
                     </FormControl.Feedback>
                 </FormGroup>
                 {
-                    res.sending ? <Alert className="contact-alert" variant="info"> Sending...</Alert> : (
-                        res.error ?
+                    emailStatus.sending ? <Alert className="contact-alert" variant="info"> Sending...</Alert> : (
+                        emailStatus.error ?
                         <Alert className="contact-alert" variant="danger">
                             Sorry, something went wrong. Please try again.
-                        </Alert> : res.complete &&
+                        </Alert> : emailStatus.complete &&
                                    <Alert className="contact-alert" variant="success">
                                        Successfully sent!
                                    </Alert>

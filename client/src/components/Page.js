@@ -38,35 +38,49 @@ const Page = () =>
         error: false,
         complete: false
     });
-    const [ ghData, setGhData ] = useState(null);
+    const [ ghData, setGhData ] = useState({
+        avatarUrl: "",
+        bio: "",
+        bioHTML: "",
+        email: "",
+        projects: []
+    });
     const [ isFetched, setIsFetched ] = useState(false);
     
     
     useEffect(() =>
     {
+        let unmounted = false;
         const fetchGhData = async() =>
         {
             setGhFetch(prevState => ({ ...prevState, loading: true, }));
             try
             {
                 const tmp = await axios.get("/api/gh", requestConfig());
-                setGhFetch(prevState => ({
-                    ...prevState,
-                    data: tmp.data,
-                    loading: false,
-                    complete: true
-                }));
+                if(!unmounted)
+                {
+                    setGhFetch(prevState => ({
+                        ...prevState,
+                        data: tmp.data,
+                        loading: false,
+                        complete: true
+                    }));
+                }
             } catch(error)
             {
-                setGhFetch(prevState => ({
-                    ...prevState,
-                    error: error.response,
-                    loading: false,
-                    complete: true,
-                }));
+                if(!unmounted)
+                {
+                    setGhFetch(prevState => ({
+                        ...prevState,
+                        error: error.response,
+                        loading: false,
+                        complete: true,
+                    }));
+                }
             }
         };
         fetchGhData();
+        return () => { unmounted = true };
     }, []);
     
     useLayoutEffect(() =>
@@ -77,16 +91,16 @@ const Page = () =>
             const { pinnedItems } = user;
             const { edges } = pinnedItems;
             const projects = edges.map(edge => edge.node);
-            setGhData({ ...user, projects });
+            setGhData(prevState => ({ ...prevState, ...user, projects }));
             setIsFetched(true);
         }
-    }, [ghFetch.complete])
+    }, [ghFetch])
     
     
     /**
      * Send Email using nodemailer
      */
-    const [ res, setRes ] = useState({
+    const [ emailStatus, setEmailStatus ] = useState({
         data: null,
         sending: false,
         error: false,
@@ -95,11 +109,11 @@ const Page = () =>
     
     const sendEmail = async(data) =>
     {
-        setRes(prevState => ({ ...prevState, sending: true, }));
+        setEmailStatus(prevState => ({ ...prevState, sending: true, }));
         try
         {
             const tmp = await axios.post(mailerUrl, data, requestConfig());
-            await setRes(prevState => ({
+            await setEmailStatus(prevState => ({
                 ...prevState,
                 data: tmp.data,
                 sending: false,
@@ -107,7 +121,7 @@ const Page = () =>
             }));
         } catch(error)
         {
-            await setRes(prevState => ({
+            await setEmailStatus(prevState => ({
                 ...prevState,
                 error: error.response,
                 sending: false,
@@ -150,7 +164,7 @@ const Page = () =>
         });
         setHeights(nextHeights)
     }
-    
+    // Update heights
     useEffect(() =>
     {
         window.addEventListener("resize", updateHeights);
@@ -172,22 +186,24 @@ const Page = () =>
                 children={ children }
             />
             {
-                isFetched ? <> {
-                              childComponents.map((Component, index) => (
-                                  <div key={ index }>
-                                      <Component
-                                          ref={ ref => (refs.current[index] =
-                                              ref) }
-                                          projectData={ ghData }
-                                          res={ res }
-                                          scrollToContact={ () => scrollToInd(2) }
-                                          sendEmail={ data => sendEmail(data) }
-                                      />
-                                      <Divider/>
-                                  </div>
-                              ))
-                          } <Footer projectData={ ghData }/></>
-                          : <Loader/>
+                ghFetch.complete ?
+                <>
+                    {
+                        childComponents.map((Component, index) => (
+                            <div key={ index }>
+                                <Component
+                                    ref={ ref => (refs.current[index] = ref) }
+                                    ghData={ ghData }
+                                    emailStatus={ emailStatus }
+                                    scrollToContact={ () => scrollToInd(2) }
+                                    sendEmail={ data => sendEmail(data) }
+                                />
+                            </div>
+                        ))
+                    }
+                    <Footer ghData={ ghData }/>
+                </>
+                : <Loader/>
             }
         </>
     )

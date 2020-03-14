@@ -3,7 +3,7 @@
  * @author [Keisuke Suzuki](https://github.com/Ks5810)
  */
 
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useState } from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import config from "../../config";
 import NavBarItem from "./NavBarItem";
@@ -25,7 +25,7 @@ const NavBar = ({ children, ...props }) =>
                         {
                             setExpanded(false);
                             scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-                        }}
+                        } }
                     >
                         { myName }
                     </Nav.Link>

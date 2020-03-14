@@ -5,22 +5,23 @@
 import React from "react";
 import { Container, Row } from "react-bootstrap";
 import ProjectsItem from "./ProjectsItem";
+import Divider from "./Divider";
 
 
-const Projects = React.forwardRef(({
-        projectData,
-        ...props
-    }, ref) => (
-        <Container ref={ ref } className="projects">
-            <h2 className="projects-heading">Projects</h2>
-            <Row className="projects-list">
-                {
-                    projectData.projects.map((node, ind) =>
-                        <ProjectsItem key={ ind } node={ node } ind={ ind }/>
-                    )
-                }
-            </Row>
-        </Container>
+const Projects = React.forwardRef(({ ghData }, ref) => (
+        <>
+            <Container ref={ ref } className="projects">
+                <h2 className="projects-heading">Projects</h2>
+                <Row className="projects-list">
+                    {
+                        ghData.projects.map((node, ind) =>
+                            <ProjectsItem key={ ind } node={ node } ind={ ind }/>
+                        )
+                    }
+                </Row>
+            </Container>
+            <Divider/>
+        </>
     )
 );
 

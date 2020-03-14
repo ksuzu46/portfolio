@@ -10,9 +10,9 @@ import Icons from "./Icons";
 import { Container } from "react-bootstrap";
 
 
-const Footer = ({ projectData }) => (
+const Footer = ({ ghData }) => (
     <Container className="footer">
-        <Icons projectData={ projectData } parent="footer"/>
+        <Icons ghData={ ghData } parent="footer"/>
         <div className="copyright">
             &copy; 2020 { config.myName }
         </div>
