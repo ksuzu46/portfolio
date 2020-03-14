@@ -31,7 +31,6 @@
     border: none !important;
     box-shadow: none !important;
     background-color: $back-ground !important;
-
     &:hover {
         .projects-card-header {
             background-color: darken($secondary, 5%);
@@ -106,8 +105,8 @@
     background-color: $back-ground-list;
     line-height: 1.3rem;
     padding: 1rem 2rem;
-    overflow: hidden;
     color: $white;
+    overflow-y: hidden;
 }
 
 
@@ -121,6 +120,6 @@
     overflow: visible;
 }
 .projects-card-description .collapsed {
-    overflow: hidden;
+    overflow-y: hidden;
 }
 
