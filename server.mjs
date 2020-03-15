@@ -17,7 +17,7 @@ const api = express();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const publicPath = path.resolve(__dirname, 'client', 'public');
+const publicPath = path.resolve(__dirname, 'client', 'build', 'static');
 const port = process.env.PORT;
 
 app.use(express.static(publicPath));

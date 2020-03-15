@@ -11,7 +11,7 @@ const common = require('./webpack.common.config.js');
 module.exports = merge(common, {
     mode: 'development',
     entry: [
-        './src/app.js'
+        './src/index.js'
     ],
     output: {
         filename: 'bundle.js',
