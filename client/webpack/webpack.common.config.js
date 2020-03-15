@@ -7,6 +7,7 @@ const DotEnv = require('dotenv-webpack');
 const path = require('path');
 const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
     mode: 'none',
@@ -31,6 +32,9 @@ module.exports = {
     },
     plugins: [
         new DotEnv(),
-        new CleanWebpackPlugin()
+        new CleanWebpackPlugin(),
+        new WorkboxPlugin.GenerateSW({
+            swDest: './sw.js'
+        })
     ]
 };

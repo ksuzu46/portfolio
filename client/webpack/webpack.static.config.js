@@ -5,19 +5,33 @@
 
 const path = require('path');
 const webpack = require('webpack');
-const merge = require('webpack-merge');
-const common = require('./webpack.common.config');
 const StaticGeneratorPlugin = require('static-site-generator-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const template = require('../template.js')
 
-
-module.exports = merge(common, {
+module.exports = {
     mode: 'production',
+    context: path.resolve(__dirname, '../'),
     entry: {
         app: './src/entry.js',
     },
     module: {
         rules: [
+            {
+                loader: 'babel-loader',
+                test: /\.js$/,
+                exclude: /node_modules/
+            },
+            {
+                test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                use: "url-loader"
+            },
+            {
+                test: /\.(ttf|eot|svg|gif)(\?[\s\S]+)?$/,
+                use: [
+                    'url-loader',
+                ]
+            },
             {
                 test: /\.s[ac]ss$/i,
                 
@@ -31,22 +45,28 @@ module.exports = merge(common, {
         ],
     },
     output: {
-        path: path.resolve('./build', 'static'),
+        path: path.resolve(__dirname, '../build/static/'),
         filename: 'app.js',
-        libraryTarget: 'umd'
+        libraryTarget: 'umd',
     },
     optimization: {},
     devtool: '',
     plugins: [
-        new StaticGeneratorPlugin({
-            entry: 'app',
-            globals: {
-                window: {}
-            }
-        }),
+        new StaticGeneratorPlugin(
+            {
+                paths: ['/'],
+                assets: [ 'app.js', 'app.css' ],
+                globals: {
+                    window: {}
+                },
+                locals: {
+                    template: template
+                }
+            },
+        ),
         new MiniCssExtractPlugin({
             filename: '[name].css',
             chunkFilename: '[id].css',
         }),
     ]
-});
+};

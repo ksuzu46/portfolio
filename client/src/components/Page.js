@@ -139,7 +139,10 @@ const Page = () =>
     
     const scrollToInd = (i) =>
     {
-        window.scrollTo({ left: 0, top: heights[i], behavior: "smooth" });
+        if (typeof window !== 'undefined')
+        {
+            window.scrollTo({ left: 0, top: heights[i], behavior: "smooth" });
+        }
     }
     const onScroll = () =>
     {
@@ -149,7 +152,11 @@ const Page = () =>
     };
     const updateHeights = () =>
     {
-        const curWidth = window.innerWidth;
+        let curWidth = {};
+        if (typeof window !== 'undefined')
+        {
+            curWidth = window.innerWidth;
+        }
         const curNavbarHeight =
             curWidth > breakPoints.lg ?
             convertRem2Pix(navbarHeight.lg) :
@@ -167,13 +174,19 @@ const Page = () =>
     // Update heights
     useEffect(() =>
     {
-        window.addEventListener("resize", updateHeights);
-        window.addEventListener("scroll", onScroll);
+        if (typeof window !== 'undefined')
+        {
+            window.addEventListener("resize", updateHeights);
+            window.addEventListener("scroll", onScroll);
+        }
         updateHeights();
         return () =>
         {
-            window.removeEventListener("resize", updateHeights);
-            window.removeEventListener("scroll", onScroll);
+            if (typeof window !== 'undefined')
+            {
+                window.removeEventListener("resize", updateHeights);
+                window.removeEventListener("scroll", onScroll);
+            }
         };
     }, [ document.body.scrollHeight, document.documentElement.scrollHeight,
          isFetched, height ]);
