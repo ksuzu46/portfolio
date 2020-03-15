@@ -8,6 +8,7 @@ import {} from 'dotenv/config'
 import path from 'path';
 import { fileURLToPath } from 'url';
 import express from 'express';
+import compression from 'compression';
 import nodemailer from 'nodemailer';
 import  bodyParser from 'body-parser';
 import { fetchGhData } from './ghGraphQL.mjs';
@@ -17,9 +18,10 @@ const api = express();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const publicPath = path.resolve(__dirname, 'client', 'build', 'static');
+const publicPath = path.resolve(__dirname, 'client', 'build');
 const port = process.env.PORT;
 
+app.use(compression())
 app.use(express.static(publicPath));
 
 // For Node mailer
