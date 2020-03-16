@@ -30,6 +30,7 @@
     "font-awesome-loader": "^1.0.2",
     "graphql": "^14.6.0",
     "history": "^4.10.1",
+    "html-webpack-template": "^6.2.0",
     "image-webpack-loader": "^6.0.0",
     "node-sass": "^4.13.1",
     "normalize.css": "^8.0.1",

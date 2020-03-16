@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import loader from "../../build/images/loader-334px.gif";
+import loader from "../../assets/images/loader-334px.gif";
 import Media from "react-bootstrap/Media";
 
 const Loader = () => (

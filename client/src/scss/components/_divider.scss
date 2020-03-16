@@ -24,7 +24,7 @@
     }
     .divider-icon {
         color: $secondary !important;
-        font-size: 0.5rem;
+        font-size: 2rem;
         @include media-breakpoint-down(sm) {
             font-size: 0.3rem;
         }

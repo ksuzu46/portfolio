@@ -7,15 +7,15 @@ const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const common = require('./webpack.common.config.js');
+const htmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = merge(common, {
     mode: 'development',
-    entry: [
-        './src/index.js'
-    ],
+    entry: {
+        app: './src/index.js'
+    },
     output: {
-        filename: 'bundle.js',
-        path: path.join(__dirname, 'dist', 'bundles')
+        filename: '[name].bundle.js'
     },
     module: {
         rules: [
@@ -32,7 +32,7 @@ module.exports = merge(common, {
     devtool: 'cheap-module-source-map',
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
-        publicPath: '/bundles/',  // http:..:../bundles/[output_filename]/
+        publicPath: '/',  // http:..:../[output_filename]/
         liveReload: false,        // Always turn off when HMR is enabled
         historyApiFallback: true, // Will fallback to bundle.js in memory
         hot: true,
@@ -49,5 +49,44 @@ module.exports = merge(common, {
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin({ multiStep: true }),
+        new htmlWebpackPlugin({
+            inject: false,
+            template: require('html-webpack-template'),
+            appMountId: 'app',
+            headHtmlSnippet: '<title>Keisuke Suzuki</title>',
+            // googleAnalytics: {
+            //     trackingId: 'UA-160643958-1',
+            //     pageViewOnLoad: true
+            // },
+            meta: [
+                {
+                    charset: 'UTF-8'
+                },
+                {
+                    name: 'name',
+                    content: 'portfolio'
+                }, {
+                    name: 'Description',
+                    content: 'My portfolio site',
+                }, {
+                    name: 'viewport',
+                    content: 'width=device-width, initial-scale=1,' +
+                             ' shrink-to-fit=yes',
+                }, {
+                    name: 'apple-mobile-web-app-capable',
+                    content: 'yes'
+                }, {
+                    name: 'apple-mobile-web-app-status-bar-style',
+                    content: 'black'
+                }, {
+                    name: 'apple-mobile-web-app-title',
+                    content: 'Ksuzuki'
+                }
+            ],
+            mobile: true,
+            lang: 'en-US',
+            favicon: './assets/images/favicon.ico',
+            title: 'Keisuke Suzuki',
+        })
     ]
 });

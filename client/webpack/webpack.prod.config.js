@@ -7,6 +7,7 @@ const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const common = require('./webpack.common.config');
+const htmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 
@@ -28,19 +29,8 @@ module.exports = merge(common, {
         ],
     },
     output: {
-        path: path.resolve('./build', 'bundles'),
+        path: path.resolve('./build'),
         filename: '[name].bundle.js',
-    },
-    optimization: {
-        splitChunks: {
-            cacheGroups: {
-                commons: {
-                    test: /[\\/]node_modules[\\/]/,
-                    name: 'vendors',
-                    chunks: 'all'
-                }
-            }
-        }
     },
     devtool: '',
     plugins: [
@@ -49,5 +39,52 @@ module.exports = merge(common, {
             chunkFilename: '[id].css',
         }),
         new webpack.optimize.AggressiveMergingPlugin(),
+        new htmlWebpackPlugin({
+            inject: false,
+            template: require('html-webpack-template'),
+            appMountId: 'app',
+            headHtmlSnippet:
+                '<title>Keisuke Suzuki</title>' +
+                '<link type="text/css" href="./app.css" />',
+            // googleAnalytics: {
+            //     trackingId: 'UA-160643958-1',
+            //     pageViewOnLoad: true
+            // },
+            meta: [
+                {
+                    charset: 'UTF-8'
+                },
+                {
+                    name: 'name',
+                    content: 'portfolio'
+                }, {
+                    name: 'Description',
+                    content: 'My portfolio website',
+                }, {
+                    name: 'viewport',
+                    content: 'width=device-width, initial-scale=1,' +
+                             ' shrink-to-fit=yes',
+                }, {
+                    name: 'apple-mobile-web-app-capable',
+                    content: 'yes'
+                }, {
+                    name: 'apple-mobile-web-app-status-bar-style',
+                    content: 'black'
+                }, {
+                    name: 'apple-mobile-web-app-title',
+                    content: 'Ksuzuki'
+                }
+            ],
+            link: [
+                {
+                    rel: 'stylesheet',
+                    href: './app.css'
+                }
+            ],
+            mobile: true,
+            lang: 'en-US',
+            favicon: './assets/images/favicon.ico',
+            title: 'Keisuke Suzuki',
+        })
     ]
 });

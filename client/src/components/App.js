@@ -4,8 +4,8 @@
  */
 
 import React from 'react';
-import Page from "./components/Page";
-import "./styles/scss/styles.scss";
+import Page from "./Page";
+import "../scss/styles.scss";
 
 
 export const App = (props) =>
