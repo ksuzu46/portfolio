@@ -60,3 +60,8 @@
     }
 }
 
+.contact-form-control-textarea {
+    @extend .contact-form-control;
+    height: 12rem !important;
+}
+

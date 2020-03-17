@@ -11,7 +11,8 @@ import {
 
 const Contact = React.forwardRef(({ emailStatus, sendEmail }, ref) =>
 {
-    const [ name, setName ] = useState(null);
+    const [ firstName, setFirstName ] = useState(null);
+    const [ lastName, setLastName ] = useState(null);
     const [ email, setEmail ] = useState(null);
     const [ message, setMessage ] = useState(null);
     
@@ -21,7 +22,7 @@ const Contact = React.forwardRef(({ emailStatus, sendEmail }, ref) =>
         const form = e.currentTarget;
         if(form.checkValidity() === true)
         {
-            sendEmail({ name, email, message });
+            sendEmail({ firstName, lastName, email, message });
         }
     };
     
@@ -33,26 +34,42 @@ const Contact = React.forwardRef(({ emailStatus, sendEmail }, ref) =>
                 onSubmit={ onSubmit }
             >
                 <FormGroup
-                    controlId="nameValidation"
+                    controlId="firsNameValidation"
                     className='contact-form-group'
                 >
-                    <FormLabel> Your Name </FormLabel>
+                    <FormLabel>First Name</FormLabel>
                     <FormControl
                         required
                         className='contact-form-control'
-                        onChange={ e => setName(e.target.value) }
+                        onChange={ e => setFirstName(e.target.value) }
                         type="text"
-                        placeholder="Your Name"
+                        placeholder="Your First Name"
                     />
                     <FormControl.Feedback type="invalid">
-                        Please enter your name.
+                        Please enter your first name.
+                    </FormControl.Feedback>
+                </FormGroup>
+                <FormGroup
+                    controlId="lastNameValidation"
+                    className="contact-form-group"
+                >
+                    <FormLabel> Last Name </FormLabel>
+                    <FormControl
+                        required
+                        className='contact-form-control'
+                        onChange={ e => setLastName(e.target.value) }
+                        type="text"
+                        placeholder="Your Last Name"
+                    />
+                    <FormControl.Feedback type="invalid">
+                        Please enter your last name.
                     </FormControl.Feedback>
                 </FormGroup>
                 <FormGroup
                     controlId="emailValidation"
                     className='contact-form-group'
                 >
-                    <FormLabel> Your Email </FormLabel>
+                    <FormLabel>Email</FormLabel>
                     <FormControl
                         className='contact-form-control'
                         required
@@ -68,10 +85,10 @@ const Contact = React.forwardRef(({ emailStatus, sendEmail }, ref) =>
                     className='contact-form-group'
                     controlId="messageValidation"
                 >
-                    <FormLabel> Your Message </FormLabel>
+                    <FormLabel>Message</FormLabel>
                     <FormControl
                         required
-                        className='contact-form-control'
+                        className='contact-form-control contact-form-control-textarea'
                         onChange={ e => setMessage(e.target.value) }
                         as="textarea"
                         placeholder="Please write your message here"
