@@ -9,8 +9,10 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import express from 'express';
 import compression from 'compression';
+import memCache from 'memory-cache';
 import nodemailer from 'nodemailer';
 import  bodyParser from 'body-parser';
+import { confirmationContent, messageContent } from './email';
 import { fetchGhData } from './ghGraphQL.mjs';
 
 const app = express();
@@ -35,15 +37,43 @@ api.get('/', (req, res) =>
     res.send('api root');
 })
 
+// Cache gh data
+const ghDataCache = () => async (res, req, next) => {
+    const cachedBody = memCache.get('ghData');
+    if(cachedBody)
+    {
+        res.send(cachedBody);
+        const newData = await fetchGhData();
+        await memCache.put('ghData', newData.data);
+    } else
+    {
+        const newData = await fetchGhData();
+        await memCache.put('ghData', newData.data);
+    }
+}
+
+
 
 // Gh-gql-api
+// Cache data until next request
 api.get('/gh', async (req, res) => {
+    const cachedBody = memCache.get('ghData');
+    if(cachedBody)
+    {
+        res.send(cachedBody);
+    }
     try{
-        const response = await fetchGhData();
-        const data = await response.data;
-        res.send(data);
+        const newData = await fetchGhData();
+        if(!cachedBody)
+        {
+            console.log("")
+            res.send(newData.data);
+        }
+        await memCache.put('ghData', newData.data);
+        console.log(newData);
     } catch(error) {
         res.send(error);
+        memCache.del('ghData');
     }
 })
 
@@ -52,8 +82,11 @@ api.get('/gh', async (req, res) => {
 api.post('/mailer', (req, res) =>
 {
     const data = req.body;
+    const { firstName, lastName, email, message } = data;
+    const confirmationSubject = `Thank you for your message`;
     console.log(data);
     console.log("requested");
+    
     const transport = nodemailer.createTransport({
         service: process.env.EMAIL_SERVICE,
         port: 465,
@@ -64,19 +97,31 @@ api.post('/mailer', (req, res) =>
         secure: true
     });
     
-    const mailOptions = {
-        from: data.email,
+    const toMe = {
+        from: email,
         to: process.env.EMAIL_TO,
-        subject: `Message from ${ data.name }`,
-        html: `<p>Name: ${ data.name }</p>
-               <p>${ data.message }</p>
-               <p>Replay to: ${ data.email }</p>`
+        subject: `Message from ${ firstName }`,
+        html: messageContent(firstName, lastName, message)
     };
     
-    transport.sendMail(mailOptions, (error, response) =>
+    const toSender = {
+        from: process.env.EMAIL_USER,
+        to: email,
+        subject: confirmationSubject,
+        html: confirmationContent(firstName, lastName, confirmationSubject),
+    }
+    
+    transport.sendMail(toMe, (error, response) =>
     {
         console.log(error, response);
-        error ? res.send(error) : res.send(response);
+        if(!error)
+        {
+            res.send(response);
+            transport.sendMail(toSender);
+        } else
+        {
+            res.send(error);
+        }
     });
     transport.close();
 })
