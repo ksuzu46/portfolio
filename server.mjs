@@ -19,12 +19,10 @@ const api = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const publicPath = path.resolve(__dirname, 'client', 'build');
-const assetPath = path.resolve(__dirname, 'client', 'assets');
 const port = process.env.PORT;
 
 app.use(compression())
 app.use(express.static(publicPath));
-app.use(express.static(assetPath));
 
 // For Node mailer
 api.use(bodyParser.urlencoded({ extended: true }));
