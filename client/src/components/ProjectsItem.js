@@ -21,12 +21,18 @@ const ProjectsItem = ({ node, ind }) =>
                     <div className="projects-card-title">
                         <h4>{ name }</h4>
                         {
-                            homepageUrl && <a href={ homepageUrl }>
+                            homepageUrl && <a
+                                href={ homepageUrl }
+                                aria-label="got to project's homepage"
+                                target="homepage">
                                 <i className="fas fa-2x fa-home"/>
                             </a>
                         }
                         {
-                            url && <a href={ url }>
+                            url && <a
+                                href={ url }
+                                aria-label='see project on github'
+                                target='github'>
                                 <i className="fab fa-2x fa-github"/>
                             </a>
                         }
