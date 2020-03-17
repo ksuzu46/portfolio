@@ -1,7 +1,7 @@
 /**
  * ecosystem.config.js
  * @author [Keisuke Suzuki](https://github.com/Ks5810)
- * @description Setting for PM2
+ * @description PM2 configuration file which run yarn start
  */
 
 module.exports = {
