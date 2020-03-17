@@ -75,12 +75,6 @@ module.exports = merge(common, {
                     content: 'Ksuzuki'
                 }
             ],
-            link: [
-                {
-                    rel: 'stylesheet',
-                    href: './app.css'
-                }
-            ],
             mobile: true,
             lang: 'en-US',
             favicon: './assets/images/favicon.ico',
