@@ -48,25 +48,5 @@ module.exports = {
     plugins: [
         new DotEnv(),
         new CleanWebpackPlugin(),
-        new WorkboxPlugin.GenerateSW({
-            swDest: './sw.js',
-            skipWaiting: true,
-            clientsClaim: true,
-            exclude: [/\.(?:png|jpg|jpeg|svg)$/],
-    
-            // Define runtime caching rules.
-            runtimeCaching: [{
-                urlPattern: /\.(?:png|jpg|jpeg|svg)$/,
-                handler: 'CacheFirst',
-                options: {
-                    // Use a custom cache name.
-                    cacheName: 'images',
-            
-                    expiration: {
-                        maxEntries: 10,
-                    },
-                },
-            }],
-        })
     ]
 };

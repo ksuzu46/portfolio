@@ -8,6 +8,7 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const common = require('./webpack.common.config');
 const htmlWebpackPlugin = require('html-webpack-plugin');
+const WorkboxPlugin = require('workbox-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 
@@ -79,6 +80,26 @@ module.exports = merge(common, {
             lang: 'en-US',
             favicon: './assets/images/favicon.ico',
             title: 'Keisuke Suzuki',
+        }),
+        new WorkboxPlugin.GenerateSW({
+            swDest: './sw.js',
+            skipWaiting: true,
+            clientsClaim: true,
+            exclude: [/\.(?:png|jpg|jpeg|svg)$/],
+    
+            // Define runtime caching rules.
+            runtimeCaching: [{
+                urlPattern: /\.(?:png|jpg|jpeg|svg)$/,
+                handler: 'CacheFirst',
+                options: {
+                    // Use a custom cache name.
+                    cacheName: 'images',
+            
+                    expiration: {
+                        maxEntries: 10,
+                    },
+                },
+            }],
         })
     ]
 });
