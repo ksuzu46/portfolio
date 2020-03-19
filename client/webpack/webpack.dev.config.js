@@ -48,7 +48,7 @@ module.exports = merge(common, {
         noEmitOnErrors: true
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin({ multiStep: true }),
+        new webpack.HotModuleReplacementPlugin(),
         new htmlWebpackPlugin({
             inject: false,
             template: require('html-webpack-template'),
@@ -83,9 +83,19 @@ module.exports = merge(common, {
                     content: 'Ksuzuki'
                 }
             ],
+            links: [
+                {
+                    rel: 'apple-touch-icon',
+                    sizes: '180x180',
+                    href: "./src/assets/images/icons/apple-touch-icon.png"
+                }, {
+                    rel: 'manifest',
+                    href: './src/manifest.json'
+                }
+            ],
             mobile: true,
             lang: 'en-US',
-            favicon: './assets/images/favicon.ico',
+            favicon: './src/assets/images/icons/favicon.ico',
             title: 'Keisuke Suzuki',
         })
     ]

@@ -13,26 +13,25 @@ module.exports = {
     mode: 'none',
     context: path.resolve(__dirname, '../'),
     module: {
-        rules: [{
+        rules: [ {
             loader: 'babel-loader',
             test: /\.js$/,
             exclude: /node_modules/
-        },
-            {
+        }, {
+            test: /\.json$/, loader: 'json'
+        }, {
             test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
             loader: "url-loader",
             options: {
                 name: '[path]/[name].[ext]'
             }
-        },
-            {
+        }, {
             test: /\.(ttf|eot|svg|gif)(\?[\s\S]+)?$/,
             loader: 'url-loader',
-             options: {
+            options: {
                 name: "[path]/[name].[ext]"
-             }
-          }
-        ]
+            }
+        } ]
     },
     optimization: {
         splitChunks: {
@@ -48,5 +47,25 @@ module.exports = {
     plugins: [
         new DotEnv(),
         new CleanWebpackPlugin(),
+        new WorkboxPlugin.GenerateSW({
+            swDest: './sw.js',
+            skipWaiting: true,
+            clientsClaim: true,
+            exclude: [ /\.(?:png|jpg|jpeg|svg)$/ ],
+            
+            // Define runtime caching rules.
+            runtimeCaching: [ {
+                urlPattern: /\.(?:png|jpg|jpeg|svg)$/,
+                handler: 'CacheFirst',
+                options: {
+                    // Use a custom cache name.
+                    cacheName: 'images',
+                    
+                    expiration: {
+                        maxEntries: 10,
+                    },
+                },
+            } ],
+        })
     ]
 };

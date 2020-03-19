@@ -37,23 +37,6 @@ api.get('/', (req, res) =>
     res.send('api root');
 })
 
-// Cache gh data
-const ghDataCache = () => async (res, req, next) => {
-    const cachedBody = memCache.get('ghData');
-    if(cachedBody)
-    {
-        res.send(cachedBody);
-        const newData = await fetchGhData();
-        await memCache.put('ghData', newData.data);
-    } else
-    {
-        const newData = await fetchGhData();
-        await memCache.put('ghData', newData.data);
-    }
-}
-
-
-
 // Gh-gql-api
 // Cache data until next request
 api.get('/gh', async (req, res) => {
@@ -101,7 +84,7 @@ api.post('/mailer', (req, res) =>
         from: email,
         to: process.env.EMAIL_TO,
         subject: `Message from ${ firstName }`,
-        html: messageContent(firstName, lastName, message)
+        html: messageContent(firstName, lastName, message, email)
     };
     
     const toSender = {

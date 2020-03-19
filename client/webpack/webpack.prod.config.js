@@ -8,7 +8,6 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const common = require('./webpack.common.config');
 const htmlWebpackPlugin = require('html-webpack-plugin');
-const WorkboxPlugin = require('workbox-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 
@@ -76,30 +75,20 @@ module.exports = merge(common, {
                     content: 'Ksuzuki'
                 }
             ],
+            links: [
+                {
+                    rel: 'apple-touch-icon',
+                    sizes: '180x180',
+                    href: "./src/assets/images/icons/apple-touch-icon.png"
+                }, {
+                    rel: 'manifest',
+                    href: './src/manifest.json'
+                }
+            ],
             mobile: true,
             lang: 'en-US',
-            favicon: './assets/images/favicon.ico',
+            favicon: './src/assets/images/icons/favicon.ico',
             title: 'Keisuke Suzuki',
         }),
-        new WorkboxPlugin.GenerateSW({
-            swDest: './sw.js',
-            skipWaiting: true,
-            clientsClaim: true,
-            exclude: [/\.(?:png|jpg|jpeg|svg)$/],
-    
-            // Define runtime caching rules.
-            runtimeCaching: [{
-                urlPattern: /\.(?:png|jpg|jpeg|svg)$/,
-                handler: 'CacheFirst',
-                options: {
-                    // Use a custom cache name.
-                    cacheName: 'images',
-            
-                    expiration: {
-                        maxEntries: 10,
-                    },
-                },
-            }],
-        })
     ]
 });

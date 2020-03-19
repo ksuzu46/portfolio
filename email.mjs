@@ -3,7 +3,7 @@
  * @author [Keisuke Suzuki](https://github.com/Ks5810)
  */
 
-const messageContent = (senderFirstName, senderLastName, message) =>
+const messageContent = (senderFirstName, senderLastName, message, email) =>
 {
     return `
     <!doctype html>
@@ -107,12 +107,11 @@ const messageContent = (senderFirstName, senderLastName, message) =>
       <tr>
         <td style="font-family: sans-serif; font-size: 14px; vertical-align: top;">&nbsp;</td>
         <td class="container" style="font-family: sans-serif; font-size: 14px; vertical-align: top; display: block; Margin: 0 auto; max-width: 580px; padding: 10px; width: 580px;">
-          <div class="content" style="box-sizing: border-box; display: block; Margin: 0 auto; max-width: 580px; padding: 10px;">
-
+          <div class="content" style=" box-sizing: border-box; display: block; Margin: 0 auto; max-width: 580px; padding: 10px;">
+            
             <!-- START CENTERED WHITE CONTAINER -->
             <span class="preheader" style="color: transparent; display: none; height: 0; max-height: 0; max-width: 0; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden; width: 0;">Message from ${senderFirstName} ${senderLastName}:</span>
             <table class="main" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; background: #ffffff; border-radius: 3px;">
-
               <!-- START MAIN CONTENT AREA -->
               <tr>
                 <td class="wrapper" style="font-family: sans-serif; font-size: 14px; vertical-align: top; box-sizing: border-box; padding: 20px;">
@@ -125,6 +124,7 @@ const messageContent = (senderFirstName, senderLastName, message) =>
                   </table>
                 </td>
               </tr>
+              <p style="font-family: sans-serif; font-size: 12px; font-weight: normal; margin: 0; Margin-bottom: 10px;"> This message is from ${ senderFirstName } ${ senderLastName }: ${ email }</p>
 
             <!-- END MAIN CONTENT AREA -->
             </table>
