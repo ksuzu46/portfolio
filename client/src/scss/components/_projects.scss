@@ -31,6 +31,7 @@
     border: none !important;
     box-shadow: none !important;
     background-color: $back-ground !important;
+
     &:hover {
         .projects-card-header {
             background-color: darken($secondary, 5%);
@@ -73,6 +74,7 @@
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
+
         h4 {
             margin-right: 0.5rem;
             text-align: center;
@@ -96,10 +98,9 @@
 }
 
 
-
 .projects-card-description {
     border-style: solid !important;
-    border-radius:  0 0 $border-radius-lg $border-radius-lg !important;
+    border-radius: 0 0 $border-radius-lg $border-radius-lg !important;
     border-width: 0 $border-width $border-width $border-width !important;
     border-color: darken($back-ground-list, 5%) !important;
     background-color: $back-ground-list;
@@ -113,12 +114,15 @@
 .projects-col .expanded {
     height: auto;
 }
+
 .projects-col .collapsed {
     height: 15rem;
 }
+
 .projects-card-description .expanded {
     overflow: visible;
 }
+
 .projects-card-description .collapsed {
     overflow-y: hidden;
 }

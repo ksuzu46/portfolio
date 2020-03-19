@@ -28,23 +28,28 @@
             box-shadow: none !important;
         }
     }
+
     .navbar-nav {
         margin-top: 1rem;
 
         .nav-link {
             cursor: pointer;
         }
+
         .nav-item {
             color: $primary;
+
             &:hover {
                 color: $focus;
             }
+
             &:focus {
                 color: $focus;
                 cursor: pointer;
             }
         }
     }
+
     .navbar-toggler {
         font-size: 100%;
         padding: 0.6rem 1.5rem;
@@ -56,10 +61,12 @@
             outline: 0;
             box-shadow: none !important;
         }
+
         &:hover {
             background: $focus;
         }
     }
+
     @include media-breakpoint-up(lg) {
         padding-top: 1.5rem;
         padding-bottom: 1.5rem;

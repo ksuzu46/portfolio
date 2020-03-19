@@ -13,6 +13,7 @@
         padding-top: $l-size;
     }
 }
+
 .contact-heading {
     text-align: center;
 }
@@ -22,16 +23,18 @@
     margin: 1rem 0;
 }
 
-.contact-button{
+.contact-button {
     color: darken($secondary, 10%);
     background-color: $primary;
     border-color: darken($primary, 15%);
     border-width: 1.5px !important;
+
     &:active,
     &:focus {
         background-color: $focus;
         outline: 0 !important;
     }
+
     &:hover {
         color: lighten($primary, 10%);
         background-color: $focus;
@@ -52,6 +55,7 @@
     @extend .contact-form-group;
     color: darken($secondary, 10%) !important;
     background-color: darken($primary, 10%) !important;
+
     &:active,
     &:focus {
         background-color: $primary !important;

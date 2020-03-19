@@ -4,12 +4,12 @@
  */
 
 import React from 'react';
-import loader from "../../assets/images/loader-334px.gif";
-import Media from "react-bootstrap/Media";
+import loader from "../assets/images/Gears-0.6s-500px.svg";
+
 
 const Loader = () => (
     <div className="loader">
-        <img src={ loader } alt="loading..." />
+        <img src={ loader } alt="loading..."/>
     </div>
 );
 

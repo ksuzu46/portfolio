@@ -35,12 +35,12 @@ const Contact = React.forwardRef(({ emailStatus, sendEmail }, ref) =>
             >
                 <FormGroup
                     controlId="firsNameValidation"
-                    className='contact-form-group'
+                    className="contact-form-group"
                 >
                     <FormLabel>First Name</FormLabel>
                     <FormControl
                         required
-                        className='contact-form-control'
+                        className="contact-form-control"
                         onChange={ e => setFirstName(e.target.value) }
                         type="text"
                         placeholder="Your First Name"
@@ -56,7 +56,7 @@ const Contact = React.forwardRef(({ emailStatus, sendEmail }, ref) =>
                     <FormLabel> Last Name </FormLabel>
                     <FormControl
                         required
-                        className='contact-form-control'
+                        className="contact-form-control"
                         onChange={ e => setLastName(e.target.value) }
                         type="text"
                         placeholder="Your Last Name"
@@ -67,11 +67,11 @@ const Contact = React.forwardRef(({ emailStatus, sendEmail }, ref) =>
                 </FormGroup>
                 <FormGroup
                     controlId="emailValidation"
-                    className='contact-form-group'
+                    className="contact-form-group"
                 >
                     <FormLabel>Email</FormLabel>
                     <FormControl
-                        className='contact-form-control'
+                        className="contact-form-control"
                         required
                         onChange={ e => setEmail(e.target.value) }
                         type="email"
@@ -82,13 +82,14 @@ const Contact = React.forwardRef(({ emailStatus, sendEmail }, ref) =>
                     </FormControl.Feedback>
                 </FormGroup>
                 <FormGroup
-                    className='contact-form-group'
+                    className="contact-form-group"
                     controlId="messageValidation"
                 >
                     <FormLabel>Message</FormLabel>
                     <FormControl
                         required
-                        className='contact-form-control contact-form-control-textarea'
+                        className="contact-form-control
+                                   contact-form-control-textarea"
                         onChange={ e => setMessage(e.target.value) }
                         as="textarea"
                         placeholder="Please write your message here"
@@ -98,12 +99,17 @@ const Contact = React.forwardRef(({ emailStatus, sendEmail }, ref) =>
                     </FormControl.Feedback>
                 </FormGroup>
                 {
-                    emailStatus.sending ? <Alert className="contact-alert" variant="info"> Sending...</Alert> : (
+                    emailStatus.sending ?
+                    <Alert className="contact-alert" variant="info">
+                        Sending...
+                    </Alert> :
+                    (
                         emailStatus.error ?
                         <Alert className="contact-alert" variant="danger">
                             Sorry, something went wrong. Please try again.
                         </Alert> : emailStatus.complete &&
-                                   <Alert className="contact-alert" variant="success">
+                                   <Alert className="contact-alert"
+                                          variant="success">
                                        Successfully sent!
                                    </Alert>
                     )
@@ -111,7 +117,7 @@ const Contact = React.forwardRef(({ emailStatus, sendEmail }, ref) =>
                 <Button className="contact-button" type="submit">
                     Send email
                 </Button>
-                
+            
             </Form>
         </Container>
     )

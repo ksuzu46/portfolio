@@ -13,9 +13,10 @@ const ProjectsItem = ({ node, ind }) =>
     const { name, homepageUrl, description, url } = node;
     return (
         <Col
-            className={ `projects-col ${expanded ? 'expanded' : 'collapsed'}`}
+            className={ `projects-col ${ expanded ? 'expanded' :
+                                         'collapsed' }` }
             lg="auto" md="auto" sm="auto"
-             key={ ind }>
+            key={ ind }>
             <Card className="projects-card">
                 <div className="projects-card-header">
                     <div className="projects-card-title">
@@ -31,8 +32,8 @@ const ProjectsItem = ({ node, ind }) =>
                         {
                             url && <a
                                 href={ url }
-                                aria-label='see project on github'
-                                target='github'>
+                                aria-label="see project on github"
+                                target="github">
                                 <i className="fab fa-2x fa-github"/>
                             </a>
                         }
@@ -47,7 +48,7 @@ const ProjectsItem = ({ node, ind }) =>
                     >
                         { expanded ? "Read Less" : "Read More" }
                     </Button>
-                    <br />
+                    <br/>
                     { description }
                 </div>
             </Card>

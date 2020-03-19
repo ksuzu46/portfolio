@@ -4,7 +4,6 @@
  */
 
 import React from "react";
-import { Button } from "react-bootstrap";
 
 
 const Divider = () =>
@@ -12,9 +11,9 @@ const Divider = () =>
         <div className="divider">
             <div className="divider-line"/>
             <div className="divider-icon">
-                {/*<Button className="divider-button">*/}
-                    <i className="fas fa-x fa-chevron-down"/>
-                {/*</Button>*/}
+                {/*<Button className="divider-button">*/ }
+                <i className="fas fa-x fa-chevron-down"/>
+                {/*</Button>*/ }
             </div>
             <div className="divider-line"/>
         </div>

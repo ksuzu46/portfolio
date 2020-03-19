@@ -14,121 +14,23 @@ import About from "./About";
 import NavBar from "./NavBar";
 import Contact from "./Contact";
 import Footer from "./Footer";
-import Divider from "./Divider";
 import Loader from "./Loader";
-
+import { useGhFetch } from "../hooks/useGhFetch";
+import { useEmail } from "../hooks/useEmail"
 
 // Bootstrap default breakpoint
 const breakPoints = { sm: 576, md: 768, lg: 992, xl: 1200 };
 // Navbar size setting in src/styles/scss/base/_variables.scss in REM
 const navbarHeight = { md: 4.5, lg: 7.5 };
-const { mailerUrl } = config;
+
 const childComponents = [ About, Projects, Contact ];
 const children = [ "about", "projects", "contact" ];
 
 
 const Page = () =>
 {
-    /**
-     * Fetch from gh data from the endpoint
-     */
-    const [ ghFetch, setGhFetch ] = useState({
-        data: null,
-        loading: true,
-        error: false,
-        complete: false
-    });
-    const [ ghData, setGhData ] = useState({
-        avatarUrl: "",
-        bio: "",
-        bioHTML: "",
-        email: "",
-        projects: []
-    });
-    const [ isFetched, setIsFetched ] = useState(false);
-    
-    
-    useEffect(() =>
-    {
-        let unmounted = false;
-        const fetchGhData = async() =>
-        {
-            setGhFetch(prevState => ({ ...prevState, loading: true, }));
-            try
-            {
-                const tmp = await axios.get("/api/gh", requestConfig());
-                if(!unmounted)
-                {
-                    setGhFetch(prevState => ({
-                        ...prevState,
-                        data: tmp.data,
-                        loading: false,
-                        complete: true
-                    }));
-                }
-            } catch(error)
-            {
-                if(!unmounted)
-                {
-                    setGhFetch(prevState => ({
-                        ...prevState,
-                        error: error.response,
-                        loading: false,
-                        complete: true,
-                    }));
-                }
-            }
-        };
-        fetchGhData();
-        return () => { unmounted = true };
-    }, []);
-    
-    useLayoutEffect(() =>
-    {
-        if(ghFetch.complete)
-        {
-            const { user } = ghFetch.data;
-            const { pinnedItems } = user;
-            const { edges } = pinnedItems;
-            const projects = edges.map(edge => edge.node);
-            setGhData(prevState => ({ ...prevState, ...user, projects }));
-            setIsFetched(true);
-        }
-    }, [ghFetch])
-    
-    
-    /**
-     * Send Email using nodemailer
-     */
-    const [ emailStatus, setEmailStatus ] = useState({
-        data: null,
-        sending: false,
-        error: false,
-        complete: false
-    });
-    
-    const sendEmail = async(data) =>
-    {
-        setEmailStatus(prevState => ({ ...prevState, sending: true, }));
-        try
-        {
-            const tmp = await axios.post(mailerUrl, data, requestConfig());
-            await setEmailStatus(prevState => ({
-                ...prevState,
-                data: tmp.data,
-                sending: false,
-                complete: true
-            }));
-        } catch(error)
-        {
-            await setEmailStatus(prevState => ({
-                ...prevState,
-                error: error.response,
-                sending: false,
-                complete: true,
-            }));
-        }
-    };
+    const ghData = useGhFetch();
+    const { emailStatus, sendEmail } = useEmail();
     
     /**
      * Layout manipulation
@@ -139,7 +41,7 @@ const Page = () =>
     
     const scrollToInd = (i) =>
     {
-        if (typeof window !== 'undefined')
+        if(typeof window !== 'undefined')
         {
             window.scrollTo({ left: 0, top: heights[i], behavior: "smooth" });
         }
@@ -153,7 +55,7 @@ const Page = () =>
     const updateHeights = () =>
     {
         let curWidth = {};
-        if (typeof window !== 'undefined')
+        if(typeof window !== 'undefined')
         {
             curWidth = window.innerWidth;
         }
@@ -174,7 +76,7 @@ const Page = () =>
     // Update heights
     useEffect(() =>
     {
-        if (typeof window !== 'undefined')
+        if(typeof window !== 'undefined')
         {
             window.addEventListener("resize", updateHeights);
             window.addEventListener("scroll", onScroll);
@@ -182,14 +84,14 @@ const Page = () =>
         updateHeights();
         return () =>
         {
-            if (typeof window !== 'undefined')
+            if(typeof window !== 'undefined')
             {
                 window.removeEventListener("resize", updateHeights);
                 window.removeEventListener("scroll", onScroll);
             }
         };
     }, [ document.body.scrollHeight, document.documentElement.scrollHeight,
-         isFetched, height ]);
+         ghData.fetched, height ]);
     
     
     return (
@@ -199,14 +101,14 @@ const Page = () =>
                 children={ children }
             />
             {
-                ghFetch.complete ?
-                <>
-                    {
+                ghData.loading ? <Loader/> :
+                ghData.fetched && <>
+                     {
                         childComponents.map((Component, index) => (
                             <div key={ index }>
                                 <Component
                                     ref={ ref => (refs.current[index] = ref) }
-                                    ghData={ ghData }
+                                    ghData={ ghData.data }
                                     emailStatus={ emailStatus }
                                     scrollToContact={ () => scrollToInd(2) }
                                     sendEmail={ data => sendEmail(data) }
@@ -216,7 +118,6 @@ const Page = () =>
                     }
                     <Footer ghData={ ghData }/>
                 </>
-                : <Loader/>
             }
         </>
     )
