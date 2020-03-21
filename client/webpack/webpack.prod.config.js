@@ -82,7 +82,7 @@ module.exports = merge(common, {
                     href: "./src/assets/images/icons/apple-touch-icon.png"
                 }, {
                     rel: 'manifest',
-                    href: './src/manifest.json'
+                    href: './manifest.json'
                 }
             ],
             mobile: true,

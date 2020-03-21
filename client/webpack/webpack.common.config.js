@@ -8,10 +8,10 @@ const path = require('path');
 const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     mode: 'none',
-    context: path.resolve(__dirname, '../'),
     module: {
         rules: [ {
             loader: 'babel-loader',
@@ -47,6 +47,11 @@ module.exports = {
     plugins: [
         new DotEnv(),
         new CleanWebpackPlugin(),
+        new CopyPlugin([ {
+                from: 'src/manifest.json',
+                to: 'manifest.json',
+                toType: 'file',
+            } ]),
         new WorkboxPlugin.GenerateSW({
             swDest: './sw.js',
             skipWaiting: true,

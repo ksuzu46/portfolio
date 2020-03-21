@@ -31,7 +31,7 @@ module.exports = merge(common, {
     },
     devtool: 'cheap-module-source-map',
     devServer: {
-        contentBase: path.join(__dirname, 'dist'),
+        contentBase: path.join(__dirname, '../build'),
         publicPath: '/',  // http:..:../[output_filename]/
         liveReload: false,        // Always turn off when HMR is enabled
         historyApiFallback: true, // Will fallback to bundle.js in memory
@@ -90,7 +90,7 @@ module.exports = merge(common, {
                     href: "./src/assets/images/icons/apple-touch-icon.png"
                 }, {
                     rel: 'manifest',
-                    href: './src/manifest.json'
+                    href: './manifest.json'
                 }
             ],
             mobile: true,
