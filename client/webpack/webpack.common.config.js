@@ -42,7 +42,7 @@ module.exports = {
                     chunks: 'all'
                 }
             }
-        }
+        },
     },
     plugins: [
         new DotEnv(),
@@ -65,12 +65,11 @@ module.exports = {
                 options: {
                     // Use a custom cache name.
                     cacheName: 'images',
-                    
                     expiration: {
                         maxEntries: 10,
                     },
                 },
             } ],
-        })
+        }),
     ]
 };

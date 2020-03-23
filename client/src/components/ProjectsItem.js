@@ -5,6 +5,7 @@
 
 import React, { useState } from "react";
 import { Button, Card, Col } from "react-bootstrap";
+import TextTruncate from "react-text-truncate";
 
 
 const ProjectsItem = ({ node, ind }) =>
@@ -13,10 +14,9 @@ const ProjectsItem = ({ node, ind }) =>
     const { name, homepageUrl, description, url } = node;
     return (
         <Col
-            className={ `projects-col ${ expanded ? 'expanded' :
-                                         'collapsed' }` }
             lg="auto" md="auto" sm="auto"
-            key={ ind }>
+            key={ ind }
+        >
             <Card className="projects-card">
                 <div className="projects-card-header">
                     <div className="projects-card-title">
@@ -39,17 +39,20 @@ const ProjectsItem = ({ node, ind }) =>
                         }
                     </div>
                 </div>
-                <div className={ `projects-card-description ${ expanded ?
-                                                               'expanded' :
-                                                               'collapsed' }` }>
+                <div className='projects-card-description'>
+                    <div className='projects-card-description-text'>
+                    { expanded ? <p>{ description }</p> : <TextTruncate
+                        line={5}
+                        truncateText="..."
+                        text={description}
+                    />  }
+                    </div>
                     <Button
                         className="projects-card-description-button"
                         onClick={ () => setExpanded(!expanded) }
                     >
                         { expanded ? "Read Less" : "Read More" }
                     </Button>
-                    <br/>
-                    { description }
                 </div>
             </Card>
         </Col>

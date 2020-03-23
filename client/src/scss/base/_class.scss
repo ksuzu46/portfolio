@@ -1,0 +1,25 @@
+/**
+ * _class.scss
+ * @author [Keisuke Suzuki](https://github.com/Ks5810)
+ */
+
+.btn {
+    background-color: $primary;
+    outline: none !important;
+    &:active,
+    &:focus {
+        outline: 0 !important;
+        border-color: darken($primary, 10%);
+    }
+    &:hover {
+        color: lighten($primary, 10%);
+        background-color: darken($primary, 10%);
+        border-color: darken($primary, 15%);
+    }
+}
+
+.alert {
+    display: flex;
+    justify-content: left;
+    padding: 0.5rem 1rem;
+}

@@ -37,7 +37,6 @@ const Contact = React.forwardRef(({ emailStatus, sendEmail }, ref) =>
                     controlId="firsNameValidation"
                     className="contact-form-group"
                 >
-                    <FormLabel>First Name</FormLabel>
                     <FormControl
                         required
                         className="contact-form-control"
@@ -53,7 +52,6 @@ const Contact = React.forwardRef(({ emailStatus, sendEmail }, ref) =>
                     controlId="lastNameValidation"
                     className="contact-form-group"
                 >
-                    <FormLabel> Last Name </FormLabel>
                     <FormControl
                         required
                         className="contact-form-control"
@@ -69,7 +67,6 @@ const Contact = React.forwardRef(({ emailStatus, sendEmail }, ref) =>
                     controlId="emailValidation"
                     className="contact-form-group"
                 >
-                    <FormLabel>Email</FormLabel>
                     <FormControl
                         className="contact-form-control"
                         required
@@ -85,7 +82,6 @@ const Contact = React.forwardRef(({ emailStatus, sendEmail }, ref) =>
                     className="contact-form-group"
                     controlId="messageValidation"
                 >
-                    <FormLabel>Message</FormLabel>
                     <FormControl
                         required
                         className="contact-form-control
@@ -98,26 +94,21 @@ const Contact = React.forwardRef(({ emailStatus, sendEmail }, ref) =>
                         Please enter your message.
                     </FormControl.Feedback>
                 </FormGroup>
-                {
-                    emailStatus.sending ?
-                    <Alert className="contact-alert" variant="info">
-                        Sending...
-                    </Alert> :
-                    (
-                        emailStatus.error ?
-                        <Alert className="contact-alert" variant="danger">
-                            Sorry, something went wrong. Please try again.
-                        </Alert> : emailStatus.complete &&
-                                   <Alert className="contact-alert"
-                                          variant="success">
-                                       Successfully sent!
-                                   </Alert>
-                    )
-                }
-                <Button className="contact-button" type="submit">
-                    Send email
+                <Button
+                    className="contact-button"
+                    type="submit"
+                    disabled={ emailStatus.sending }>
+                    { emailStatus.sending ? 'Sending...' : 'Send Message' }
                 </Button>
-            
+                {
+                    emailStatus.error ?
+                    <Alert className="contact-alert--danger">
+                        Sorry, something went wrong. Please try again.
+                    </Alert> : emailStatus.complete &&
+                               <Alert className="contact-alert--success">
+                                   Successfully sent!
+                               </Alert>
+                }
             </Form>
         </Container>
     )

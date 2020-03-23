@@ -38,7 +38,6 @@ module.exports = merge(common, {
             filename: '[name].css',
             chunkFilename: '[id].css',
         }),
-        new webpack.optimize.AggressiveMergingPlugin(),
         new htmlWebpackPlugin({
             inject: false,
             template: require('html-webpack-template'),

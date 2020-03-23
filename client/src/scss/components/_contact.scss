@@ -4,41 +4,61 @@
  */
 
 .contact {
-    color: $primary;
     padding-top: $m-size;
     @include media-breakpoint-down(sm) {
         padding-top: $s-size;
     }
-    @include media-breakpoint-up(lg) {
-        padding-top: $l-size;
-    }
+}
+
+.contact-form {
+    padding: 4rem;
 }
 
 .contact-heading {
+    color: $primary;
     text-align: center;
 }
 
 .contact-alert {
-    background-color: $success;
     margin: 1rem 0;
+
+    &--success {
+        @extend .contact-alert;
+        color: darken($success, 50%);
+        background-color: $success;
+        border-color: darken($success, 5%);
+        box-shadow: none !important;
+        outline: none !important;
+    }
+    &--danger {
+        @extend .contact-alert;
+        color: darken($danger, 50%);
+        background-color: $danger;
+        border-color: darken($danger, 5%);
+        box-shadow: none !important;
+        outline: none !important;
+    }
 }
 
 .contact-button {
     color: darken($secondary, 10%);
     background-color: $primary;
     border-color: darken($primary, 15%);
-    border-width: 1.5px !important;
-
+    box-shadow: none !important;
     &:active,
     &:focus {
         background-color: $focus;
         outline: 0 !important;
+        border-color: darken($focus, 10%);
     }
 
     &:hover {
-        color: lighten($primary, 10%);
-        background-color: $focus;
-        border-color: darken($focus, 5%);
+        color: lighten($secondary, 10%);
+        background-color: darken($info, 10%);
+        border-color: darken($info, 15%);
+    }
+    @include media-breakpoint-up(md){
+        width: 80%;
     }
 }
 

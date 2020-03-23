@@ -66,7 +66,7 @@ export const useGhFetch = () =>
             }
         };
         fetchGhData();
-        return () => unmounted = true
+        return () => { unmounted = true; }
     }, []);
     
     return ghFetch;
