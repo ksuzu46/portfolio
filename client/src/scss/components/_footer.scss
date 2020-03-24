@@ -1,6 +1,4 @@
 .footer {
-    padding-top: 2rem;
-    padding-bottom: 20rem;
     background-color: $back-ground;
     @include media-breakpoint-down(sm) {
         padding-bottom: 1.5rem;

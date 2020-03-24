@@ -6,8 +6,11 @@
 
 .page {
     background-color: $back-ground;
-    padding-top: $m-size;
+    padding: $m-size 0;
+    @include media-breakpoint-down(sm) {
+        padding: $s-size 0;
+    }
     @include media-breakpoint-up(lg) {
-        padding-top: $l-size;
+        padding: $l-size 0 20rem 0;
     }
 }

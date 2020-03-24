@@ -4,23 +4,22 @@
  */
 
 .about {
+    @extend .section;
     font-family: $headings-font-family;
     font-weight: $headings-font-weight;
     color: $primary;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
     .about-heading {
+        text-align: center;
         font-size: 2.75rem;
         line-height: 2.75rem;
     }
 
     .about-where {
         padding: 0.5rem;
-        font-weight: normal;
+        font-size: 1.25rem;
+        font-weight: lighter;
+        text-align: center;
     }
 
     .about-icons {
@@ -50,15 +49,12 @@
         font-weight: normal;
     }
 
-    .about-subheading {
-        font-size: 1.25rem;
+    .about-avatar {
+        display: flex;
+        justify-content: center;
+        align-self: center;
     }
 
-    .about-avatar {
-        margin: 2rem;
-        width: 15rem;
-        border-radius: 8px;
-    }
 
     @include media-breakpoint-down(sm) {
         padding-top: $s-size;
@@ -67,38 +63,34 @@
             line-height: 1.7rem;
         }
         .about-avatar {
-            width: 10rem;
         }
         .about-text {
             padding: 0.5rem;
-            font-size: 1rem;
-            text-align: center;
-            font-weight: normal;
+            font-size: 1rem;;
         }
         .about-icons {
             padding: 0.5rem;
         }
+
     }
     @include media-breakpoint-up(lg) {
         padding-top: $l-size;
         padding-bottom: 2rem;
 
+        align-items: center;
+        align-content: center;
         .about-heading {
             font-size: 2.75rem;
             line-height: 2.75rem;
         }
+
         .about-text {
             padding: 2rem;
             font-size: 22px;
         }
+
         .about-subheading {
             font-size: 1.5rem;
-        }
-        .about-heading {
-
-        }
-        .about-avatar {
-            width: 12rem;
         }
     }
 }

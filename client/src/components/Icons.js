@@ -1,5 +1,6 @@
 import React from "react";
 import config from "../../config";
+import { animateScroll as scroll, scroller} from "react-scroll";
 import { Col } from "react-bootstrap";
 
 
@@ -23,7 +24,11 @@ const Icons = ({ ghData, parent, scrollToContact }) =>
             </a>
             <a
                 className={ `${ parent }-social` }
-                onClick={ scrollToContact }
+                onClick={() => scroller.scrollTo('contact', {
+                    duration: 750,
+                    delay: 0,
+                    smooth: 'easeInOutQuart'
+                })}
                 aria-label="email">
                 <i className="fas fa-3x fa-envelope-square"/>
             </a>

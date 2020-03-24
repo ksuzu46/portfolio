@@ -4,9 +4,7 @@
  */
 
 .contact {
-    @include media-breakpoint-down(sm) {
-        padding-top: $s-size;
-    }
+    @extend .section;
 }
 
 .contact-form {

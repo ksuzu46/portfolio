@@ -4,24 +4,22 @@
  */
 import React from "react";
 import { Container, Row } from "react-bootstrap";
+import { Element } from "react-scroll";
 import ProjectsItem from "./ProjectsItem";
 import Divider from "./Divider";
 
 
-const Projects = React.forwardRef(({ ghData }, ref) => (
-        <>
-            <Container ref={ ref } id='projects' className="projects">
-                <h2 className="projects-heading">Projects</h2>
+const Projects = ({ ghData }) => (
+        <Element name="projects" className="projects">
+            <Container>
+                <h3 className="projects-heading">Projects</h3>
                 <Row>{
                         ghData.projects.map((node, ind) =>
                             <ProjectsItem key={ ind } node={ node } ind={ ind }/>
                         )
-                    
                 }</Row>
             </Container>
-            <Divider/>
-        </>
-    )
+        </Element>
 );
 
 export default Projects;

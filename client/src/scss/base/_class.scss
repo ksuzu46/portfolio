@@ -3,6 +3,33 @@
  * @author [Keisuke Suzuki](https://github.com/Ks5810)
  */
 
+img {
+    width: 12rem;
+    margin: 2rem;
+    border-radius: 8px;
+    @include media-breakpoint-down(sm) {
+        width: 10rem;
+    }
+}
+
+.section {
+    padding: $m-size 0;
+    @include media-breakpoint-down(sm) {
+        padding: $s-size 0;
+    }
+    @include media-breakpoint-up(lg) {
+        padding: $l-size 0;
+    }
+}
+
+.row {
+    justify-content: space-between;
+    padding: $container-m-size 0;
+    @include media-breakpoint-down(sm) {
+        padding: 2rem 0;
+    }
+}
+
 .btn {
     background-color: $primary;
     border: none !important;

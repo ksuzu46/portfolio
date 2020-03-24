@@ -85,6 +85,14 @@ module.exports = merge(common, {
             ],
             links: [
                 {
+                    rel: 'stylesheet',
+                    href: 'https://fonts.googleapis.com/css?family=Montserrat:400,700'
+                },
+                {
+                    rel: 'stylesheet',
+                    href: 'https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic"'
+                },
+                {
                     rel: 'apple-touch-icon',
                     sizes: '180x180',
                     href: "./src/assets/images/icons/apple-touch-icon.png"

@@ -35,23 +35,25 @@
         color: $primary;
 
         .nav-item {
-            color: $primary;
             & .active {
-                color: $primary;
+                color: $focus;
             }
-        }
-        .nav-link {
-            @extend .nav-item;
-            background: none;
+
             &:hover {
                 color: darken($primary, 10%);
             }
-            &:active,
+
             &:focus {
-                color: $primary;
                 outline: none;
                 box-shadow: none;
             }
+        }
+
+        .nav-link {
+            @extend .nav-item;
+            color: $primary;
+            cursor: pointer;
+
         }
     }
 

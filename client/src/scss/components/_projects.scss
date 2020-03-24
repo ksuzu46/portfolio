@@ -4,13 +4,10 @@
  */
 
 .projects {
-    @include media-breakpoint-down(sm) {
-        padding-top: 1.7rem;
-    }
+    @extend .section;
 }
 
 .projects-heading {
-    padding-bottom: 1rem;
     color: $primary;
     text-align: center;
 }
@@ -49,6 +46,9 @@
     align-items: center;
     height: 5rem;
     background-color: $secondary;
+    @include media-breakpoint-down(sm){
+        padding: 1rem;
+    }
 
 
     .projects-card-title {
@@ -96,6 +96,9 @@
 .projects-card-description-text {
     color: $primary;
     margin-bottom: 1rem;
+    @include media-breakpoint-down(sm){
+        margin-bottom: 0.5rem;
+    }
 }
 
 .projects-card-description-button {

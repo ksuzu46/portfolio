@@ -5,34 +5,33 @@
 
 import React from "react";
 import { Container } from "react-bootstrap";
+import { Element } from "react-scroll";
 import config from "../../config.js";
 import Icons from "./Icons";
 import Divider from "./Divider";
 
 
-const About = React.forwardRef(({ ghData, scrollToContact }, ref) =>
+const About = ({ ghData }) =>
 {
     const { myName, aboutMe, linkedinUrl, myGmail, where } = config;
     return (
-        <>
-            <Container ref={ ref } id='about' className="about">
-                <img
-                    className="about-avatar"
-                    src={ ghData.avatarUrl }
-                    alt=""
-                />
+        <Element name="about" className="about">
+            <Container>
+                <div className="about-avatar">
+                    <img
+                        src={ ghData.avatarUrl }
+                        alt=""/>
+                </div>
                 <h1 className="about-heading">{ myName }</h1>
                 <div className="about-where">{ where }</div>
                 <Icons
                     parent="about"
                     ghData={ ghData }
-                    scrollToContact={ scrollToContact }
                 />
                 <p className="about-text">{ aboutMe }</p>
             </Container>
-            <Divider/>
-        </>
+        </Element>
     )
-});
+};
 
 export default About;
