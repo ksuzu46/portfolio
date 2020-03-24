@@ -20,6 +20,7 @@ const NavBar = ({ children, ...props }) =>
             <Navbar expanded={ expanded } expand="lg" fixed="top">
                 <Container>
                     <Nav.Link
+                        as='a'
                         className="navbar-brand"
                         onClick={ () =>
                         {

@@ -10,15 +10,14 @@ import Divider from "./Divider";
 
 const Projects = React.forwardRef(({ ghData }, ref) => (
         <>
-            <Container ref={ ref } className="projects">
+            <Container ref={ ref } id='projects' className="projects">
                 <h2 className="projects-heading">Projects</h2>
-                <Row className="projects-list">
-                    {
+                <Row>{
                         ghData.projects.map((node, ind) =>
                             <ProjectsItem key={ ind } node={ node } ind={ ind }/>
                         )
-                    }
-                </Row>
+                    
+                }</Row>
             </Container>
             <Divider/>
         </>

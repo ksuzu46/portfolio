@@ -4,8 +4,6 @@
  */
 
 .projects {
-    padding-top: $m-size;
-    background-color: $back-ground;
     @include media-breakpoint-down(sm) {
         padding-top: 1.7rem;
     }
@@ -17,58 +15,40 @@
     text-align: center;
 }
 
-.projects-list {
-    @extend .projects;
-    padding: 0;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.card {
-    @extend .projects;
-    padding: 1rem 0;
-}
-
 .projects-card {
     @extend .card;
-    border: none !important;
-    box-shadow: none !important;
-
     &:hover {
         .projects-card-header {
-            background-color: darken($secondary, 5%) !important;
-            border-color: lighten($secondary, 10%) !important;
+            background-color: darken($secondary, 5%);
+            border-color: lighten($secondary, 10%);
         }
         .projects-card-description {
-            background-color: darken($back-ground-list, 5%) !important;
-            border-color: darken($back-ground-list, 10%) !important;
+            background-color: darken($back-ground-list, 5%);
+            border-color: darken($back-ground-list, 10%);
         }
         .projects-card-description-button {
-            background-color: $primary !important;
+            background-color: $primary;
             &:hover {
-                background-color: darken($primary, 5%) !important;
+                background-color: darken($primary, 5%);
             }
         }
-    }
-    @include media-breakpoint-up(md) {
-        width: 18rem;
     }
 }
 
 
 .projects-card-header {
     @extend .projects-card;
-    border-style: solid !important;
-    border-radius: $border-radius-lg $border-radius-lg 0 0 !important;
-    border-width: $border-width $border-width 0 $border-width !important;
-    border-color: lighten($secondary, 5%) !important;
-    box-shadow: none !important;
+    border-style: solid ;
+    border-radius: $border-radius-lg $border-radius-lg 0 0;
+    border-width: $border-width $border-width 0 $border-width;
+    border-color: lighten($secondary, 5%);
+    box-shadow: none;
     display: flex;
     padding: 2rem;
     justify-content: center;
     align-items: center;
     height: 5rem;
-    background-color: $secondary !important;
+    background-color: $secondary;
 
 
     .projects-card-title {
@@ -94,7 +74,7 @@
             }
 
             &:hover {
-                color: $focus;
+                color: darken($primary, 10%);
             }
         }
     }
@@ -103,30 +83,29 @@
 
 .projects-card-description {
     @extend .projects-card;
-    background-color: $back-ground-list !important;
-    border-style: solid !important;
-    border-radius: 0 0 $border-radius-lg $border-radius-lg !important;
-    border-width: 0 $border-width $border-width $border-width !important;
-    border-color: darken($back-ground-list, 5%) !important;
+    background-color: $back-ground-list;
+    border-style: solid;
+    border-radius: 0 0 $border-radius-lg $border-radius-lg;
+    border-width: 0 $border-width $border-width $border-width;
+    border-color: darken($back-ground-list, 5%);
     display: flex;
     flex-direction: column;
     padding: 1rem 2rem;
 }
 
 .projects-card-description-text {
-    color: $white;
+    color: $primary;
+    margin-bottom: 1rem;
 }
 
 .projects-card-description-button {
-    background-color: $back-ground-list !important;
-    border: none !important;
-    margin-top: 1rem;
-    outline: none !important;
+    @extend .btn;
+    border: none;
+    height: auto;
+    background-color: $back-ground-list;
     &:active,
     &:focus {
-        border: none !important;
-        outline: none !important;
-        box-shadow: none !important;
-        background-color: $back-ground-list !important;
+        background: none;
     }
+
 }

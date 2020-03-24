@@ -15,7 +15,7 @@ const About = React.forwardRef(({ ghData, scrollToContact }, ref) =>
     const { myName, aboutMe, linkedinUrl, myGmail, where } = config;
     return (
         <>
-            <Container ref={ ref } className="about">
+            <Container ref={ ref } id='about' className="about">
                 <img
                     className="about-avatar"
                     src={ ghData.avatarUrl }

@@ -8,62 +8,67 @@
     @include media-breakpoint-down(sm) {
         padding: 1.3rem;
     }
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    background: $secondary;
+    padding: 1rem 0;
+    background-color: $secondary;
     font-family: $headings-font-family;
     font-weight: $headings-font-weight;
+    outline: none;
+    box-shadow: none;
 
     .navbar-brand {
         color: $primary;
 
         &:hover {
-            color: $focus;
+            color: darken($primary, 10%);
         }
 
         &:active,
         &:focus {
-            color: $focus;
-            outline: 0;
-            box-shadow: none !important;
+            color: darken($primary, 10%);
+            outline: none;
+            box-shadow: none;
         }
     }
 
     .navbar-nav {
         margin-top: 1rem;
-
-        .nav-link {
-            cursor: pointer;
-        }
+        color: $primary;
 
         .nav-item {
             color: $primary;
-
-            &:hover {
-                color: $focus;
+            & .active {
+                color: $primary;
             }
-
+        }
+        .nav-link {
+            @extend .nav-item;
+            background: none;
+            &:hover {
+                color: darken($primary, 10%);
+            }
+            &:active,
             &:focus {
-                color: $focus;
-                cursor: pointer;
+                color: $primary;
+                outline: none;
+                box-shadow: none;
             }
         }
     }
 
     .navbar-toggler {
-        font-size: 100%;
         padding: 0.6rem 1.5rem;
         background: $primary;
         color: $secondary;
         font-weight: bold;
 
+        &:active,
         &:focus {
-            outline: 0;
+            outline: none;
             box-shadow: none !important;
         }
 
         &:hover {
-            background: $focus;
+            background: #e1b2c4;
         }
     }
 

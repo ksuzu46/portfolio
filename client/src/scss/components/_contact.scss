@@ -4,14 +4,13 @@
  */
 
 .contact {
-    padding-top: $m-size;
     @include media-breakpoint-down(sm) {
         padding-top: $s-size;
     }
 }
 
 .contact-form {
-    padding: 4rem;
+    @extend .form;
 }
 
 .contact-heading {
@@ -27,65 +26,47 @@
         color: darken($success, 50%);
         background-color: $success;
         border-color: darken($success, 5%);
-        box-shadow: none !important;
-        outline: none !important;
+        box-shadow: none;
+        outline: none;
     }
     &--danger {
         @extend .contact-alert;
         color: darken($danger, 50%);
         background-color: $danger;
         border-color: darken($danger, 5%);
-        box-shadow: none !important;
-        outline: none !important;
+        box-shadow: none;
+        outline: none;
     }
 }
 
 .contact-button {
-    color: darken($secondary, 10%);
-    background-color: $primary;
-    border-color: darken($primary, 15%);
-    box-shadow: none !important;
+    @extend .btn;
     &:active,
     &:focus {
         background-color: $focus;
-        outline: 0 !important;
         border-color: darken($focus, 10%);
     }
 
     &:hover {
         color: lighten($secondary, 10%);
-        background-color: darken($info, 10%);
         border-color: darken($info, 15%);
     }
-    @include media-breakpoint-up(md){
-        width: 80%;
-    }
+    width: 100%;
 }
 
 .contact-form {
+    @extend .form;
 }
 
 .contact-form-group {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+    @extend .form-group;
 }
 
 .contact-form-control {
-    @extend .contact-form-group;
-    color: darken($secondary, 10%) !important;
-    background-color: darken($primary, 10%) !important;
-
-    &:active,
-    &:focus {
-        background-color: $primary !important;
-        border: 0 !important;
-        outline: none !important;
-    }
+    @extend .form-control;
 }
 
 .contact-form-control-textarea {
-    @extend .contact-form-control;
-    height: 12rem !important;
+    @extend .form-control-textarea;
 }
 

@@ -7,6 +7,7 @@ import React, {
     createRef, useEffect, useLayoutEffect, useRef, useState
 } from "react";
 import axios from "axios";
+import Scrollspy from "react-scrollspy";
 import { convertRem2Pix, requestConfig } from "../lib";
 import config from "../../config.js";
 import Projects from "./Projects";
@@ -102,7 +103,7 @@ const Page = () =>
             />
             {
                 ghData.loading ? <Loader/> :
-                ghData.fetched && <>
+                ghData.fetched && <div>
                      {
                         childComponents.map((Component, index) => (
                             <div key={ index }>
@@ -117,7 +118,7 @@ const Page = () =>
                         ))
                     }
                     <Footer ghData={ ghData }/>
-                </>
+                               </div>
             }
         </>
     )

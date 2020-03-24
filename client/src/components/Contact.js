@@ -27,7 +27,7 @@ const Contact = React.forwardRef(({ emailStatus, sendEmail }, ref) =>
     };
     
     return (
-        <Container ref={ ref } className="contact">
+        <Container ref={ ref } id="contact" className="contact">
             <h3 className="contact-heading">Contact</h3>
             <Form
                 className="contact-form"
