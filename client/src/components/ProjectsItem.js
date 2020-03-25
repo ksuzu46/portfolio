@@ -11,7 +11,8 @@ import TextTruncate from "react-text-truncate";
 const ProjectsItem = ({ node, ind }) =>
 {
     const [ expanded, setExpanded ] = useState(false);
-    const { name, homepageUrl, description, url } = node;
+    const { name, homepageUrl, description, url, primaryLanguage } = node;
+    console.log(primaryLanguage.name);
     return (
         <Col
             lg="auto" md="auto" sm="auto"

@@ -18,8 +18,6 @@ module.exports = {
             test: /\.js$/,
             exclude: /node_modules/
         }, {
-            test: /\.json$/, loader: 'json'
-        }, {
             test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
             loader: "url-loader",
             options: {

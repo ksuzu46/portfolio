@@ -47,17 +47,18 @@ api.get('/gh', async (req, res) => {
     }
     try{
         const newData = await fetchGhData();
+        console.log(newData.data.repository.object.entries);
         if(!cachedBody)
         {
             console.log("")
             res.send(newData.data);
         }
         await memCache.put('ghData', newData.data);
-        console.log(newData);
     } catch(error) {
         res.send(error);
         memCache.del('ghData');
     }
+    
 })
 
 

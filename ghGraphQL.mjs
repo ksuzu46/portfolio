@@ -7,9 +7,12 @@ import { print } from 'graphql';
 import axios from "axios";
 import { ghUsername, graphqlUrl } from "./config.mjs";
 
+
 const query = gql`
     {
-        user(login: ${ ghUsername }) {
+        ## Fetch user information
+        user(login: ${ ghUsername })
+        {
             bio
             bioHTML
             avatarUrl
@@ -34,9 +37,27 @@ const query = gql`
             }
             url
         }
+        ## Fetch from custom location
+        repository(name: "Ks5810-weekly", owner: "hunter-college-ossd-spr-2020")
+        {
+            object(expression: "gh-pages:_posts") {
+                ... on Tree {
+                    entries {
+                        oid
+                        object {
+                            ... on Blob {
+                                text
+                            }
+                        }
+                        name
+                    }
+                }
+            }
+        }
     }`;
 
-const fetchGhData = async() => {
+const fetchGhData = async() =>
+{
     try
     {
         const res = await axios.post(graphqlUrl, { query: print(query) },

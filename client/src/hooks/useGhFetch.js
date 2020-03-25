@@ -32,16 +32,23 @@ export const useGhFetch = () =>
                         avatarUrl: "",
                         bio: "",
                         bioHTML: "",
+                        blogEntries: [],
                         email: "",
-                        projects: [],
+                        projects: []
                     };
                     if(tmp.data)
                     {
                         
-                        const { user } = tmp.data;
+                        const { user, repository } = tmp.data;
                         const { edges } = user.pinnedItems;
                         const projects = edges.map(edge => edge.node);
-                        data = { ...user, projects };
+                        const blogEntries = repository.object.entries.map(
+                            entry => ({
+                                oid: entry.oid,
+                                name: entry.name,
+                                text: entry.object.text
+                            }));
+                        data = { ...user, projects, blogEntries };
                     }
                     await setGhFetch(prevState => ({
                         ...prevState,
@@ -55,7 +62,6 @@ export const useGhFetch = () =>
             {
                 if(!unmounted)
                 {
-                    
                     setGhFetch(prevState => ({
                         ...prevState,
                         error: error.response,
@@ -68,6 +74,5 @@ export const useGhFetch = () =>
         fetchGhData();
         return () => { unmounted = true; }
     }, []);
-    
     return ghFetch;
 }

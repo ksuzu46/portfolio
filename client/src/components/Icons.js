@@ -26,6 +26,7 @@ const Icons = ({ ghData, parent, scrollToContact }) =>
                 className={ `${ parent }-social` }
                 onClick={() => scroller.scrollTo('contact', {
                     duration: 750,
+                    offset: -140,
                     delay: 0,
                     smooth: 'easeInOutQuart'
                 })}

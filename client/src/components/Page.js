@@ -7,6 +7,7 @@ import React, {
     createRef, useEffect, useLayoutEffect, useRef, useState
 } from "react";
 import axios from "axios";
+import ReactMarkdown from "react-markdown";
 import { convertRem2Pix, requestConfig } from "../lib";
 import config from "../../config.js";
 import Projects from "./Projects";
@@ -53,6 +54,15 @@ const Page = () =>
                     }
                     <Footer ghData={ ghData } />
                     </>
+            }
+            {
+                ghData.fetched && ghData.data.blogEntries.map(entry => {
+                    console.log(entry.text);
+                    return <>
+                        <h3>{entry.name}</h3>
+                    <ReactMarkdown source={entry.text} />
+                    </>
+                })
             }
         </>
     )
