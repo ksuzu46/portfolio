@@ -7,7 +7,7 @@ import React, {
     createRef, useEffect, useLayoutEffect, useRef, useState
 } from "react";
 import axios from "axios";
-import ReactMarkdown from "react-markdown";
+import ReactMarkdown from "react-markdown/with-html";
 import { convertRem2Pix, requestConfig } from "../lib";
 import config from "../../config.js";
 import Projects from "./Projects";
@@ -19,6 +19,7 @@ import Loader from "./Loader";
 import { useGhFetch } from "../hooks/useGhFetch";
 import { useEmail } from "../hooks/useEmail"
 import Divider from "./Divider";
+import { Container } from "react-bootstrap";
 
 // Bootstrap default breakpoint
 const breakPoints = { sm: 576, md: 768, lg: 992, xl: 1200 };
@@ -58,10 +59,12 @@ const Page = () =>
             {
                 ghData.fetched && ghData.data.blogEntries.map(entry => {
                     console.log(entry.text);
-                    return <>
+                    return <Container>
                         <h3>{entry.name}</h3>
-                    <ReactMarkdown source={entry.text} />
-                    </>
+                    <ReactMarkdown
+                        source={entry.text}
+                        escapeHtml={false}/>
+                    </Container>
                 })
             }
         </>
