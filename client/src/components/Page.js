@@ -56,17 +56,18 @@ const Page = () =>
                     <Footer ghData={ ghData } />
                     </>
             }
+            <>
             {
-                ghData.fetched && ghData.data.blogEntries.map(entry => {
-                    console.log(entry.text);
-                    return <Container>
-                        <h3>{entry.name}</h3>
+                ghData.fetched && ghData.data.blogEntries.map((entry) => {
+                    return <Container key={entry.oid}>
+                        <h2>{entry.text.subtitle}</h2>
                     <ReactMarkdown
-                        source={entry.text}
-                        escapeHtml={false}/>
+                        source={entry.text.body}
+                        escapeHtml={false} />
                     </Container>
                 })
             }
+            </>
         </>
     )
 }

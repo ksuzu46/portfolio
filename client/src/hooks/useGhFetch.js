@@ -17,6 +17,21 @@ export const useGhFetch = () =>
         fetched: false,
     });
     
+    const splitJekyllHeader = (text, index) => {
+        /**
+         * Get first string that starts from a string `---\n`, and ends with
+         *  `---`
+         */
+        const headerRe = /[-]{3,}\n[^[-]{3,}]*[-]{3,}/g;
+        const subtitleRe = /(?=subtitle:).*$/mg;
+        const headerRes = headerRe.exec(text) || [];
+        const header = headerRes[0] ? headerRes[0] : "";
+        const subtitleRes =  subtitleRe.exec(header) || [];
+        const subtitle =  subtitleRes[0] ? subtitleRes[0].replace("subtitle:", '') : '';
+        const body = text.substr(headerRe.lastIndex);
+        return { subtitle, body };
+    }
+    
     useEffect(() =>
     {
         let unmounted = false;
@@ -42,17 +57,17 @@ export const useGhFetch = () =>
                         const { user, repository } = tmp.data;
                         const { edges } = user.pinnedItems;
                         const projects = edges.map(edge => edge.node);
-                        const blogEntries = repository.object.entries.map(
-                            entry => ({
+                        const blogEntries =  repository.object.entries.map((
+                            entry, index) => ({
                                 oid: entry.oid,
                                 name: entry.name,
-                                text: entry.object.text
+                                text: splitJekyllHeader(entry.object.text, index)
                             }));
                         data = { ...user, projects, blogEntries };
                     }
                     await setGhFetch(prevState => ({
                         ...prevState,
-                        data: data,
+                        data: { ...data },
                         loading: false,
                         complete: true,
                         fetched: true
