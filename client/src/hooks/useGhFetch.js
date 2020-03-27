@@ -27,7 +27,8 @@ export const useGhFetch = () =>
         const headerRes = headerRe.exec(text) || [];
         const header = headerRes[0] ? headerRes[0] : "";
         const subtitleRes =  subtitleRe.exec(header) || [];
-        const subtitle =  subtitleRes[0] ? subtitleRes[0].replace("subtitle:", '') : '';
+        const subtitle =  subtitleRes[0] ? subtitleRes[0].replace("subtitle:" +
+                                                                  " " , '') : '';
         const body = text.substr(headerRe.lastIndex);
         return { subtitle, body };
     }
@@ -53,7 +54,6 @@ export const useGhFetch = () =>
                     };
                     if(tmp.data)
                     {
-                        
                         const { user, repository } = tmp.data;
                         const { edges } = user.pinnedItems;
                         const projects = edges.map(edge => edge.node);

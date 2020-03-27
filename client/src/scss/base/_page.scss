@@ -3,9 +3,11 @@
  * @author [Keisuke Suzuki](https://github.com/Ks5810)
  */
 
+body {
+    background: $back-ground;
+}
 
 .page {
-    background-color: $back-ground;
     padding: $m-size 0;
     @include media-breakpoint-down(sm) {
         padding: $s-size 0;

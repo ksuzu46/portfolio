@@ -1,0 +1,72 @@
+/**
+ * _blog.scss
+ * @author [Keisuke Suzuki](https://github.com/Ks5810)
+ */
+
+.blog {
+    @extend .section;
+}
+
+.blog-heading {
+    color: $primary;
+    text-align: center;
+}
+
+.blog-post {
+    padding-top: 2rem;
+}
+
+.blog-post-heading {
+    @extend .blog-post;
+    text-align: center;
+    color: $primary;
+}
+
+.blog-post-body {
+    @extend .blog-post;
+    padding: 2rem;
+}
+
+.markdown-body {
+    font-family: $font-family-sans-serif;
+    color: $primary;
+    code {
+        padding: .2em .4em;
+        margin: 0;
+        font-size: 85%;
+        color: $nav-focus;
+
+    }
+    pre {
+        word-wrap: normal;
+    }
+    pre > code {
+        padding: 0;
+        margin: 0;
+        font-size: 100%;
+        word-break: normal;
+        white-space: pre;
+        border: 0;
+    }
+    .highlight pre, pre {
+        width: auto;
+        padding: 1rem;
+        overflow: auto;
+        font-size: 85%;
+        line-height: 1.45;
+        background-color: darken($back-ground, 5%);
+        border-radius: $border-radius !important;
+    }
+    pre code {
+        display: inline;
+        width: auto;
+        padding: 0;
+        margin: 0;
+        overflow: visible;
+        line-height: inherit;
+        word-wrap: normal;
+        background-color: initial;
+        border: 0;
+        color: darken($primary, 5%);
+    }
+}

@@ -6,7 +6,7 @@ import React from "react";
 import { Container, Row } from "react-bootstrap";
 import { Element } from "react-scroll";
 import ProjectsItem from "./ProjectsItem";
-import Divider from "./Divider";
+import Divider from "../Divider";
 
 
 const Projects = ({ ghData }) => (

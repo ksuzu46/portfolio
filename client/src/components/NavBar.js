@@ -4,6 +4,7 @@
  */
 
 import React, { useState } from "react";
+import { Link } from "react-router-dom"
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { animateScroll as scroll } from "react-scroll";
 import config from "../../config";
@@ -20,6 +21,10 @@ const NavBar = ({ children }) =>
         scroll.scrollToTop();
     }
     return (
+        <>
+        {
+            children.length === 4 ?
+            <>
         <Navbar expanded={ expanded } expand="lg" fixed="top">
             <Container>
                 <Nav.Link
@@ -44,6 +49,7 @@ const NavBar = ({ children }) =>
                                 <NavBarItem
                                     key={ child }
                                     child={ child }
+                                    blogPage={ false }
                                     setExpanded={() => setExpanded(false)}
                                 />
                             )
@@ -52,7 +58,45 @@ const NavBar = ({ children }) =>
                 </Navbar.Collapse>
             </Container>
         </Navbar>
-    );
+                </>
+            :
+            <><Navbar expanded={ expanded } expand="lg" fixed="top">
+                <Container>
+                    <Nav.Link
+                        className="navbar-brand"
+                        onClick={ onClick }
+                    >
+                        { myName }
+                    </Nav.Link>
+                    <Navbar.Toggle
+                        onClick={ () => setExpanded(
+                            expanded ? false : "expanded") }
+                        className="navbar-toggler rounded"
+                    >
+                        <i className="fas fa-bars"/>
+                    </Navbar.Toggle>
+                    <Navbar.Collapse
+                        onClick={ () => setExpanded(false) }
+                    >
+                        <Nav className="ml-auto">
+                            {
+                                children.map((child, ind) =>
+                                    <NavBarItem
+                                        key={ child }
+                                        child={ child }
+                                        blogPage={true}
+                                        setExpanded={() => setExpanded(false)}
+                                    />
+                                )
+                            }
+                        </Nav>
+                    </Navbar.Collapse>
+                </Container>
+            </Navbar>
+                </>
+        }
+        </>
+    )
 }
 
 export default NavBar;

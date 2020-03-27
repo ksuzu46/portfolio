@@ -6,9 +6,9 @@
 import React from "react";
 import { Container } from "react-bootstrap";
 import { Element } from "react-scroll";
-import config from "../../config.js";
-import Icons from "./Icons";
-import Divider from "./Divider";
+import config from "../../../config.js";
+import Icons from "../Icons";
+import Divider from "../Divider";
 
 
 const About = ({ ghData }) =>

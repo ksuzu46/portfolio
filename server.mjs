@@ -37,6 +37,10 @@ api.get('/', (req, res) =>
     res.send('api root');
 })
 
+// TODO:
+//  1. move text processing on blog entries server side and cache them
+//  2. find away to check if new deployment happened to last cache.
+
 // Gh-gql-api
 // Cache data until next request
 api.get('/gh', async (req, res) => {
@@ -47,7 +51,6 @@ api.get('/gh', async (req, res) => {
     }
     try{
         const newData = await fetchGhData();
-        console.log(newData.data.repository.object.entries);
         if(!cachedBody)
         {
             console.log("")
