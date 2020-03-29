@@ -40,8 +40,8 @@ const PortfolioPage = ({ ghData }) =>
                                     sendEmail={ data => sendEmail(data) }
                                 />
                                 <Divider
-                                    child={ children[index < 2 ? index + 1 :
-                                                     index] }/>
+                                    children={ children }
+                                    index={index}/>
                             </div>
                         ))
                     }

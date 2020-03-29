@@ -25,6 +25,7 @@
         }
         .projects-card-description-button {
             background-color: $primary;
+            color: $secondary;
             &:hover {
                 background-color: darken($primary, 5%);
             }
@@ -94,7 +95,7 @@
 }
 
 .projects-card-description-text {
-    color: $primary;
+    color: lighten($primary, 10%);
     margin-bottom: 1rem;
     @include media-breakpoint-down(sm){
         margin-bottom: 0.5rem;
@@ -105,6 +106,7 @@
     @extend .btn;
     border: none;
     height: auto;
+    color: lighten($primary, 10%);
     background-color: $back-ground-list;
     &:active,
     &:focus {

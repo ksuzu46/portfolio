@@ -8,14 +8,18 @@ import { Link, animateScroll as scroll } from "react-scroll";
 import { Button, Container } from "react-bootstrap";
 
 
-const Divider = ({ child }) =>
-    (
+const Divider = ({ children, index }) =>
+{
+    const isBottom = index >= children.length  - 2;
+    const child = children[isBottom ? 0 : index + 1];
+    
+    return (
         <Container>
             <div className="divider">
                 <div className="divider-line"/>
                 <div className="divider-icon">
                     <Link
-                        className="fas fa-x fa-chevron-down"
+                        className="divider-button"
                         activeClass="active"
                         to={ child }
                         spy={ true }
@@ -23,11 +27,16 @@ const Divider = ({ child }) =>
                         offset={ -140 }
                         duration={ 500 }
                         isDynamic={ true }>
+                        <i className={
+                            isBottom ? "fas fa-angle-double-up"
+                                     : "fas fa-angle-down"
+                        }/>
                     </Link>
                 </div>
                 <div className="divider-line"/>
             </div>
         </Container>
     );
+}
 
 export default Divider;

@@ -16,7 +16,9 @@ const NotFoundPage = () => (
         <h1 >Oops!</h1>
         <h3>404 Not Found</h3>
         <p>Could not find the page you requested</p>
-        <Link to="/"> <Button className="link">Go Home</Button>  </Link>
+        <Link to="/">
+            <Button className="link">Go Home</Button>
+        </Link>
     </Container>
     </div>
 );

@@ -15,6 +15,7 @@ module.exports = merge(common, {
         app: './src/index.js'
     },
     output: {
+        publicPath: '/',
         filename: '[name].bundle.js'
     },
     module: {
@@ -65,7 +66,12 @@ module.exports = merge(common, {
                 {
                     name: 'name',
                     content: 'portfolio'
-                }, {
+                },
+                {
+                    name: 'theme-color',
+                    content: "#516296"
+                },
+                {
                     name: 'Description',
                     content: 'My portfolio site',
                 }, {

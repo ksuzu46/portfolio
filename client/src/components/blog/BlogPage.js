@@ -10,7 +10,7 @@ import ReactMarkdown from "react-markdown/with-html";
 import Loader from "../Loader";
 import BlogPost from "./BlogPost";
 import {
-    Link, Route, Switch, useHistory, useRouteMatch
+    Link, Redirect, Route, Switch, useHistory, useRouteMatch
 } from "react-router-dom";
 import NotFoundPage from "../NotFoundPage";
 
@@ -51,9 +51,12 @@ const BlogPage = ({ ghData }) =>
                                     an entry</h4>
                             </Container>
                         </Route>
-                        <Route path={ `${ path }/:id` }>
+                        <Route exact path={ `${ path }/:id` }>
                             <BlogPost
                                 posts={ ghData.data.blogEntries }/>
+                        </Route>
+                        <Route>
+                            <Redirect to='/404'/>
                         </Route>
                     </Switch>
                 </Container>

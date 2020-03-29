@@ -8,6 +8,7 @@ const path = require('path');
 const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
+const OfflinePlugin = require('offline-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
@@ -21,13 +22,13 @@ module.exports = {
             test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
             loader: "url-loader",
             options: {
-                name: '[path]/[name].[ext]'
+                name: '[name].[ext]'
             }
         }, {
             test: /\.(ttf|eot|svg|gif)(\?[\s\S]+)?$/,
             loader: 'url-loader',
             options: {
-                name: "[path]/[name].[ext]"
+                name: "[name].[ext]"
             }
         } ]
     },
@@ -45,29 +46,25 @@ module.exports = {
     plugins: [
         new DotEnv(),
         new CleanWebpackPlugin(),
-        new CopyPlugin([ {
+        new CopyPlugin([
+            {
                 from: 'src/manifest.json',
                 to: 'manifest.json',
-                toType: 'file',
-            } ]),
-        new WorkboxPlugin.GenerateSW({
-            swDest: './sw.js',
-            skipWaiting: true,
-            clientsClaim: true,
-            exclude: [ /\.(?:png|jpg|jpeg|svg)$/ ],
-            
-            // Define runtime caching rules.
-            runtimeCaching: [ {
-                urlPattern: /\.(?:png|jpg|jpeg|svg)$/,
-                handler: 'CacheFirst',
-                options: {
-                    // Use a custom cache name.
-                    cacheName: 'images',
-                    expiration: {
-                        maxEntries: 10,
-                    },
-                },
-            } ],
-        }),
+                toType: 'file'
+            },
+            {
+                from: 'src/assets/images',
+                to: 'assets/images',
+                toType: 'dir'
+            }
+        ]),
+        new OfflinePlugin({
+            externals: [
+                'assets/images/icons/android-chrome-192x192.png',
+                'assets/images/icons/android-chrome-512x512.png',
+                'assets/images/icons/apple-touch-icon.png',
+                'manifest.json'
+            ],
+        })
     ]
 };

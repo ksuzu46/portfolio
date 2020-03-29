@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import PortfolioPage from "./components/portfolio/PortfolioPage";
 import BlogPage from "./components/blog/BlogPage";
 import { useGhFetch } from "./hooks/useGhFetch";
@@ -24,8 +24,11 @@ export const App = (props) =>
                     <Route path="/blog">
                         <BlogPage ghData={ ghData } />
                     </Route>
-                    <Route>
+                    <Route exact path="/404">
                         <NotFoundPage/>
+                    </Route>
+                    <Route>
+                        <Redirect to='/404'/>
                     </Route>
                 </Switch>
             </div>

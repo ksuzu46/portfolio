@@ -29,6 +29,7 @@ module.exports = merge(common, {
         ],
     },
     output: {
+        publicPath: '/',
         path: path.resolve('./build'),
         filename: '[name].bundle.js',
     },
@@ -43,8 +44,7 @@ module.exports = merge(common, {
             template: require('html-webpack-template'),
             appMountId: 'app',
             headHtmlSnippet:
-                '<title>Keisuke Suzuki</title>' +
-                '<link type="text/css" href="./app.css" />',
+                '<title>Keisuke Suzuki</title>',
             // googleAnalytics: {
             //     trackingId: 'UA-160643958-1',
             //     pageViewOnLoad: true
@@ -56,6 +56,9 @@ module.exports = merge(common, {
                 {
                     name: 'name',
                     content: 'portfolio'
+                }, {
+                    name: 'theme-color',
+                    content: "#516296"
                 }, {
                     name: 'Description',
                     content: 'My portfolio website',
@@ -81,15 +84,15 @@ module.exports = merge(common, {
                 },
                 {
                     rel: 'stylesheet',
-                    href: 'https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic"'
+                    href: 'https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic'
                 },
                 {
                     rel: 'apple-touch-icon',
                     sizes: '180x180',
-                    href: "./src/assets/images/icons/apple-touch-icon.png"
+                    href: "asset/images/icons/apple-touch-icon.png"
                 }, {
                     rel: 'manifest',
-                    href: './manifest.json'
+                    href: 'manifest.json'
                 }
             ],
             mobile: true,

@@ -17,6 +17,7 @@ import { fetchGhData } from './ghGraphQL.mjs';
 
 const app = express();
 const api = express();
+const router = express.Router();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -116,11 +117,12 @@ api.post('/mailer', (req, res) =>
 // Define api
 app.use('/api', api);
 
-// Fall back to html
-app.get('/', (req, res) =>
-{
+
+app.get('*', (req, res) => {
     res.sendFile(path.join(publicPath, 'index.html'));
 });
+
+
 
 app.listen(port, () => console.log(`Node is running on ${ port }`));
 

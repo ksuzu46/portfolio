@@ -26,26 +26,23 @@
 
     .divider-icon {
         color: $secondary !important;
-        font-size: 2rem;
+        font-size: 2.5rem;
         @include media-breakpoint-down(sm) {
             font-size: 1.5rem;
         }
     }
 
     .divider-button {
-        background-color: $secondary;
-        color: $back-ground;
         border: none;
 
         &:active,
         &:focus {
             outline: 0;
             box-shadow: none !important;
-            background-color: $primary;
         }
 
         &:hover {
-            background-color: $primary;
+            color: $primary;
         }
     }
 }
