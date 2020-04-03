@@ -60,7 +60,7 @@ module.exports = {
             },
             {
                 from: './assets/images',
-                to: 'assets',
+                to: 'assets/images',
                 toType: 'dir'
             }
         ]),
