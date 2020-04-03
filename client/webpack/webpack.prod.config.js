@@ -72,17 +72,17 @@ module.exports = merge(common, {
         }),
         new CopyPlugin([
             {
-                from: './manifest.json',
+                from: 'manifest.json',
                 to: 'manifest.json',
                 toType: 'file'
             },
             {
-                from: './robots.txt',
+                from: 'robots.txt',
                 to: 'robots.txt',
                 toType: 'file'
             },
             {
-                from: './assets/images',
+                from: 'assets/images',
                 to: 'assets/images',
                 toType: 'dir'
             }
