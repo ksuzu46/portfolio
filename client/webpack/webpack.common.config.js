@@ -8,17 +8,14 @@ const path = require('path');
 const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const htmlWebpackPlugin = require('html-webpack-plugin');
-const WorkboxPlugin = require('workbox-webpack-plugin');
-const OfflinePlugin = require('offline-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     mode: 'none',
     module: {
         rules: [ {
-            loader: 'babel-loader',
             test: /\.js$/,
-            exclude: /node_modules/
+            exclude: /node_modules/,
+            use: [ 'babel-loader', "eslint-loader" ]
         }, {
             test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
             loader: "url-loader",
@@ -33,56 +30,15 @@ module.exports = {
             }
         } ]
     },
-    optimization: {
-        splitChunks: {
-            cacheGroups: {
-                commons: {
-                    test: /[\\/]node_modules[\\/]/,
-                    name: 'vendors',
-                    chunks: 'all'
-                }
-            }
-        },
-    },
     plugins: [
         new DotEnv(),
         new CleanWebpackPlugin(),
-        new CopyPlugin([
-            {
-                from: './manifest.json',
-                to: 'manifest.json',
-                toType: 'file'
-            },
-            {
-                from: './robots.txt',
-                to: 'robots.txt',
-                toType: 'file'
-            },
-            {
-                from: './assets/images',
-                to: 'assets/images',
-                toType: 'dir'
-            }
-        ]),
-        new OfflinePlugin({
-            externals: [
-                'robots.txt,',
-                'manifest.json',
-                'assets/images/icons/icon-72x72.png',
-                'assets/images/icons/icon-96x96.png',
-                'assets/images/icons/icon-120x120.png',
-                'assets/images/icons/icon-140x140.png',
-                "assets/images/icons/icon-128x128.png",
-                "assets/images/icons/icon-144x144.png",
-                "assets/images/icons/icon-192x192.png",
-                "assets/images/icons/icon-384x384.png",
-                "assets/images/icons/icon-512x512.png",
-                'assets/images/icons/favicon.ico'
-            ],
-        }),
         new htmlWebpackPlugin({
             inject: false,
             template: require('html-webpack-template'),
+            bodyHtmlSnippet: '<noscript>' +
+                             '  <p>You need JavaScript to view this page</p>' +
+                             '</noscript>',
             appMountId: 'app',
             title: 'Keisuke Suzuki',
             meta: [
@@ -117,26 +73,13 @@ module.exports = {
             ],
             links: [
                 {
-                    rel: 'stylesheet',
-                    href: 'https://fonts.googleapis.com/css?family=Montserrat:400,700'
-                },
-                {
-                    rel: 'stylesheet',
-                    href: 'https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic"'
-                },
-                {
                     rel: 'apple-touch-icon',
                     sizes: '120x120',
-                    href: "./src/assets/images/icons/icon-120x120.png"
-                },
-                {
-                    rel: 'apple-touch-icon',
-                    sizes: '180x180',
-                    href: "./src/assets/images/icons/icon-180x180.png"
+                    href: "/assets/images/icons/apple-touch-icon.png"
                 },
                 {
                     rel: 'manifest',
-                    href: './manifest.json'
+                    href: '/manifest.json'
                 }
             ],
             mobile: true,

@@ -7,20 +7,17 @@ const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const common = require('./webpack.common.config.js');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = merge(common, {
     mode: 'development',
-    entry: {
-        app: './src/index.js'
-    },
     output: {
-        publicPath: '/',
         filename: '[name].bundle.js'
     },
     module: {
         rules: [
             {
-                test: /\.s[ac]ss$/i,
+                test: /\.s?css$/,
                 use: [
                     'style-loader',
                     'css-loader',
@@ -44,9 +41,16 @@ module.exports = merge(common, {
         }
     },
     optimization: {
-        noEmitOnErrors: true
+        noEmitOnErrors: true,
+        splitChunks: {
+            chunks: 'all'
+        },
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
+        new webpack.HotModuleReplacementPlugin({ multistep: true }),
+        new MiniCssExtractPlugin({
+            filename: '[name].css',
+            chunkFilename: '[id].css'
+        })
     ]
 });
