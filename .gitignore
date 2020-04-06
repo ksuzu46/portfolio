@@ -3,4 +3,5 @@ bundles
 .idea
 .env
 client/build
+client/webpack/build
 

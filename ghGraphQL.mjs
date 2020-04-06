@@ -5,7 +5,8 @@
 import gql from 'graphql-tag';
 import { print } from 'graphql';
 import axios from "axios";
-import { ghUsername, graphqlUrl } from "./config.mjs";
+import { ghUsername, gqlUrl } from "./config.mjs";
+import { renderGfm } from "./processMarkdown";
 
 
 const query = gql`
@@ -56,22 +57,49 @@ const query = gql`
         }
     }`;
 
-const fetchGhData = async() =>
+
+const convertToGFM = async (data) =>
 {
+    let newData = new Array(data.length);
     try
     {
-        const res = await axios.post(graphqlUrl, { query: print(query) },
-            {
-                headers: {
-                    'Authorization': `Bearer ${ process.env.GH_TOKEN }`
-                }
-            });
-        return res.data;
-    } catch(error)
-    {
-        console.log(error);
+        const { blogEntries } = data;
+        for(let i = 0; i < blogEntries.length; i++)
+        {
+            const { oid, name, text } = blogEntries[i];
+            const processed = await renderGfm(text);
+            newData[i] = ({ oid, name, text: processed });
+        }
+        return { ...data, blogEntries: newData };
+    } catch (error) {
         return error;
     }
 }
 
-export { fetchGhData }
+const fetchGhData = async() =>
+{
+    try
+    {
+        const res = await axios.post(gqlUrl,
+            { query: print(query) },
+            {
+                headers: { 'Authorization': `Bearer ${ process.env.GH_TOKEN }`}
+            });
+        const { user, repository } = res.data.data;
+        const { edges } = user.pinnedItems;
+        const projects = edges.map(edge => edge.node);
+        const blogEntries = repository.object.entries.map((
+            entry, index) => ({
+            oid: entry.oid,
+            name: entry.name,
+            text: entry.object.text
+        }));
+        return { ...user, projects, blogEntries };
+    } catch(error)
+    {
+        console.log(error)
+        return error;
+    }
+}
+
+export { fetchGhData, convertToGFM }

@@ -4,16 +4,17 @@
  * @description Express app serving nodemailer and react frontend
  */
 
-import {} from 'dotenv/config'
 import path from 'path';
 import { fileURLToPath } from 'url';
 import express from 'express';
 import compression from 'compression';
 import memCache from 'memory-cache';
 import nodemailer from 'nodemailer';
-import  bodyParser from 'body-parser';
+import bodyParser from 'body-parser';
 import { confirmationContent, messageContent } from './email';
 import { fetchGhData } from './ghGraphQL.mjs';
+import { convertToGFM } from "./ghGraphQL";
+
 
 const app = express();
 const api = express();
@@ -44,26 +45,28 @@ api.get('/', (req, res) =>
 
 // Gh-gql-api
 // Cache data until next request
-api.get('/gh', async (req, res) => {
+api.get('/gh', async(req, res) =>
+{
     const cachedBody = memCache.get('ghData');
     if(cachedBody)
     {
         res.send(cachedBody);
     }
-    try{
-        const newData = await fetchGhData();
+    try
+    {
+        const fetchedData = await fetchGhData();
+        const newData = await convertToGFM(fetchedData);
         if(!cachedBody)
         {
-            console.log("")
-            res.send(newData.data);
+            res.send(newData);
         }
-        await memCache.put('ghData', newData.data);
-    } catch(error) {
+        await memCache.put('ghData', newData);
+    } catch(error)
+    {
         res.send(error);
         memCache.del('ghData');
     }
-    
-})
+});
 
 
 // Mailer
@@ -118,10 +121,10 @@ api.post('/mailer', (req, res) =>
 app.use('/api', api);
 
 
-app.get('*', (req, res) => {
+app.get('*', (req, res) =>
+{
     res.sendFile(path.join(publicPath, 'index.html'));
 });
-
 
 
 app.listen(port, () => console.log(`Node is running on ${ port }`));
