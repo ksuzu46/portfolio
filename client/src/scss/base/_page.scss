@@ -4,15 +4,15 @@
  */
 
 body {
-    background: $back-ground;
+  background: $back-ground;
 }
 
 .page {
-    padding: $m-size 0;
-    @include media-breakpoint-down(sm) {
-        padding: $s-size 0;
-    }
-    @include media-breakpoint-up(lg) {
-        padding: $l-size 0 20rem 0;
-    }
+  padding: $m-size 0;
+  @include media-breakpoint-down(sm) {
+    padding: $s-size 0;
+  }
+  @include media-breakpoint-up(lg) {
+    padding: $l-size 0 20rem 0;
+  }
 }

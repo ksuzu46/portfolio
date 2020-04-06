@@ -4,7 +4,6 @@
  */
 
 import React, { useState } from "react";
-import { Link } from "react-router-dom"
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { animateScroll as scroll } from "react-scroll";
 import config from "../../config";
@@ -16,85 +15,88 @@ const { myName } = config;
 const NavBar = ({ children }) =>
 {
     const [ expanded, setExpanded ] = useState(false);
-    const onClick = () => {
+    const onClick = () =>
+    {
         setExpanded(false);
         scroll.scrollToTop();
     }
     return (
         <>
-        {
-            children.length === 4 ?
-            <>
-        <Navbar expanded={ expanded } expand="lg" fixed="top">
-            <Container>
-                <Nav.Link
-                    className="navbar-brand"
-                    onClick={ onClick }
-                >
-                    { myName }
-                </Nav.Link>
-                <Navbar.Toggle
-                    onClick={ () => setExpanded(
-                        expanded ? false : "expanded") }
-                    className="navbar-toggler rounded"
-                >
-                    <i className="fas fa-bars"/>
-                </Navbar.Toggle>
-                <Navbar.Collapse
-                    onClick={ () => setExpanded(false) }
-                >
-                    <Nav className="ml-auto">
-                        {
-                            children.map((child, ind) =>
-                                <NavBarItem
-                                    key={ child }
-                                    child={ child }
-                                    blogPage={ false }
-                                    setExpanded={() => setExpanded(false)}
-                                />
-                            )
-                        }
-                    </Nav>
-                </Navbar.Collapse>
-            </Container>
-        </Navbar>
+            {
+                children.length === 4 ?
+                <>
+                    <Navbar expanded={ expanded } expand="lg" fixed="top">
+                        <Container>
+                            <Nav.Link
+                                className="navbar-brand"
+                                onClick={ onClick }
+                            >
+                                { myName }
+                            </Nav.Link>
+                            <Navbar.Toggle
+                                onClick={ () => setExpanded(
+                                    expanded ? false : "expanded") }
+                                className="navbar-toggler rounded"
+                            >
+                                <i className="fas fa-bars"/>
+                            </Navbar.Toggle>
+                            <Navbar.Collapse
+                                onClick={ () => setExpanded(false) }
+                            >
+                                <Nav className="ml-auto">
+                                    {
+                                        children.map((child, ind) =>
+                                            <NavBarItem
+                                                key={ child }
+                                                child={ child }
+                                                blogPage={ false }
+                                                setExpanded={ () => setExpanded(
+                                                    false) }
+                                            />
+                                        )
+                                    }
+                                </Nav>
+                            </Navbar.Collapse>
+                        </Container>
+                    </Navbar>
                 </>
-            :
-            <><Navbar expanded={ expanded } expand="lg" fixed="top">
-                <Container>
-                    <Nav.Link
-                        className="navbar-brand"
-                        onClick={ onClick }
-                    >
-                        { myName }
-                    </Nav.Link>
-                    <Navbar.Toggle
-                        onClick={ () => setExpanded(
-                            expanded ? false : "expanded") }
-                        className="navbar-toggler rounded"
-                    >
-                        <i className="fas fa-bars"/>
-                    </Navbar.Toggle>
-                    <Navbar.Collapse
-                        onClick={ () => setExpanded(false) }
-                    >
-                        <Nav className="ml-auto">
-                            {
-                                children.map((child, ind) =>
-                                    <NavBarItem
-                                        key={ child }
-                                        child={ child }
-                                        blogPage={true}
-                                        setExpanded={() => setExpanded(false)}
-                                    />
-                                )
-                            }
-                        </Nav>
-                    </Navbar.Collapse>
-                </Container>
-            </Navbar>
+                                      :
+                <><Navbar expanded={ expanded } expand="lg" fixed="top">
+                    <Container>
+                        <Nav.Link
+                            className="navbar-brand"
+                            onClick={ onClick }
+                        >
+                            { myName }
+                        </Nav.Link>
+                        <Navbar.Toggle
+                            onClick={ () => setExpanded(
+                                expanded ? false : "expanded") }
+                            className="navbar-toggler rounded"
+                        >
+                            <i className="fas fa-bars"/>
+                        </Navbar.Toggle>
+                        <Navbar.Collapse
+                            onClick={ () => setExpanded(false) }
+                        >
+                            <Nav className="ml-auto">
+                                {
+                                    children.map((child, ind) =>
+                                        <NavBarItem
+                                            key={ child }
+                                            child={ child }
+                                            blogPage={ true }
+                                            setExpanded={ () => setExpanded(
+                                                false) }
+                                        />
+                                    )
+                                }
+                            </Nav>
+                        </Navbar.Collapse>
+                    </Container>
+                </Navbar>
                 </>
-        }
+            }
         </>
     )
 }

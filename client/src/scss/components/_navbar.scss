@@ -5,99 +5,99 @@
  */
 
 .navbar {
-    @include media-breakpoint-down(sm) {
-        padding: 1.3rem;
+  @include media-breakpoint-down(sm) {
+    padding: 1.3rem;
+  }
+  padding: 1rem 0;
+  background-color: $secondary;
+  font-family: $headings-font-family;
+  font-weight: $headings-font-weight;
+  outline: none;
+  box-shadow: none;
+
+  .navbar-brand {
+    color: $primary;
+
+    &:hover {
+      color: darken($primary, 10%);
     }
-    padding: 1rem 0;
-    background-color: $secondary;
-    font-family: $headings-font-family;
-    font-weight: $headings-font-weight;
-    outline: none;
-    box-shadow: none;
+
+    &:active,
+    &:focus {
+      color: darken($primary, 10%);
+      outline: none;
+      box-shadow: none;
+    }
+  }
+
+  .navbar-nav {
+    margin-top: 1rem;
+    color: $primary;
+
+    .nav-item {
+      & .active {
+        color: $focus;
+      }
+
+      &:hover {
+        color: darken($primary, 10%);
+      }
+
+      &:focus {
+        outline: none;
+        box-shadow: none;
+      }
+    }
+
+    .nav-link {
+      @extend .nav-item;
+      color: $primary;
+      cursor: pointer;
+
+    }
+  }
+
+  .navbar-toggler {
+    padding: 0.6rem 1.5rem;
+    background: $primary;
+    color: $secondary;
+    font-weight: bold;
+
+    &:active,
+    &:focus {
+      outline: none;
+      box-shadow: none !important;
+    }
+
+    &:hover {
+      background: #e1b2c4;
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    transition: padding-top 0.3s, padding-bottom 0.3s;
 
     .navbar-brand {
-        color: $primary;
-
-        &:hover {
-            color: darken($primary, 10%);
-        }
-
-        &:active,
-        &:focus {
-            color: darken($primary, 10%);
-            outline: none;
-            box-shadow: none;
-        }
+      font-size: 1.75em;
+      transition: font-size 0.3s;
     }
-
     .navbar-nav {
-        margin-top: 1rem;
-        color: $primary;
-
-        .nav-item {
-            & .active {
-                color: $focus;
-            }
-
-            &:hover {
-                color: darken($primary, 10%);
-            }
-
-            &:focus {
-                outline: none;
-                box-shadow: none;
-            }
-        }
-
-        .nav-link {
-            @extend .nav-item;
-            color: $primary;
-            cursor: pointer;
-
-        }
+      margin-top: 1rem;
     }
+    .navbar-shrink {
+      padding-top: 0.9rem;
+      padding-bottom: 0.9rem;
 
-    .navbar-toggler {
-        padding: 0.6rem 1.5rem;
-        background: $primary;
-        color: $secondary;
-        font-weight: bold;
+      .navbar-brand {
+        font-size: 1.5em;
 
         &:active,
         &:focus {
-            outline: none;
-            box-shadow: none !important;
+          color: $focus;
         }
-
-        &:hover {
-            background: #e1b2c4;
-        }
+      }
     }
-
-    @include media-breakpoint-up(lg) {
-        padding-top: 1.5rem;
-        padding-bottom: 1.5rem;
-        transition: padding-top 0.3s, padding-bottom 0.3s;
-
-        .navbar-brand {
-            font-size: 1.75em;
-            transition: font-size 0.3s;
-        }
-        .navbar-nav {
-            margin-top: 1rem;
-        }
-        .navbar-shrink {
-            padding-top: 0.9rem;
-            padding-bottom: 0.9rem;
-
-            .navbar-brand {
-                font-size: 1.5em;
-
-                &:active,
-                &:focus {
-                    color: $focus;
-                }
-            }
-        }
-    }
+  }
 }

@@ -3,8 +3,8 @@
  * @author [Keisuke Suzuki](https://github.com/Ks5810)
  */
 
-import React, { useState } from 'react';
-import { Button, Form, FormControl, FormGroup } from "react-bootstrap";
+import React from 'react';
+import { FormControl, FormGroup } from "react-bootstrap";
 import { capitalize } from "../../lib";
 
 

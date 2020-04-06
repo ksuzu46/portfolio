@@ -6,13 +6,9 @@
 import React from "react";
 import NavBar from "../NavBar";
 import { Container } from "react-bootstrap";
-import ReactMarkdown from "react-markdown/with-html";
 import Loader from "../Loader";
 import BlogPost from "./BlogPost";
-import {
-    Link, Redirect, Route, Switch, useHistory, useRouteMatch
-} from "react-router-dom";
-import NotFoundPage from "../NotFoundPage";
+import { Link, Redirect, Route, Switch, useRouteMatch } from "react-router-dom";
 
 
 const children = [ "home", "blog" ];
@@ -56,7 +52,7 @@ const BlogPage = ({ ghData }) =>
                                 posts={ ghData.data.blogEntries }/>
                         </Route>
                         <Route>
-                            <Redirect to='/404'/>
+                            <Redirect to="/404"/>
                         </Route>
                     </Switch>
                 </Container>

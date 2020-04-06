@@ -40,13 +40,13 @@ const ProjectsItem = ({ node, ind }) =>
                         }
                     </div>
                 </div>
-                <div className='projects-card-description'>
-                    <div className='projects-card-description-text'>
-                    { expanded ? <p>{ description }</p> : <TextTruncate
-                        line={5}
-                        truncateText="..."
-                        text={description}
-                    />  }
+                <div className="projects-card-description">
+                    <div className="projects-card-description-text">
+                        { expanded ? <p>{ description }</p> : <TextTruncate
+                            line={ 5 }
+                            truncateText="..."
+                            text={ description }
+                        /> }
                     </div>
                     <Button
                         className="projects-card-description-button"

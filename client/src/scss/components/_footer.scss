@@ -1,36 +1,36 @@
 .footer {
-    background-color: $back-ground;
-    @include media-breakpoint-down(sm) {
-        padding-bottom: 1.5rem;
-    }
+  background-color: $back-ground;
+  @include media-breakpoint-down(sm) {
+    padding-bottom: 1.5rem;
+  }
 }
 
 .footer-icons {
-    padding: 0 0.5rem;
-    display: inline-flex;
-    justify-content: right;
+  padding: 0 0.5rem;
+  display: inline-flex;
+  justify-content: right;
 
-    @include media-breakpoint-down(sm) {
-        padding: 0 0.2rem;
-    }
+  @include media-breakpoint-down(sm) {
+    padding: 0 0.2rem;
+  }
 }
 
 .footer-social {
-    @extend .footer-icons;
-    color: $primary;
+  @extend .footer-icons;
+  color: $primary;
 
-    &:active,
-    &:focus {
-        outline: none;
-    }
+  &:active,
+  &:focus {
+    outline: none;
+  }
 
-    &:hover {
-        color: $secondary;
-    }
+  &:hover {
+    color: $secondary;
+  }
 }
 
 .copyright {
-    padding: 0.5rem 0.5rem;
-    text-align: right;
-    color: $primary;
+  padding: 0.5rem 0.5rem;
+  text-align: right;
+  color: $primary;
 }

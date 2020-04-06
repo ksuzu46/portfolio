@@ -3,10 +3,11 @@
  * @author [Keisuke Suzuki](https://github.com/Ks5810)
  */
 
-import { useEffect, useLayoutEffect, useState } from 'react';
+import { useState } from 'react';
 import axios from "axios";
 import { requestConfig } from "../lib";
 import config from "../../config";
+
 
 const { mailerUrl } = config;
 
@@ -19,7 +20,7 @@ export const useEmail = () =>
         complete: false
     });
     
-    const sendEmail = async (data) =>
+    const sendEmail = async(data) =>
     {
         setEmailStatus(prevState => ({ ...prevState, sending: true, }));
         try

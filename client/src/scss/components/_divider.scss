@@ -5,44 +5,44 @@
 
 
 .divider {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    .divider-line {
-        width: 70%;
-        height: 0.5rem;
-        background-color: $secondary !important;
-        border-radius: 1rem;
+  .divider-line {
+    width: 70%;
+    height: 0.5rem;
+    background-color: $secondary !important;
+    border-radius: 1rem;
 
-        &:first-child {
-            margin-right: 1rem;
-        }
-
-        &:last-child {
-            margin-left: 1rem;
-        }
+    &:first-child {
+      margin-right: 1rem;
     }
 
-    .divider-icon {
-        color: $secondary !important;
-        font-size: 2.5rem;
-        @include media-breakpoint-down(sm) {
-            font-size: 1.5rem;
-        }
+    &:last-child {
+      margin-left: 1rem;
+    }
+  }
+
+  .divider-icon {
+    color: $secondary !important;
+    font-size: 2.5rem;
+    @include media-breakpoint-down(sm) {
+      font-size: 1.5rem;
+    }
+  }
+
+  .divider-button {
+    border: none;
+
+    &:active,
+    &:focus {
+      outline: 0;
+      box-shadow: none !important;
     }
 
-    .divider-button {
-        border: none;
-
-        &:active,
-        &:focus {
-            outline: 0;
-            box-shadow: none !important;
-        }
-
-        &:hover {
-            color: $primary;
-        }
+    &:hover {
+      color: $primary;
     }
+  }
 }

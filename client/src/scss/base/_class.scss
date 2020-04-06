@@ -4,130 +4,134 @@
  */
 
 img {
-    width: 12rem;
-    margin: 2rem;
-    border-radius: 8px;
-    @include media-breakpoint-down(sm) {
-        max-width: 8rem;
-        max-height: 8rem;
-    }
+  width: 12rem;
+  margin: 2rem;
+  border-radius: 8px;
+  @include media-breakpoint-down(sm) {
+    max-width: 8rem;
+    max-height: 8rem;
+  }
 }
 
 .section {
-    padding: $m-size 0;
-    @include media-breakpoint-down(sm) {
-        padding: $s-size 0;
-    }
-    @include media-breakpoint-up(lg) {
-        padding: $l-size 0;
-    }
+  padding: $m-size 0;
+  @include media-breakpoint-down(sm) {
+    padding: $s-size 0;
+  }
+  @include media-breakpoint-up(lg) {
+    padding: $l-size 0;
+  }
 }
 
 .row {
-    justify-content: space-between;
-    padding: $container-m-size 0;
-    @include media-breakpoint-down(sm) {
-        padding: 2rem 0;
-    }
+  justify-content: space-between;
+  padding: $container-m-size 0;
+  @include media-breakpoint-down(sm) {
+    padding: 2rem 0;
+  }
 }
 
 .btn {
-    background-color: $primary;
-    border: none !important;
-    outline: none !important;
+  background-color: $primary;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+
+  &:active,
+  &:focus {
     box-shadow: none !important;
+    outline: none !important;
+  }
 
-    &:active,
-    &:focus {
-        box-shadow: none !important;
-        outline: none !important;
-    }
+  &:hover {
+    background-color: darken($primary, 5%);
+    box-shadow: none !important;
+    outline: none !important;
+  }
 
-    &:hover {
-        background-color: darken($primary, 5%);
-        box-shadow: none !important;
-        outline: none !important;
-    }
-    @include media-breakpoint-up(md) {
-        height: 3rem;
-    }
+  @include media-breakpoint-up(md) {
+    height: 3rem;
+  }
 }
 
 .alert {
-    display: flex;
-    justify-content: left;
-    padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: left;
+  padding: 0.5rem 1rem;
 }
 
 
 .form {
-    background: none;
-    padding: 4rem;
-    @include media-breakpoint-down(sm) {
-        padding: $container-s-size;
-    }
+  background: none;
+  padding: 4rem;
+  @include media-breakpoint-down(sm) {
+    padding: $container-s-size;
+  }
 }
 
 .form-group {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    @include media-breakpoint-down(sm) {
-    }
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  @include media-breakpoint-down(sm) {
+  }
 }
 
 .form-control {
-    outline: none !important;
-    background: none;
-    border-radius: 0;
-    border-width: 0 0 1px 0;
-    border-style: solid;
-    box-shadow: none !important;
-    border-bottom-color: darken($primary, 20%);
-    color: darken($primary, 5%) !important;
-    height: $container-m-size;
-    @include media-breakpoint-down(sm) {
-        height: $container-s-size;
-    }
-    &:active,
-    &:focus {
-        background-color: darken($back-ground, 1%) ;
-        border-radius:  $border-radius-sm $border-radius-sm 0 0;
-        border-bottom-color: $primary;
-        &::placeholder {
-            opacity: 1;
-            color: darken($primary, 30%);
-        }
-    }
-    &:hover {
+  outline: none !important;
+  background: none;
+  border-radius: 0;
+  border-width: 0 0 1px 0;
+  border-style: solid;
+  box-shadow: none !important;
+  border-bottom-color: darken($primary, 20%);
+  color: darken($primary, 5%) !important;
+  height: $container-m-size;
+  @include media-breakpoint-down(sm) {
+    height: $container-s-size;
+  }
 
-    }
+  &:active,
+  &:focus {
+    background-color: darken($back-ground, 1%);
+    border-radius: $border-radius-sm $border-radius-sm 0 0;
+    border-bottom-color: $primary;
 
     &::placeholder {
-        opacity: 1;
-        color: darken($primary, 10%);
+      opacity: 1;
+      color: darken($primary, 30%);
     }
+  }
 
-    &::-ms-input-placeholder {
-        color: darken($primary, 10%);
-    }
+  &:hover {
+
+  }
+
+  &::placeholder {
+    opacity: 1;
+    color: darken($primary, 10%);
+  }
+
+  &::-ms-input-placeholder {
+    color: darken($primary, 10%);
+  }
 }
 
 .form-control-textarea {
-    @extend .form-control;
-    height: 12rem !important;
-    @include media-breakpoint-up(md) {
-        height: 15rem !important;
-    }
+  @extend .form-control;
+  height: 12rem !important;
+  @include media-breakpoint-up(md) {
+    height: 15rem !important;
+  }
 }
 
 .card {
-    padding: 1rem 0;
-    background: none;
-    border: none;
-    box-shadow: none;
-    @include media-breakpoint-up(md) {
-        width: 18rem;
-    }
+  padding: 1rem 0;
+  background: none;
+  border: none;
+  box-shadow: none;
+  @include media-breakpoint-up(md) {
+    width: 18rem;
+  }
 }
 

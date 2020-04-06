@@ -4,20 +4,22 @@
  */
 
 .notfound {
-    text-align: center;
-    h1, h2, h3, h4, h5, h6, {
-        margin-top: 3rem;
-        color: $primary;
-    }
-    p {
-        margin-top: 0.5rem;
-        color: $primary;
-    }
+  text-align: center;
 
-    .link {
-        @extend .btn;
-        font-weight: bolder;
-        color: $back-ground-list !important;
-        background-color: $nav-focus;
-    }
+  h1, h2, h3, h4, h5, h6, {
+    margin-top: 3rem;
+    color: $primary;
+  }
+
+  p {
+    margin-top: 0.5rem;
+    color: $primary;
+  }
+
+  .link {
+    @extend .btn;
+    font-weight: bolder;
+    color: $back-ground-list !important;
+    background-color: $nav-focus;
+  }
 }

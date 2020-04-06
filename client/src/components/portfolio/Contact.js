@@ -4,11 +4,8 @@
  */
 
 import React, { useState } from "react";
-import {
-    Alert, Button, Container, Form, FormControl, FormGroup, FormLabel
-} from "react-bootstrap";
+import { Button, Container, Form } from "react-bootstrap";
 import { Element } from "react-scroll";
-import { capitalize } from "../../lib";
 import { ContactForm } from "./ContactForm";
 
 
@@ -70,9 +67,10 @@ const Contact = ({ emailStatus, sendEmail }) =>
                         setMessage={ setMessage }
                     />
                     <Button
-                        className={`contact-button__${ status }`}
+                        className={ `contact-button__${ status }` }
                         type="submit"
-                        disabled={ status === 'sending' || status === 'submitted' }>
+                        disabled={ status === 'sending' || status ===
+                                   'submitted' }>
                         { getButtonText(status) }
                     </Button>
                 </Form>

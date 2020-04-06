@@ -7,9 +7,13 @@ import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import App from "./App"
 import "./scss/styles.scss";
-import * as OfflinePluginRuntime from 'offline-plugin/runtime';
-OfflinePluginRuntime.install();
 
+
+if(process.env.NODE_ENV === 'production')
+{
+    const OfflinePluginRuntime = require('offline-plugin/runtime');
+    OfflinePluginRuntime.install();
+}
 
 ReactDOM.render(
     <Router>

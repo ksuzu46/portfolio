@@ -4,102 +4,112 @@
  */
 
 .contact {
-    @extend .section;
+  @extend .section;
 }
 
 .contact-form {
-    @extend .form;
+  @extend .form;
 }
 
 .contact-heading {
-    color: $primary;
-    text-align: center;
+  color: $primary;
+  text-align: center;
 }
 
 .contact-alert {
-    margin: 1rem 0;
+  margin: 1rem 0;
 
-    &--success {
-        @extend .contact-alert;
-        color: darken($success, 50%);
-        background-color: $success;
-        border-color: darken($success, 5%);
-        box-shadow: none;
-        outline: none;
-    }
-    &--danger {
-        @extend .contact-alert;
-        color: darken($danger, 50%);
-        background-color: $danger;
-        border-color: darken($danger, 5%);
-        box-shadow: none;
-        outline: none;
-    }
+  &--success {
+    @extend .contact-alert;
+    color: darken($success, 50%);
+    background-color: $success;
+    border-color: darken($success, 5%);
+    box-shadow: none;
+    outline: none;
+  }
+
+  &--danger {
+    @extend .contact-alert;
+    color: darken($danger, 50%);
+    background-color: $danger;
+    border-color: darken($danger, 5%);
+    box-shadow: none;
+    outline: none;
+  }
 }
 
 .contact-button {
-    @extend .btn;
+  @extend .btn;
 
-    &:hover {
-        color: lighten($secondary, 10%);
-        border-color: darken($info, 15%);
+  &:hover {
+    color: lighten($secondary, 10%);
+    border-color: darken($info, 15%);
+  }
+
+  &__default {
+    @extend .contact-button;
+    background-color: $primary;
+
+    &:active,
+    &:focus {
+      background-color: $primary;
+      border-color: darken($primary, 10%);
     }
-    &__default {
-        @extend .contact-button;
-        background-color: $primary;
-        &:active,
-        &:focus {
-            background-color: $primary;
-            border-color: darken($primary, 10%);
-        }
+  }
+
+  &__sending {
+    @extend .contact-button;
+    background-color: $focus;
+    cursor: not-allowed;
+
+    &:active,
+    &:focus {
+      background-color: $focus;
+      border-color: darken($focus, 10%);
     }
-    &__sending {
-        @extend .contact-button;
-        background-color: $focus;
-        cursor: not-allowed;
-        &:active,
-        &:focus {
-            background-color: $focus;
-            border-color: darken($focus, 10%);
-        }
+  }
+
+  &__error {
+    @extend .contact-button;
+    background-color: $danger;
+    cursor: none;
+    color: $primary;
+
+    &:active,
+    &:focus {
+      background-color: $danger;
+      border-color: darken($danger, 10%);
     }
-    &__error {
-        @extend .contact-button;
-        background-color: $danger;
-        cursor: none;
-        color: $primary;
-        &:active,
-        &:focus {
-            background-color: $danger;
-            border-color: darken($danger, 10%);
-        }
+  }
+
+  &__submitted {
+    @extend .contact-button;
+    cursor: not-allowed;
+    background-color: $success;
+
+    &:active,
+    &:focus {
+      background-color: $success;
+      border-color: darken($success, 10%);
     }
-    &__submitted {
-        @extend .contact-button;
-        cursor: not-allowed;
-        background-color: $success;
-        &:active,
-        &:focus {
-            background-color: $success;
-            border-color: darken($success, 10%);
-        }
-    }
-    width: 100%;
+  }
+
+  width: 100%;
 }
 
 .contact-form {
-    @extend .form;
+  @extend .form;
 }
 
 .contact-form-group {
-    @extend .form-group;
+  @extend .form-group;
 }
 
 .contact-form-control {
-    @extend .form-control;
+  @extend .form-control;
 }
 
 .contact-form-control-textarea {
-    @extend .form-control-textarea;
+  @extend .form-control-textarea;
 }
 

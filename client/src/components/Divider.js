@@ -4,13 +4,13 @@
  */
 
 import React from "react";
-import { Link, animateScroll as scroll } from "react-scroll";
-import { Button, Container } from "react-bootstrap";
+import { Link } from "react-scroll";
+import { Container } from "react-bootstrap";
 
 
 const Divider = ({ children, index }) =>
 {
-    const isBottom = index >= children.length  - 2;
+    const isBottom = index >= children.length - 2;
     const child = children[isBottom ? 0 : index + 1];
     
     return (

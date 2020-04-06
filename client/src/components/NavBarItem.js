@@ -5,9 +5,9 @@
 
 import React from "react";
 import { Link } from "react-router-dom"
-import { Nav, NavLink } from "react-bootstrap";
-import { Link as ScrollLink, animateScroll as scroll } from "react-scroll";
-import { capitalize, convertRem2Pix } from "../lib";
+import { Nav } from "react-bootstrap";
+import { Link as ScrollLink } from "react-scroll";
+import { capitalize } from "../lib";
 
 
 const NavBarItem = ({ child, setExpanded, blogPage }) =>
