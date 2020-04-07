@@ -33,7 +33,7 @@ const BlogPage = ({ ghData }) =>
                                         <li>
                                             <Link
                                                 to={ `${ url }/${ entry.oid }` }>
-                                                { entry.text.subtitle }
+                                                <p>{ entry.text.subtitle }</p>
                                             </Link>
                                         </li>
                                     </Container>
