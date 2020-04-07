@@ -8,6 +8,7 @@ import { Container, Nav, Navbar } from "react-bootstrap";
 import { animateScroll as scroll } from "react-scroll";
 import config from "../../config";
 import NavBarItem from "./NavBarItem";
+import { useRouteMatch } from "react-router";
 
 
 const { myName } = config;
@@ -15,6 +16,7 @@ const { myName } = config;
 const NavBar = ({ children }) =>
 {
     const [ expanded, setExpanded ] = useState(false);
+    const { path } = useRouteMatch();
     const onClick = () =>
     {
         setExpanded(false);
@@ -49,7 +51,7 @@ const NavBar = ({ children }) =>
                                             <NavBarItem
                                                 key={ child }
                                                 child={ child }
-                                                blogPage={ false }
+                                                path={ path }
                                                 setExpanded={ () => setExpanded(
                                                     false) }
                                             />
@@ -85,7 +87,7 @@ const NavBar = ({ children }) =>
                                         <NavBarItem
                                             key={ child }
                                             child={ child }
-                                            blogPage={ true }
+                                            path={ path }
                                             setExpanded={ () => setExpanded(
                                                 false) }
                                         />

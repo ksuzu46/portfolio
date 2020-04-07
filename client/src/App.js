@@ -9,6 +9,7 @@ import PortfolioPage from "./components/portfolio/PortfolioPage";
 import BlogPage from "./components/blog/BlogPage";
 import { useGhFetch } from "./hooks/useGhFetch";
 import NotFoundPage from "./components/NotFoundPage";
+import ContributionsPage from "./components/blog/ContributionsPage";
 
 
 export const App = (props) =>
@@ -23,6 +24,9 @@ export const App = (props) =>
                 </Route>
                 <Route path="/blog">
                     <BlogPage ghData={ ghData }/>
+                </Route>
+                <Route path="/contributions" exact>
+                    <ContributionsPage ghData={ ghData } />
                 </Route>
                 <Route exact path="/404">
                     <NotFoundPage/>

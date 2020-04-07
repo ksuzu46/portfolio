@@ -3,6 +3,8 @@
  * @author [Keisuke Suzuki](https://github.com/Ks5810)
  */
 
+@import "../github-markdown-css/github-markdown";
+
 .blog {
   @extend .section;
 }
@@ -31,68 +33,93 @@
   }
 }
 
-.markdown-body {
-  font-family: $font-family-sans-serif;
-  color: $primary;
+.contributions {
+  @extend .section;
+}
+.contributions-body {
+  padding-top: 2rem;
+}
 
+
+
+.markdown-body-custom {
+  @extend .markdown-body;
+  table {
+    color: $primary;
+    box-shadow: none;
+    outline: 0;
+    thead {
+      border-width: 0;
+      border-width: 0;
+      border: none;
+      tr{
+        th {
+          border-width: 0;
+          border: none;
+          background-color: $back-ground-list;
+          text-align: center;
+          padding: 1.5rem;
+        }
+        border-width: 0;
+        border: none;
+        background-color: $back-ground-list;
+        text-align: center;
+        padding: 1.5rem;
+      }
+    }
+
+    border-radius: $border-radius;
+
+    tbody {
+      tr {
+        align-items: center;
+        border-width: 0;
+        background-color: $back-ground-list;
+        &:nth-child(2n) {
+          color: $white;
+          background-color: lighten($back-ground-list, 10%);
+        }
+
+        td {
+          border-width: 0;
+          text-align: center;
+          padding: 2rem;
+          a {
+            font-weight: bolder;
+            color: rgba(142, 251, 173, 0.93);
+          }
+        }
+      }
+    }
+  }
+  color: $primary;
+  font-family: $font-family-sans-serif;
   code {
-    padding: .3em .5em;
-    margin: 0;
-    font-size: 85%;
+    padding: .05em .3em;
+    font-family: $font-family-monospace;
     color: darken($nav-focus, 5%);
+    border: none;
   }
 
   pre {
-    word-wrap: normal;
-    color: $primary;
     background-color: darken($back-ground, 5%);
+    font-family: $font-family-monospace;
+    color: $primary;
+    border-radius: $border-radius;
   }
 
   blockquote {
-    padding: 0 1em;
     color: lighten(#979dd7, 10%);
-    border-left: .25em solid #dfe2e5;
   }
-
-  pre > code {
-    padding: 0;
-    margin: 0;
-    font-size: 100%;
-    word-break: normal;
-    white-space: pre;
-    background-color: darken($back-ground, 5%);
-    border: 0;
-  }
-
   pre code {
-    display: inline;
-    width: auto;
-    padding: 0;
-    margin: 0;
-    overflow: visible;
-    line-height: inherit;
-    word-wrap: normal;
-    background-color: darken($back-ground, 5%);
-    border: 0;
-    color: darken($primary, 5%);
+    color: $primary
   }
 
   .highlight {
     pre, pre {
-      width: auto;
-      padding: 1rem;
-      overflow: auto;
-      font-size: 85%;
-      line-height: 1.45;
       color: $primary;
-      background-color: darken($back-ground, 5%) !important;
-      border-radius: $border-radius !important;
-    }
-
-    pre {
-      margin-bottom: 0;
-      background-color: darken($back-ground, 5%) !important;
-      word-break: normal;
+      background-color: darken($back-ground, 5%);
+      border-radius: $border-radius;
     }
 
     .pl-c /* comment, punctuation.definition.comment, string.comment */
@@ -272,3 +299,5 @@
     }
   }
 }
+
+

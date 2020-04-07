@@ -32,7 +32,7 @@ const BlogPost = ({ posts }) =>
                         <h3 className="blog-post-heading">
                             { post.subtitle }</h3>
                         <div className="blog-post-body">
-                            <div className="markdown-body">
+                            <div className="markdown-body-custom">
                                 {parse(post.body)}
                             </div>
                         </div>

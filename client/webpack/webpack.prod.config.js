@@ -9,10 +9,8 @@ const merge = require('webpack-merge');
 const common = require('./webpack.common.config');
 const TerserJSPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const OfflinePlugin = require('offline-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
-const htmlWebpackPlugin = require('html-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = merge(common, {
     mode: 'production',
@@ -63,23 +61,6 @@ module.exports = merge(common, {
         new MiniCssExtractPlugin({
             fileName: '[name].css',
         }),
-        new CopyPlugin([
-            {
-                from: 'manifest.json',
-                to: 'manifest.json',
-                toType: 'file'
-            },
-            {
-                from: 'robots.txt',
-                to: 'robots.txt',
-                toType: 'file'
-            },
-            {
-                from: 'assets/images',
-                to: 'assets/images',
-                toType: 'dir'
-            }
-        ]),
         new OfflinePlugin({
             externals: [
                 'robots.txt,',
@@ -97,59 +78,6 @@ module.exports = merge(common, {
                 'client/assets/images/loader.svg'
             ],
         }),
-        new htmlWebpackPlugin({
-            inject: false,
-            template: require('html-webpack-template'),
-            bodyHtmlSnippet: '<noscript>' +
-                             '  <p>You need JavaScript to view this page</p>' +
-                             '</noscript>',
-            appMountId: 'app',
-            title: 'Keisuke Suzuki',
-            meta: [
-                {
-                    charset: 'UTF-8'
-                },
-                {
-                    name: 'name',
-                    content: 'portfolio'
-                },
-                {
-                    name: 'theme-color',
-                    content: "#516296"
-                },
-                {
-                    name: 'Description',
-                    content: 'My portfolio site',
-                }, {
-                    name: 'viewport',
-                    content: 'width=device-width, initial-scale=1,' +
-                             ' shrink-to-fit=no',
-                }, {
-                    name: 'apple-mobile-web-app-capable',
-                    content: 'yes'
-                }, {
-                    name: 'apple-mobile-web-app-status-bar-style',
-                    content: 'black'
-                }, {
-                    name: 'apple-mobile-web-app-title',
-                    content: 'Ksuzuki'
-                }
-            ],
-            links: [
-                {
-                    rel: 'apple-touch-icon',
-                    sizes: '120x120',
-                    href: "/assets/images/icons/apple-touch-icon.png"
-                },
-                {
-                    rel: 'manifest',
-                    href: '/manifest.json'
-                }
-            ],
-            mobile: true,
-            lang: 'en-US',
-            favicon: './assets/images/icons/favicon.ico',
-        })
     ],
     
 });

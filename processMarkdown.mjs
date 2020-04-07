@@ -20,7 +20,9 @@ const splitJekyllHeader = (text, index) => {
     const subtitleRes =  subtitleRe.exec(header) || [];
     const subtitle =  subtitleRes[0] ? subtitleRes[0].replace("subtitle:" +
                                                               " " , '') : '';
-    const body = text.substr(headerRe.lastIndex);
+    const tmptext = text.substr(headerRe.lastIndex);
+    const body = tmptext.replace(/^\n/, '');
+    
     return { subtitle, body };
 }
 

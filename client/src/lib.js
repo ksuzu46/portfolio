@@ -10,7 +10,6 @@ export const capitalize = (s) => (
 export const removeSlash = (s) => (
     typeof s !== 'string' ? '' : s.substr(1)
 );
-
 export const validEmail = (s) => (
     /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(s)
 );

@@ -9,9 +9,10 @@ import { Container } from "react-bootstrap";
 import Loader from "../Loader";
 import BlogPost from "./BlogPost";
 import { Link, Redirect, Route, Switch, useRouteMatch } from "react-router-dom";
+import { removeSlash } from "../../lib";
 
 
-const children = [ "home", "blog" ];
+const children = [ "home", "blog", "contributions" ];
 const BlogPage = ({ ghData }) =>
 {
     const { path, url } = useRouteMatch();

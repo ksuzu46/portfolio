@@ -37,7 +37,8 @@ export const useGhFetch = () =>
                         bioHTML: "",
                         blogEntries: [],
                         email: "",
-                        projects: []
+                        projects: [],
+                        contributions:""
                     };
                     if(tmp.data)
                     {

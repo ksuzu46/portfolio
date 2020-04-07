@@ -6,11 +6,11 @@
 import React from "react";
 import { Link } from "react-router-dom"
 import { Nav } from "react-bootstrap";
-import { Link as ScrollLink } from "react-scroll";
-import { capitalize } from "../lib";
+import { Link as ScrollLink, animateScroll as scroll } from "react-scroll";
+import { capitalize, removeSlash } from "../lib";
 
 
-const NavBarItem = ({ child, setExpanded, blogPage }) =>
+const NavBarItem = ({ child, setExpanded, path }) =>
 {
     const scrollLink = (child) => (
         <ScrollLink
@@ -28,9 +28,13 @@ const NavBarItem = ({ child, setExpanded, blogPage }) =>
         </ScrollLink>
     );
     
+    const scrollToTop = () => {
+        scroll.scrollToTop();
+    }
+    
     const link = (to, child) => (
         <Link
-            to={ to }
+            to={ child === 'home' ? '/' : to }
             className="nav-link"
             onClick={ () => setExpanded }>
             { capitalize(child) }
@@ -40,12 +44,12 @@ const NavBarItem = ({ child, setExpanded, blogPage }) =>
     return (
         <Nav.Item className="mx-0 mx-lg-1 py-3 px-0 px-lg-3 rounded">
             {
-                blogPage ? (
-                    child === 'home' ?
-                    link('/', child) : scrollLink(child)
-                ) : (
+                path === '/' ? (
                     child === 'blog' ?
-                    link("/blog", child) : scrollLink(child)
+                    link(`/${child}`, child) : scrollLink(child)
+                ) : (
+                    child === removeSlash(path) ?
+                    scrollToTop() : link(`/${child}`, child)
                 )
             }
         </Nav.Item>)
