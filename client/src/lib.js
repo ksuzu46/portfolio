@@ -26,6 +26,13 @@ export const getRootElementFontSize = () => (
     parseFloat(getComputedStyle(document.documentElement).fontSize)
 );
 
+export const stripHtml = (html) =>
+{
+    let tmp = document.createElement("DIV");
+    tmp.innerHTML = html;
+    return tmp.textContent || tmp.innerText || "";
+}
+
 export const requestConfig = () => ({
     headers: {
         'Content-Type': 'application/json',

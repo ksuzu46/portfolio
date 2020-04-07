@@ -1,0 +1,60 @@
+/**
+ * _post.scss
+ * @author [Keisuke Suzuki](https://github.com/Ks5810)
+ */
+
+
+.blog-card {
+  display: flex;
+  flex-direction: row;
+  background: $back-ground-list;
+  box-shadow: none;
+  border-radius: $border-radius;
+  margin: 1rem 3rem;
+  color: $primary;
+
+  @include media-breakpoint-down(sm){
+    margin: 1rem 0;
+  }
+}
+
+.card-link {
+  position: relative;
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  &:hover .post-title {
+    color: $link-color;
+  }
+}
+
+.article-details {
+  padding: 1rem;
+}
+
+.post-title {
+  font-size: 1.3rem;
+  @include media-breakpoint-down(sm){
+    font-size: 1.2rem;
+  }
+}
+
+
+.post-description {
+  padding: 0 1rem;
+  @include media-breakpoint-down(sm){
+    padding: 0 ;
+  }
+}
+
+.post-category {
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.0625rem;
+  margin: 0 0 0.75rem 0;
+  padding: 0 0 0.25rem 0;
+  border-bottom: 0.125rem solid $border-width;
+}

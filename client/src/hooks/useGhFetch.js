@@ -17,8 +17,6 @@ export const useGhFetch = () =>
         fetched: false,
     });
     
-    
-    
     useEffect(() =>
     {
         let unmounted = false;

@@ -9,7 +9,9 @@ import { Container } from "react-bootstrap";
 import Loader from "../Loader";
 import BlogPost from "./BlogPost";
 import { Link, Redirect, Route, Switch, useRouteMatch } from "react-router-dom";
-import { removeSlash } from "../../lib";
+import TextTruncate from "react-text-truncate";
+import parse from "html-react-parser";
+import { stripHtml } from "../../lib";
 
 
 const children = [ "home", "blog", "contributions" ];
@@ -22,25 +24,36 @@ const BlogPage = ({ ghData }) =>
             ghData.loading ? <Loader/> :
             ghData.fetched &&
             <div className="blog">
-                <Container>
                     <h2 className="blog-heading"> My Blog </h2>
-                    <ol>
+                    {
+                        ghData.data.blogEntries.map((entry, index) =>
                         {
-                            ghData.data.blogEntries.map((entry, index) =>
-                            {
-                                return (
-                                    <Container key={ index }>
-                                        <li>
-                                            <Link
-                                                to={ `${ url }/${ entry.oid }` }>
-                                                <p>{ entry.text.subtitle }</p>
-                                            </Link>
-                                        </li>
-                                    </Container>
-                                )
-                            })
-                        }
-                    </ol>
+                            const body = stripHtml(entry.text.body);
+                            return (
+                                <Container key={ index }>
+                                    <Link
+                                        className="card-link"
+                                        to={ `${ url }/${ entry.oid }`}
+                                    >
+                                        <div className="blog-card">
+                                            <div className="article-details">
+                                                <h3 className="post-title">
+                                                    { entry.text.subtitle }
+                                                </h3>
+                                                <div className='post-description'>
+                                                <TextTruncate
+                                                    line={ 3 }
+                                                    truncateText="..."
+                                                    text={ body }
+                                                />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </Link>
+                                </Container>
+                            )
+                        })
+                    }
                     <Switch>
                         <Route exact path={ path }>
                             <Container>
@@ -56,7 +69,6 @@ const BlogPage = ({ ghData }) =>
                             <Redirect to="/404"/>
                         </Route>
                     </Switch>
-                </Container>
             </div>
         }
     </>)

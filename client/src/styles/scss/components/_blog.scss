@@ -3,8 +3,6 @@
  * @author [Keisuke Suzuki](https://github.com/Ks5810)
  */
 
-@import "../github-markdown-css/github-markdown";
-
 .blog {
   @extend .section;
 }
@@ -12,6 +10,8 @@
 .blog-heading {
   color: $primary;
   text-align: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .blog-post {
@@ -28,8 +28,7 @@
   @extend .blog-post;
   padding: 2rem;
   @include media-breakpoint-down(sm) {
-    padding: 0;
-    padding-top: 2rem;
+    padding: 2rem 0;
   }
 }
 
@@ -44,6 +43,9 @@
 
 .markdown-body-custom {
   @extend .markdown-body;
+  color: $primary;
+  font-family: $font-family-sans-serif;
+
   table {
     color: $primary;
     box-shadow: none;
@@ -59,6 +61,9 @@
           background-color: $back-ground-list;
           text-align: center;
           padding: 1.5rem;
+          @include media-breakpoint-down(sm) {
+            padding: 0.5rem 0;
+          }
         }
         border-width: 0;
         border: none;
@@ -81,19 +86,21 @@
         }
 
         td {
+          @include media-breakpoint-down(sm) {
+            padding: 0.5rem 0;
+          }
           border-width: 0;
           text-align: center;
           padding: 2rem;
           a {
             font-weight: bolder;
-            color: rgba(142, 251, 173, 0.93);
+            color: $link-color;
           }
         }
       }
     }
   }
-  color: $primary;
-  font-family: $font-family-sans-serif;
+
   code {
     padding: .05em .3em;
     font-family: $font-family-monospace;
