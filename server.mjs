@@ -25,13 +25,17 @@ const __dirname = path.dirname(__filename);
 const publicPath = path.resolve(__dirname, 'client', 'build');
 const port = process.env.PORT;
 
-app.use(compression())
-app.use(express.static(publicPath));
+
+// Handle compression and serve static files in development
+if(process.env.NODE_ENV === 'development')
+{
+    app.use(compression())
+    app.use(express.static(publicPath));
+}
 
 // For Node mailer
 api.use(bodyParser.urlencoded({ extended: true }));
 api.use(bodyParser.json());
-
 
 // Root
 api.get('/', (req, res) =>
@@ -39,9 +43,8 @@ api.get('/', (req, res) =>
     res.send('api root');
 })
 
-// TODO:
-//  1. move text processing on blog entries server side and cache them
-//  2. find away to check if new deployment happened to last cache.
+// @TODO:
+//  1. find away to check if new deployment happened to last cache.
 
 // Gh-gql-api
 // Cache data until next request
@@ -121,10 +124,13 @@ api.post('/mailer', (req, res) =>
 app.use('/api', api);
 
 
-app.get('*', (req, res) =>
+if(process.env.NODE_ENV === "development")
 {
-    res.sendFile(path.join(publicPath, 'index.html'));
-});
+    app.get('*', (req, res) =>
+    {
+        res.sendFile(path.join(publicPath, 'index.html'));
+    });
+}
 
 
 app.listen(port, () => console.log(`Node is running on ${ port }`));
