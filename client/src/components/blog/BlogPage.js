@@ -10,8 +10,8 @@ import Loader from "../Loader";
 import BlogPost from "./BlogPost";
 import { Link, Redirect, Route, Switch, useRouteMatch } from "react-router-dom";
 import TextTruncate from "react-text-truncate";
-import parse from "html-react-parser";
 import { stripHtml } from "../../lib";
+import { scroller } from "react-scroll";
 
 
 const children = [ "home", "blog", "contributions" ];
@@ -34,6 +34,12 @@ const BlogPage = ({ ghData }) =>
                                     <Link
                                         className="card-link"
                                         to={ `${ url }/${ entry.oid }`}
+                                        onClick={ () => scroller.scrollTo('post', {
+                                            duration: 750,
+                                            offset: -140,
+                                            delay: 50,
+                                            smooth: true
+                                        }) }
                                     >
                                         <div className="blog-card">
                                             <div className="article-details">
@@ -54,6 +60,7 @@ const BlogPage = ({ ghData }) =>
                             )
                         })
                     }
+                    <div id='post'>
                     <Switch>
                         <Route exact path={ path }>
                             <Container>
@@ -69,6 +76,7 @@ const BlogPage = ({ ghData }) =>
                             <Redirect to="/404"/>
                         </Route>
                     </Switch>
+                    </div>
             </div>
         }
     </>)

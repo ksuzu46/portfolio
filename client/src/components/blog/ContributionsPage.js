@@ -25,7 +25,7 @@ const ContributionsPage = ({ ghData }) =>
                             Contributions</h3>
                         <div className="contributions-body">
                             <div className="markdown-body-custom">
-                                {parse( ghData.data.contributions.body)}
+                                { parse( ghData.data.contributions.body) }
                             </div>
                         </div>
                     </Container>

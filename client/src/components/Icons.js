@@ -27,7 +27,8 @@ const Icons = ({ ghData, parent, scrollToContact }) =>
                 onClick={ () => scroller.scrollTo('contact', {
                     duration: 750,
                     offset: -140,
-                    delay: 0
+                    delay: 0,
+                    smooth: true
                 }) }
                 aria-label="email">
                 <i className="fas fa-3x fa-envelope-square"/>
