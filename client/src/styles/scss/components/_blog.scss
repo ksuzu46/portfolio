@@ -15,7 +15,19 @@
 }
 
 .blog-post {
-  padding-top: 2rem;
+  padding: 2rem 0;
+  @include media-breakpoint-down(sm) {
+    padding: 1rem 0;
+  }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+.blog-post-button-full {
+  margin-top: 3rem;
+  width: 100%;
 }
 
 .blog-post-heading {
@@ -38,8 +50,6 @@
 .contributions-body {
   padding-top: 2rem;
 }
-
-
 
 .markdown-body-custom {
   @extend .markdown-body;
