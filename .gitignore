@@ -4,4 +4,5 @@ bundles
 .env
 client/build
 client/webpack/build
+deploy_remote.sh
 
