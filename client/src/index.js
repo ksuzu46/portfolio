@@ -18,7 +18,8 @@ if(process.env.NODE_ENV === 'production')
     });
 }
 
-window.alert(1);
+// Comment or uncomment this line if service worker is updating new deployment.
+// window.alert(1);
 
 ReactDOM.render(
     <Router>
