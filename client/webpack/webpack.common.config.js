@@ -94,6 +94,10 @@ module.exports = {
             ],
             links: [
                 {
+                    rel: 'preload',
+                    href: 'https://use.fontawesome.com'
+                },
+                {
                     rel: 'apple-touch-icon',
                     sizes: '120x120',
                     href: "/assets/images/icons/apple-touch-icon.png"

@@ -23,8 +23,11 @@
   display: block;
   color: inherit;
   text-decoration: none;
+  &:active,
+  &:focus,
   &:hover .post-title {
     color: $link-color;
+    outline: 0;
   }
 }
 

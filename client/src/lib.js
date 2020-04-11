@@ -46,6 +46,5 @@ export const requestConfig = () => ({
         'Content-Type': 'application/json',
         "Access-Control-Allow-Origin": "*"
     },
-    cache: 'no-cache',
     redirect: 'follow',
 });

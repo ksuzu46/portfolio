@@ -17,15 +17,20 @@ module.exports = merge(common, {
     output: {
         publicPath: '/',
         path: path.resolve('./build'),
-        filename: '[name].js',
-        chunkFilename: '[name].js'
+        filename: '[name].[contenthash].js',
     },
     module: {
         rules: [
             {
                 test: /\.s?css$/,
                 use: [
-                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            esModule: true,
+                        }
+                        
+                    },
                     "css-loader",
                     "sass-loader"
                 ]
@@ -33,9 +38,10 @@ module.exports = merge(common, {
         ],
     },
     optimization: {
+        moduleIds: 'hashed',
         minimizer: [
             new TerserJSPlugin({}),
-            new OptimizeCSSAssetsPlugin({})
+            new OptimizeCSSAssetsPlugin()
         ],
         splitChunks: {
             chunks: 'all',
@@ -59,9 +65,11 @@ module.exports = merge(common, {
     },
     plugins: [
         new MiniCssExtractPlugin({
-            fileName: '[name].css',
+            fileName: '[name].[contenthash].css',
         }),
         new OfflinePlugin({
+            autoUpdate: true,
+            responseStrategy: 'cache-first',
             externals: [
                 'robots.txt,',
                 'manifest.json',
