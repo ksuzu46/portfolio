@@ -36,7 +36,7 @@ export const useGhFetch = () =>
                         blogEntries: [],
                         email: "",
                         projects: [],
-                        contributions:""
+                        contributions: ""
                     };
                     if(tmp.data)
                     {

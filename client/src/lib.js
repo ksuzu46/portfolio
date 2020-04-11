@@ -7,14 +7,16 @@ export const capitalize = (s) => (
     typeof s !== 'string' ? '' : s.charAt(0).toUpperCase() + s.slice(1)
 );
 
-export const getBaseURI = (pathString) => {
+export const getBaseURI = (pathString) =>
+{
     console.log(pathString);
     const pathRe = /.*\/.*$/g;
     const matched = pathRe.exec(pathString) || [];
     return matched[0] ? matched[0] : '';
 };
 
-export const removeSlash = (s) => {
+export const removeSlash = (s) =>
+{
     console.log(getBaseURI(s));
     return typeof s !== 'string' ? '' : s.substr(1);
 };

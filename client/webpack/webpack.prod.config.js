@@ -68,7 +68,8 @@ module.exports = merge(common, {
             fileName: '[name].[contenthash].css',
         }),
         new OfflinePlugin({
-            autoUpdate: true,
+            updateStrategy: 'changed',
+            autoUpdate: 120000,  // 2hrs
             responseStrategy: 'cache-first',
             externals: [
                 'robots.txt,',

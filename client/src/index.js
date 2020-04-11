@@ -12,8 +12,13 @@ import "./styles/scss/styles.scss";
 if(process.env.NODE_ENV === 'production')
 {
     const OfflinePluginRuntime = require('offline-plugin/runtime');
-    OfflinePluginRuntime.install();
+    OfflinePluginRuntime.install({
+        onUpdateReady: () => OfflinePluginRuntime.applyUpdate(),
+        onUpdated: () => window.location.reload(),
+    });
 }
+
+window.alert(1);
 
 ReactDOM.render(
     <Router>

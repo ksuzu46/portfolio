@@ -24,43 +24,43 @@ const BlogPage = ({ ghData }) =>
             ghData.loading ? <Loader/> :
             ghData.fetched &&
             <div className="blog">
-                    <h2 className="blog-heading"> My Blog </h2>
+                <h2 className="blog-heading"> My Blog </h2>
+                {
+                    ghData.data.blogEntries.map((entry, index) =>
                     {
-                        ghData.data.blogEntries.map((entry, index) =>
-                        {
-                            const body = stripHtml(entry.text.body);
-                            return (
-                                <Container key={ index }>
-                                    <Link
-                                        className="card-link"
-                                        to={ `${ url }/${ entry.oid }`}
-                                        onClick={ () => scroller.scrollTo('post', {
-                                            duration: 750,
-                                            offset: -140,
-                                            delay: 50,
-                                            smooth: true
-                                        }) }
-                                    >
-                                        <div className="blog-card">
-                                            <div className="article-details">
-                                                <h3 className="post-title">
-                                                    { entry.text.subtitle }
-                                                </h3>
-                                                <div className='post-description'>
+                        const body = stripHtml(entry.text.body);
+                        return (
+                            <Container key={ index }>
+                                <Link
+                                    className="card-link"
+                                    to={ `${ url }/${ entry.oid }` }
+                                    onClick={ () => scroller.scrollTo('post', {
+                                        duration: 750,
+                                        offset: -140,
+                                        delay: 50,
+                                        smooth: true
+                                    }) }
+                                >
+                                    <div className="blog-card">
+                                        <div className="article-details">
+                                            <h3 className="post-title">
+                                                { entry.text.subtitle }
+                                            </h3>
+                                            <div className="post-description">
                                                 <TextTruncate
                                                     line={ 3 }
                                                     truncateText="..."
                                                     text={ body }
                                                 />
-                                                </div>
                                             </div>
                                         </div>
-                                    </Link>
-                                </Container>
-                            )
-                        })
-                    }
-                    <div id='post'>
+                                    </div>
+                                </Link>
+                            </Container>
+                        )
+                    })
+                }
+                <div id="post">
                     <Switch>
                         <Route exact path={ path }>
                             <Container>
@@ -76,7 +76,7 @@ const BlogPage = ({ ghData }) =>
                             <Redirect to="/404"/>
                         </Route>
                     </Switch>
-                    </div>
+                </div>
             </div>
         }
     </>)

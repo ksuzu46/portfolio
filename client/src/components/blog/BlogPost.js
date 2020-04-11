@@ -6,7 +6,6 @@
 import React from "react";
 import { Button, Container } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
-import ReactMarkdown from "react-markdown/with-html";
 import parse from 'html-react-parser';
 import { animateScroll as scroll } from "react-scroll";
 
@@ -34,10 +33,10 @@ const BlogPost = ({ posts }) =>
                             { post.subtitle }</h3>
                         <div className="blog-post-body">
                             <div className="markdown-body-custom">
-                                {parse(post.body)}
+                                { parse(post.body) }
                             </div>
                             <Button
-                                className='blog-post-btn-full'
+                                className="blog-post-btn-full"
                                 onClick={ () => scroll.scrollToTop() }
                             >
                                 Go Back to Blog

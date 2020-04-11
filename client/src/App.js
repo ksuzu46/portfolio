@@ -26,7 +26,7 @@ export const App = (props) =>
                     <BlogPage ghData={ ghData }/>
                 </Route>
                 <Route path="/contributions" exact>
-                    <ContributionsPage ghData={ ghData } />
+                    <ContributionsPage ghData={ ghData }/>
                 </Route>
                 <Route exact path="/404">
                     <NotFoundPage/>
