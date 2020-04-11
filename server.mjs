@@ -124,13 +124,10 @@ api.post('/mailer', (req, res) =>
 app.use('/api', api);
 
 
-if(process.env.NODE_ENV === "development")
+app.get('*', (req, res) =>
 {
-    app.get('*', (req, res) =>
-    {
         res.sendFile(path.join(publicPath, 'index.html'));
-    });
-}
+});
 
 
 app.listen(port, () => console.log(`Node is running on ${ port }`));
