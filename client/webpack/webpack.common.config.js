@@ -27,7 +27,7 @@ module.exports = {
                 name: '[name].[ext]'
             }
         }, {
-            test: /\.(ttf|eot|svg|gif)(\?[\s\S]+)?$/,
+            test: /\.(ttf|eot|svg|gif|png)(\?[\s\S]+)?$/,
             loader: 'url-loader',
             options: {
                 name: "[name].[ext]"
@@ -49,8 +49,13 @@ module.exports = {
                 toType: 'file'
             },
             {
+                from: 'assets/fonts',
+                to: 'fonts',
+                toType: 'dir'
+            },
+            {
                 from: 'assets/images',
-                to: 'assets/images',
+                to: 'images',
                 toType: 'dir'
             }
         ]),
@@ -94,13 +99,9 @@ module.exports = {
             ],
             links: [
                 {
-                    rel: 'preload',
-                    href: 'https://use.fontawesome.com'
-                },
-                {
                     rel: 'apple-touch-icon',
                     sizes: '120x120',
-                    href: "/assets/images/icons/apple-touch-icon.png"
+                    href: "/images/icons/apple-touch-icon.png"
                 },
                 {
                     rel: 'manifest',

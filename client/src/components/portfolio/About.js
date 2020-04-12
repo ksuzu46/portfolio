@@ -8,6 +8,7 @@ import { Container } from "react-bootstrap";
 import { Element } from "react-scroll";
 import config from "../../../config.js";
 import Icons from "../Icons";
+import ghAvatar from "../../../assets/images/gh_avatar.png"
 
 
 const About = ({ ghData }) =>
@@ -18,7 +19,7 @@ const About = ({ ghData }) =>
             <Container>
                 <div className="about-avatar">
                     <img
-                        src={ ghData.avatarUrl }
+                        src={ ghAvatar }
                         alt=""/>
                 </div>
                 <h1 className="about-heading">{ myName }</h1>

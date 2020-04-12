@@ -1,0 +1,12 @@
+
+.icon-down-big:before { content: '\e800'; } /* '' */
+.icon-globe:before { content: '\e801'; } /* '' */
+.icon-up-big:before { content: '\e803'; } /* '' */
+.icon-github-circled:before { content: '\f09b'; } /* '' */
+.icon-menu:before { content: '\f0c9'; } /* '' */
+.icon-ellipsis-vert:before { content: '\f142'; } /* '' */
+.icon-stackoverflow:before { content: '\f16c'; } /* '' */
+.icon-mail-squared:before { content: '\f199'; } /* '' */
+.icon-gitlab:before { content: '\f296'; } /* '' */
+.icon-github-squared:before { content: '\f300'; } /* '' */
+.icon-linkedin-squared:before { content: '\f30c'; } /* '' */

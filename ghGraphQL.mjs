@@ -16,7 +16,6 @@ const query = gql`
         {
             bio
             bioHTML
-            avatarUrl
             email
             pinnedItems(first: 10) {
                 edges {

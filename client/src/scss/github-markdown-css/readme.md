@@ -20,6 +20,7 @@ Import the `github-markdown.css` file and add a `markdown-body` class to the con
 
 ```html
 ```html
+```html
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="github-markdown.css">
 <style>

@@ -1,0 +1,76 @@
+{
+  "name": "icons",
+  "css_prefix_text": "icon-",
+  "css_use_suffix": false,
+  "hinting": true,
+  "units_per_em": 1000,
+  "ascent": 850,
+  "glyphs": [
+    {
+      "uid": "0ece9a12de796b8411f868d582bee678",
+      "css": "github-squared",
+      "code": 62208,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "1145676a91138011729fa2909997af66",
+      "css": "linkedin-squared",
+      "code": 62220,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "559647a6f430b3aeadbecd67194451dd",
+      "css": "menu",
+      "code": 61641,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "17c21cd98db80e521e573eba247bd69b",
+      "css": "mail-squared",
+      "code": 61849,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "750058837a91edae64b03d60fc7e81a7",
+      "css": "ellipsis-vert",
+      "code": 61762,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "1c4068ed75209e21af36017df8871802",
+      "css": "down-big",
+      "code": 59392,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "95376bf082bfec6ce06ea1cda7bd7ead",
+      "css": "up-big",
+      "code": 59395,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "197375a3cea8cb90b02d06e4ddf1433d",
+      "css": "globe",
+      "code": 59393,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "0f6a2573a7b6df911ed199bb63717e27",
+      "css": "github-circled",
+      "code": 61595,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "e1597911f34fea0a188ae51fe4a2d9a9",
+      "css": "stackoverflow",
+      "code": 61804,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "7cca4643f1e938c673e91c0c78058ddf",
+      "css": "gitlab",
+      "code": 62102,
+      "src": "fontawesome"
+    }
+  ]
+}

@@ -14,13 +14,13 @@ const Icons = ({ ghData, parent, scrollToContact }) =>
                 className={ `${ parent }-social` }
                 href={ linkedinUrl }
                 aria-label="linkedin">
-                <i className="fab fa-3x fa-linkedin"/>
+                <i className="icon-linkedin-squared"/>
             </a>
             <a
                 className={ `${ parent }-social` }
                 href={ ghData.url }
                 aria-label="github">
-                <i className="fab fa-3x fa-github-square"/>
+                <i className="icon-github-squared"/>
             </a>
             <a
                 className={ `${ parent }-social` }
@@ -31,7 +31,7 @@ const Icons = ({ ghData, parent, scrollToContact }) =>
                     smooth: true
                 }) }
                 aria-label="email">
-                <i className="fas fa-3x fa-envelope-square"/>
+                <i className="icon-mail-squared"/>
             </a>
         </Col>
     );

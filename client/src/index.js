@@ -6,7 +6,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import App from "./App"
-import "./styles/scss/styles.scss";
+import "./scss/styles.scss";
 
 
 if(process.env.NODE_ENV === 'production')

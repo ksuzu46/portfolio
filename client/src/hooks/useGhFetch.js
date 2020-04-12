@@ -30,7 +30,6 @@ export const useGhFetch = () =>
                     const tmp = await axios.get("/api/gh", requestConfig());
                     console.log(tmp.data);
                     let data = {
-                        avatarUrl: "",
                         bio: "",
                         bioHTML: "",
                         blogEntries: [],
