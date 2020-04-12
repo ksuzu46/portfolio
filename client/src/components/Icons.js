@@ -9,7 +9,7 @@ const { linkedinUrl, myGmail } = config;
 const Icons = ({ ghData, parent, scrollToContact }) =>
 {
     return (
-        <Col xl mb={ 5 } mb-lg={ 0 } className={ `${ parent }-icons` }>
+        <div className={ `${ parent }-icons` }>
             <a
                 className={ `${ parent }-social` }
                 href={ linkedinUrl }
@@ -26,14 +26,14 @@ const Icons = ({ ghData, parent, scrollToContact }) =>
                 className={ `${ parent }-social` }
                 onClick={ () => scroller.scrollTo('contact', {
                     duration: 750,
-                    offset: -140,
+                    offset: -80,
                     delay: 0,
                     smooth: true
                 }) }
                 aria-label="email">
                 <i className="icon-mail-squared"/>
             </a>
-        </Col>
+        </div>
     );
 }
 

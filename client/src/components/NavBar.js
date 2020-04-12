@@ -38,9 +38,9 @@ const NavBar = ({ children }) =>
                             <Navbar.Toggle
                                 onClick={ () => setExpanded(
                                     expanded ? false : "expanded") }
-                                className="navbar-toggler rounded"
+                                className="navbar-toggler"
                             >
-                                <i className="fas fa-bars"/>
+                                <i className="icon-ellipsis-vert"/>
                             </Navbar.Toggle>
                             <Navbar.Collapse
                                 onClick={ () => setExpanded(false) }
@@ -76,7 +76,7 @@ const NavBar = ({ children }) =>
                                 expanded ? false : "expanded") }
                             className="navbar-toggler rounded"
                         >
-                            <i className="fas fa-bars"/>
+                            <i className="icon-ellipsis-vert"/>
                         </Navbar.Toggle>
                         <Navbar.Collapse
                             onClick={ () => setExpanded(false) }

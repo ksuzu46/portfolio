@@ -53,13 +53,15 @@ const Contact = ({ emailStatus, sendEmail }) =>
     }
     
     return (
-        <Element id="contact" className="contact">
+        <div className="contact">
             <Container>
                 <Form
                     className="contact-form"
                     onSubmit={ onSubmit }
                 >
-                    <h3 className="contact-heading">Contact</h3>
+                    <Element name="contact">
+                        <h3 className="contact-heading">Contact</h3>
+                    </Element>
                     <ContactForm
                         setFirstName={ setFirstName }
                         setLastName={ setLastName }
@@ -75,7 +77,7 @@ const Contact = ({ emailStatus, sendEmail }) =>
                     </Button>
                 </Form>
             </Container>
-        </Element>
+        </div>
     )
 };
 

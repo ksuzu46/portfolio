@@ -24,7 +24,7 @@ const BlogPage = ({ ghData }) =>
             ghData.loading ? <Loader/> :
             ghData.fetched &&
             <div className="blog">
-                <h2 className="blog-heading"> My Blog </h2>
+                <h2 className="blog-heading"> Blog </h2>
                 {
                     ghData.data.blogEntries.map((entry, index) =>
                     {
@@ -36,7 +36,7 @@ const BlogPage = ({ ghData }) =>
                                     to={ `${ url }/${ entry.oid }` }
                                     onClick={ () => scroller.scrollTo('post', {
                                         duration: 750,
-                                        offset: -140,
+                                        offset: -80,
                                         delay: 50,
                                         smooth: true
                                     }) }
@@ -60,23 +60,21 @@ const BlogPage = ({ ghData }) =>
                         )
                     })
                 }
-                <div id="post">
-                    <Switch>
-                        <Route exact path={ path }>
-                            <Container>
-                                <h4 className="blog-post-heading">Please select
-                                    an entry</h4>
-                            </Container>
-                        </Route>
-                        <Route exact path={ `${ path }/:id` }>
-                            <BlogPost
-                                posts={ ghData.data.blogEntries }/>
-                        </Route>
-                        <Route>
-                            <Redirect to="/404"/>
-                        </Route>
-                    </Switch>
-                </div>
+                <Switch>
+                    <Route exact path={ path }>
+                        <Container>
+                            <h3 id='post' className="blog-post-heading">Please select
+                                an entry</h3>
+                        </Container>
+                    </Route>
+                    <Route exact path={ `${ path }/:id` }>
+                        <BlogPost
+                            posts={ ghData.data.blogEntries }/>
+                    </Route>
+                    <Route>
+                        <Redirect to="/404"/>
+                    </Route>
+                </Switch>
             </div>
         }
     </>)

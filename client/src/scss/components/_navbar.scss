@@ -6,9 +6,9 @@
 
 .navbar {
   @include media-breakpoint-down(sm) {
-    padding: 1.3rem;
+    padding: 1rem;
   }
-  padding: 1rem 0;
+  padding: $m-size;
   background-color: $secondary;
   font-family: $headings-font-family;
   font-weight: $headings-font-weight;
@@ -31,52 +31,51 @@
   }
 
   .navbar-nav {
-    margin-top: 1rem;
+    padding: 1rem;
+    @include media-breakpoint-down(sm) {
+      padding: 0;
+    }
     color: $primary;
-
+    &:active &:focus {
+      color: $focus;
+      outline: none;
+      box-shadow: none;
+    }
     .nav-item {
-      & .active {
+      & .active, &:active &:focus {
         color: $focus;
-      }
-
-      &:hover {
-        color: darken($primary, 10%);
-      }
-
-      &:focus {
         outline: none;
         box-shadow: none;
       }
     }
-
     .nav-link {
-      @extend .nav-item;
+      text-align: center;
       color: $primary;
       cursor: pointer;
-
+      &:hover {
+        color: darken($primary, 10%);
+      }
     }
   }
 
   .navbar-toggler {
-    padding: 0.6rem 1.5rem;
-    background: $primary;
-    color: $secondary;
+    font-size: 1.5rem;
+    color: $primary;
     font-weight: bold;
-
     &:active,
     &:focus {
+      color: $focus;
       outline: none;
       box-shadow: none !important;
     }
-
-    &:hover {
-      background: #e1b2c4;
+    i {
+      background: none;
     }
   }
 
+
   @include media-breakpoint-up(lg) {
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
+    padding: 1.5rem 0;
     transition: padding-top 0.3s, padding-bottom 0.3s;
 
     .navbar-brand {

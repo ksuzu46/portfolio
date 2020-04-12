@@ -4,7 +4,7 @@
  */
 
 import React, { useState } from "react";
-import { Button, Card, Col } from "react-bootstrap";
+import { Button, Card, Col, Container } from "react-bootstrap";
 import TextTruncate from "react-text-truncate";
 
 
@@ -27,7 +27,7 @@ const ProjectsItem = ({ node, ind }) =>
                                 href={ homepageUrl }
                                 aria-label="got to project's homepage"
                                 target="homepage">
-                                <i className="fas fa-2x fa-home"/>
+                                <i className="icon-globe"/>
                             </a>
                         }
                         {
@@ -35,7 +35,7 @@ const ProjectsItem = ({ node, ind }) =>
                                 href={ url }
                                 aria-label="see project on github"
                                 target="github">
-                                <i className="fab fa-2x fa-github"/>
+                                <i className="icon-github-circled"/>
                             </a>
                         }
                     </div>

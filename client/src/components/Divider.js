@@ -24,12 +24,12 @@ const Divider = ({ children, index }) =>
                         to={ child }
                         spy={ true }
                         smooth={ true }
-                        offset={ -140 }
+                        offset={ -80 }
                         duration={ 500 }
                         isDynamic={ true }>
                         <i className={
-                            isBottom ? "fas fa-angle-double-up"
-                                     : "fas fa-angle-down"
+                            isBottom ? "icon-up-big"
+                                     : "icon-down-big"
                         }/>
                     </Link>
                 </div>

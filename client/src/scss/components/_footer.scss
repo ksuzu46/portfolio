@@ -1,36 +1,38 @@
 .footer {
-  background-color: $back-ground;
-  @include media-breakpoint-down(sm) {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+    @include media-breakpoint-down(sm) {
     padding-bottom: 1.5rem;
   }
 }
 
-.footer-icons {
-  padding: 0 0.5rem;
-  display: inline-flex;
-  justify-content: right;
+  .footer-icons {
+    padding: 0.5rem 0.25rem;
+    @include media-breakpoint-down(sm) {
+      padding: 0 0.2rem;
+    }
 
-  @include media-breakpoint-down(sm) {
-    padding: 0 0.2rem;
+    .footer-social {
+      font-size: 3rem;
+      color: $primary;
+      @include media-breakpoint-down(sm) {
+        font-size: 2rem;
+      }
+
+      &:focus {
+        outline: 0;
+        box-shadow: none !important;
+      }
+      &:hover {
+        color: $secondary;
+        cursor: pointer;
+      }
+    }
   }
-}
 
-.footer-social {
-  @extend .footer-icons;
-  color: $primary;
 
-  &:active,
-  &:focus {
-    outline: none;
+  .copyright {
+    color: $primary;
   }
-
-  &:hover {
-    color: $secondary;
-  }
-}
-
-.copyright {
-  padding: 0.5rem 0.5rem;
-  text-align: right;
-  color: $primary;
-}

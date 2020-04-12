@@ -42,13 +42,16 @@ const NavBarItem = ({ child, setExpanded, path }) =>
         <Link
             to={ child === 'home' ? '/' : to }
             className="nav-link"
-            onClick={ () => setExpanded }>
+            onClick={ () => {
+                scroll.scrollToTop();
+                setExpanded()
+            } }>
             { capitalize(child) }
         </Link>
     )
     
     return (
-        <Nav.Item className="mx-0 mx-lg-1 py-3 px-0 px-lg-3 rounded">
+        <Nav.Item className="nav-item">
             {
                 path === '/' ? (
                     child === 'blog' ?

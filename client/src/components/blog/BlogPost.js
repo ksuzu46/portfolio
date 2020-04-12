@@ -29,18 +29,20 @@ const BlogPost = ({ posts }) =>
             {
                 post ? (
                     <Container>
-                        <h3 className="blog-post-heading">
+                        <h3 id='post' className="blog-post-heading">
                             { post.subtitle }</h3>
                         <div className="blog-post-body">
                             <div className="markdown-body-custom">
                                 { parse(post.body) }
                             </div>
+                            <div className='blog-post-button-wrapper'>
                             <Button
                                 className="blog-post-btn-full"
                                 onClick={ () => scroll.scrollToTop() }
                             >
-                                Go Back to Blog
+                                Go to Blog Top
                             </Button>
+                            </div>
                         </div>
                     </Container>
                 ) : <Container className="notfound">

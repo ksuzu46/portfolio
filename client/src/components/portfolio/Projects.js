@@ -9,16 +9,18 @@ import ProjectsItem from "./ProjectsItem";
 
 
 const Projects = ({ ghData }) => (
-    <Element name="projects" className="projects">
+    <div className="projects">
         <Container>
-            <h3 className="projects-heading">Projects</h3>
+            <Element name="projects">
+                <h3 className="projects-heading">Projects</h3>
+            </Element>
             <Row>{
                 ghData.projects.map((node, ind) =>
                     <ProjectsItem key={ ind } node={ node } ind={ ind }/>
                 )
             }</Row>
         </Container>
-    </Element>
+    </div>
 );
 
 export default Projects;

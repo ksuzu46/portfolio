@@ -5,6 +5,12 @@
 
 .projects {
   @extend .section;
+  @include media-breakpoint-down(sm) {
+    .container {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
 }
 
 .projects-heading {
@@ -39,21 +45,17 @@
 
 
 .projects-card-header {
-  @extend .projects-card;
   border-style: solid;
   border-radius: $border-radius-lg $border-radius-lg 0 0;
   border-width: $border-width $border-width 0 $border-width;
   border-color: lighten($secondary, 5%);
   box-shadow: none;
   display: flex;
-  padding: 2rem;
+  padding: 1rem;
   justify-content: center;
   align-items: center;
   height: 5rem;
   background-color: $secondary;
-  @include media-breakpoint-down(sm) {
-    padding: 1rem;
-  }
 
 
   .projects-card-title {
@@ -61,15 +63,19 @@
     padding-top: 0.5rem;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
 
     h4 {
+      @include media-breakpoint-down(sm) {
+        font-size: 1.3rem;
+      }
       margin-right: 0.5rem;
       text-align: center;
       color: $primary;
     }
 
     a {
+      font-size: 1.5rem;
       margin-left: 0.5rem;
       color: $primary;
 
@@ -96,6 +102,10 @@
   display: flex;
   flex-direction: column;
   padding: 1rem 2rem;
+  @include media-breakpoint-down(sm) {
+    margin-bottom: 0.5rem;
+    padding: 0.5rem 1rem;
+  }
 }
 
 .projects-card-description-text {

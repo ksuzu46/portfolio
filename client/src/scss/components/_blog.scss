@@ -3,19 +3,21 @@
  * @author [Keisuke Suzuki](https://github.com/Ks5810)
  */
 
-.blog {
+.blog, .contributions {
   @extend .section;
+  @include media-breakpoint-down(sm) {
+    padding: $s-size 0;
+  }
 }
 
 .blog-heading {
   color: $primary;
   text-align: center;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
 }
 
 .blog-post {
   padding: 2rem 0;
+  margin-top: 1rem;
   @include media-breakpoint-down(sm) {
     padding: 1rem 0;
   }
@@ -25,34 +27,40 @@
 
 }
 
-.blog-post-button-full {
-  margin-top: 3rem;
+.blog-post-button-wrapper {
+  text-align: center;
+  padding: 1rem 0;
   width: 100%;
+  .blog-post-button-full {
+    width: 100%;
+  }
 }
 
+
 .blog-post-heading {
-  @extend .blog-post;
   text-align: center;
   color: $primary;
 }
 
-.blog-post-body {
+.blog-post-body, .contributions-body {
   @extend .blog-post;
-  padding: 2rem;
+  padding: 2rem 0;
   @include media-breakpoint-down(sm) {
-    padding: 2rem 0;
+    padding: 1rem 0;
   }
 }
 
-.contributions {
-  @extend .section;
-}
-.contributions-body {
-  padding-top: 2rem;
-}
 
 .markdown-body-custom {
   @extend .markdown-body;
+  a {
+    font-weight: bolder;
+    color: $link-color;
+    &:hover {
+      color: darken($link-color, 10%);
+      text-decoration: none;
+    }
+  }
   color: $primary;
   font-family: $font-family-sans-serif;
 
@@ -61,25 +69,21 @@
     box-shadow: none;
     outline: 0;
     thead {
-      border-width: 0;
-      border-width: 0;
-      border: none;
+      border: 0 none;
       tr{
         th {
-          border-width: 0;
-          border: none;
-          background-color: $back-ground-list;
+          border: 0 none;
+          background-color: lighten($back-ground-list, 10%);
           text-align: center;
-          padding: 1.5rem;
+          padding: 1rem 0.5rem;
           @include media-breakpoint-down(sm) {
-            padding: 0.5rem 0;
+            padding: 0.5rem;
           }
         }
         border-width: 0;
         border: none;
         background-color: $back-ground-list;
         text-align: center;
-        padding: 1.5rem;
       }
     }
 
@@ -87,6 +91,7 @@
 
     tbody {
       tr {
+        padding: 1rem 0.5rem;
         align-items: center;
         border-width: 0;
         background-color: $back-ground-list;
@@ -97,15 +102,11 @@
 
         td {
           @include media-breakpoint-down(sm) {
-            padding: 0.5rem 0;
+            padding: 0.5rem;
           }
           border-width: 0;
           text-align: center;
-          padding: 2rem;
-          a {
-            font-weight: bolder;
-            color: $link-color;
-          }
+          padding: 1rem 0.5rem;
         }
       }
     }
@@ -129,7 +130,7 @@
     color: lighten(#979dd7, 10%);
   }
   pre code {
-    color: $primary
+    color: $primary;
   }
 
   .highlight {
@@ -137,6 +138,7 @@
       color: $primary;
       background-color: darken($back-ground, 5%);
       border-radius: $border-radius;
+
     }
 
     .pl-c /* comment, punctuation.definition.comment, string.comment */

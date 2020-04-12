@@ -42,7 +42,7 @@ const PortfolioPage = ({ ghData }) =>
                                            </div>
                                        ))
                                    }
-                                   <Footer ghData={ ghData }/>
+                                   <Footer ghData={ ghData.data }/>
                                </>
             }
         
