@@ -10,13 +10,17 @@
   }
 }
 
-.blog-heading {
+.blog-heading, .contributions-heading {
   color: $primary;
   text-align: center;
+  padding: 2rem 0;
+  @include media-breakpoint-down(sm) {
+    padding: 1rem 0;
+  }
 }
 
 .blog-post {
-  padding: 2rem 0;
+  padding: 2rem 5rem;
   margin-top: 1rem;
   @include media-breakpoint-down(sm) {
     padding: 1rem 0;
@@ -24,41 +28,47 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-
 }
 
-.blog-post-button-wrapper {
-  text-align: center;
-  padding: 1rem 0;
-  width: 100%;
-  .blog-post-button-full {
-    width: 100%;
+.blog-post-button-full {
+  margin-top: 3rem;
+  @include media-breakpoint-down(sm) {
+    margin-top: 1rem;
   }
-}
-
-
-.blog-post-heading {
+  font-weight: bold;
   text-align: center;
-  color: $primary;
+  width: 100%;
 }
 
 .blog-post-body, .contributions-body {
-  @extend .blog-post;
-  padding: 2rem 0;
+  padding: 1rem 5rem;
   @include media-breakpoint-down(sm) {
     padding: 1rem 0;
+  }
+}
+
+.blog-post-heading {
+  padding: 2rem 5rem;
+  font-style: italic;
+  color: $primary;
+  @include media-breakpoint-down(sm) {
+    padding: 0.5rem 0;
   }
 }
 
 
 .markdown-body-custom {
   @extend .markdown-body;
+  font-size: 1.1rem;
+  @include media-breakpoint-up(md){
+    font-size: 1.5rem;
+  }
   a {
-    font-weight: bolder;
+    //font-weight: bolder;
+    text-decoration: underline;
     color: $link-color;
     &:hover {
       color: darken($link-color, 10%);
-      text-decoration: none;
     }
   }
   color: $primary;
@@ -73,7 +83,7 @@
       tr{
         th {
           border: 0 none;
-          background-color: lighten($back-ground-list, 10%);
+          background-color: lighten($back-ground-list, 5%);
           text-align: center;
           padding: 1rem 0.5rem;
           @include media-breakpoint-down(sm) {
@@ -96,8 +106,8 @@
         border-width: 0;
         background-color: $back-ground-list;
         &:nth-child(2n) {
-          color: $white;
-          background-color: lighten($back-ground-list, 10%);
+          color: lighten($primary, 5%);
+          background-color: lighten($back-ground-list, 5%);
         }
 
         td {
@@ -127,7 +137,7 @@
   }
 
   blockquote {
-    color: lighten(#979dd7, 10%);
+    color: lighten($primary, 10%);
   }
   pre code {
     color: $primary;

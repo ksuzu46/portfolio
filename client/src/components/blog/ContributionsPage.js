@@ -20,8 +20,7 @@ const ContributionsPage = ({ ghData }) =>
             ghData.fetched &&
             <div className="contributions">
                 <Container>
-                    <h3 className="blog-post-heading">
-                        Contributions</h3>
+                    <h2 className="contributions-heading"> Contributions</h2>
                     <div className="contributions-body">
                         <div className="markdown-body-custom">
                             { parse(ghData.data.contributions.body) }

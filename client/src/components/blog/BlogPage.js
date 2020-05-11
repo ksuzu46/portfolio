@@ -5,13 +5,13 @@
 
 import React from "react";
 import NavBar from "../NavBar";
-import { Container } from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
 import Loader from "../Loader";
 import BlogPost from "./BlogPost";
 import { Link, Redirect, Route, Switch, useRouteMatch } from "react-router-dom";
 import TextTruncate from "react-text-truncate";
 import { stripHtml } from "../../lib";
-import { scroller } from "react-scroll";
+import { animateScroll as scroll, scroller } from "react-scroll";
 
 
 const children = [ "home", "blog", "contributions" ];

@@ -29,21 +29,20 @@ const BlogPost = ({ posts }) =>
             {
                 post ? (
                     <Container>
-                        <h3 id='post' className="blog-post-heading">
+                        <h3 id="post" className="blog-post-heading">
                             { post.subtitle }</h3>
                         <div className="blog-post-body">
                             <div className="markdown-body-custom">
                                 { parse(post.body) }
-                            </div>
-                            <div className='blog-post-button-wrapper'>
-                            <Button
-                                className="blog-post-btn-full"
-                                onClick={ () => scroll.scrollToTop() }
-                            >
-                                Go to Blog Top
-                            </Button>
+                                <Button
+                                    className="blog-post-button-full"
+                                    onClick={ () => scroll.scrollToTop() }
+                                >
+                                    Go to Blog Top
+                                </Button>
                             </div>
                         </div>
+                    
                     </Container>
                 ) : <Container className="notfound">
                     <h1>Oops!</h1>
@@ -54,6 +53,7 @@ const BlogPost = ({ posts }) =>
                     </Link>
                 </Container>
             }
+        
         </div>
     )
 };
