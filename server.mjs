@@ -50,26 +50,25 @@ api.get('/', (req, res) =>
 // Cache data until next request
 api.get('/gh', async(req, res) =>
 {
-    // const cachedBody = memCache.get('ghData');
-    // if(cachedBody)
-    // {
-    //     res.send(cachedBody);
-    // }
-    // try
+    const cachedBody = memCache.get('ghData');
+    if(cachedBody)
+    {
+        res.send(cachedBody);
+    }
+    try
     {
         const fetchedData = await fetchGhData();
         const newData = await convertToGFM(fetchedData);
+        if(!cachedBody)
+        {
+            res.send(newData);
+        }
+        await memCache.put('ghData', newData);
+    } catch(error)
+    {
+        res.send(error);
+        memCache.del('ghData');
     }
-    //     if(!cachedBody)
-    //     {
-    //         res.send(newData);
-    //     }
-    //     await memCache.put('ghData', newData);
-    // } catch(error)
-    // {
-    //     res.send(error);
-    //     memCache.del('ghData');
-    // }
 });
 
 

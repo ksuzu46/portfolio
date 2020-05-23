@@ -89,7 +89,10 @@ const fetchGhData = async() =>
         const res = await axios.post(gqlUrl,
             { query: print(query) },
             {
-                headers: { 'Authorization': `Bearer ${ process.env.GH_TOKEN }` }
+                headers: {
+                    'Content-Type': 'application/json',
+                    "Access-Control-Allow-Origin": "*",
+                    'Authorization': `Bearer ${ process.env.GH_TOKEN }` }
             });
         console.log(res.data);
         const { user, repository } = res.data.data;

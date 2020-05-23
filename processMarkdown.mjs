@@ -34,6 +34,8 @@ const renderGfm = async (text) =>
             const res = await axios.post(gfmUrl, { text: body, mode: 'markdown'},
                 {
                     headers: {
+                        'Content-Type': 'application/json',
+                        "Access-Control-Allow-Origin": "*",
                         'Authorization': `Bearer ${ process.env.GH_TOKEN }`
                     }
                 }
