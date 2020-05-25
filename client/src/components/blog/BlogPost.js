@@ -17,7 +17,7 @@ const BlogPost = ({ posts }) =>
     {
         const index = posts.findIndex(post =>
         {
-            return post.oid === id;
+            return post.name === id;
         });
         
         return posts[index] ? posts[index].text : null;

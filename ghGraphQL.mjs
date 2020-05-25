@@ -64,23 +64,32 @@ const query = gql`
 
 const convertToGFM = async(data) =>
 {
-    let newData = new Array(data.length);
     const newContributions = await renderGfm(data.contributions);
     try
     {
         const { blogEntries } = data;
+        let newData = new Array(blogEntries.length);
         for(let i = 0; i < blogEntries.length; i++)
         {
             const { oid, name, text } = blogEntries[i];
             const processed = await renderGfm(text);
-            newData[i] = ({ oid, name, text: processed });
+            const dateRe = /\d{4}([.\-/ ])\d{2}-\d{2}/
+            const dateRes = dateRe.exec(name) || [];
+            const date = dateRes[0] ? dateRes[0] : "";
+            newData[i] = ({ oid, name: date, text: processed });
         }
-        return { ...data, blogEntries: newData, contributions: newContributions,  };
+        return {
+            ...data,
+            blogEntries: newData.sort((lhs, rhs) => {
+                return lhs.name > rhs.name ? -1 : lhs.name < rhs.name ? 1 : 0;
+            }),
+            contributions: newContributions,  };
     } catch(error)
     {
         return error;
     }
 }
+
 
 const fetchGhData = async() =>
 {

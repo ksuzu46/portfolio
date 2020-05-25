@@ -12,10 +12,29 @@
 
 .blog-heading, .contributions-heading {
   color: $primary;
-  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 3rem;
   padding: 2rem 0;
   @include media-breakpoint-down(sm) {
     padding: 1rem 0;
+    margin: 0;
+  }
+}
+
+.blog-heading-text {
+  padding-left: 1rem;
+  text-align: right;
+}
+
+.blog-heading-dropdown {
+  padding-top: 1rem;
+  height: 80%;
+  @include media-breakpoint-down(sm) {
+    width: 100%;
+    text-align: right;
+    padding-top: 0.5rem;
   }
 }
 
