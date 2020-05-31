@@ -1,0 +1,13 @@
+#!/bin/bash
+
+## A script to renew letsencrypt. Amazon Linux does not have
+## certbot as a builtin command
+
+if [ "$EUID" -ne 0 ]
+  then echo "Please run as root"
+  exit
+fi
+
+yum install certbot
+yum install python-certbot-nginx
+certbot renew
