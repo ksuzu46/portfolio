@@ -20,7 +20,8 @@ const About = ({ ghData }) =>
                 <div className="about-avatar">
                     <img
                         src={ ghAvatar }
-                        alt=""/>
+                        alt=""
+                    />
                 </div>
                 <h1 className="about-heading">{ myName }</h1>
                 <div className="about-where">{ where }</div>
