@@ -8,11 +8,10 @@ import { Button, Card, Col, Container } from "react-bootstrap";
 import TextTruncate from "react-text-truncate";
 
 
-const ProjectsItem = ({ node, ind }) =>
+const ProjectsItem = ({ node, ind, isEnglish }) =>
 {
     const [ expanded, setExpanded ] = useState(false);
     const { name, homepageUrl, description, url, primaryLanguage } = node;
-    console.log(primaryLanguage.name);
     return (
         <Col
             lg="auto" md="auto" sm="auto"
@@ -52,7 +51,8 @@ const ProjectsItem = ({ node, ind }) =>
                         className="projects-card-description-button"
                         onClick={ () => setExpanded(!expanded) }
                     >
-                        { expanded ? "Read Less" : "Read More" }
+                        { expanded ? isEnglish ? "Read Less" : "閉じる"
+                            :　isEnglish ? "Read More" : "もっと読む" }
                     </Button>
                 </div>
             </Card>

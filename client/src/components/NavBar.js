@@ -4,7 +4,7 @@
  */
 
 import React, { useState } from "react";
-import { Container, Nav, Navbar } from "react-bootstrap";
+import { Button, Container, Nav, Navbar, Dropdown } from "react-bootstrap";
 import { animateScroll as scroll } from "react-scroll";
 import config from "../../config";
 import NavBarItem from "./NavBarItem";
@@ -13,10 +13,12 @@ import { useRouteMatch } from "react-router";
 
 const { myName } = config;
 
-const NavBar = ({ children }) =>
+const NavBar = ({ children, language, onLangChange }) =>
 {
     const [ expanded, setExpanded ] = useState(false);
     const { path } = useRouteMatch();
+    const isEnglish = language === 'en';
+
     const onClick = () =>
     {
         setExpanded(false);
@@ -56,6 +58,16 @@ const NavBar = ({ children }) =>
                                                     false) }
                                             />
                                         )
+                                    }
+                                    {
+                                        <Nav.Item className="nav-item">
+                                            <a
+                                            onClick={() =>
+                                                onLangChange(isEnglish ? 'jp' : 'en')}
+                                            className='nav-link'>
+                                                {isEnglish ? '日本語' : 'English'}
+                                            </a>
+                                        </Nav.Item>
                                     }
                                 </Nav>
                             </Navbar.Collapse>

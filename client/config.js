@@ -1,8 +1,3 @@
-/**
- * config.mjs
- * @author [Keisuke Suzuki](https://github.com/Ks5810)
- */
-
 const config =
     {
         myName: 'Keisuke Suzuki',

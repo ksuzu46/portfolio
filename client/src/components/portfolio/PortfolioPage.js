@@ -3,7 +3,7 @@
  * @author [Keisuke Suzuki](https://github.com/Ks5810)
  */
 
-import React from "react";
+import React, {useState} from "react";
 import Projects from "./Projects";
 import About from "./About";
 import NavBar from "../NavBar";
@@ -17,13 +17,19 @@ import Divider from "../Divider";
 // Navbar size setting in src/styles/scss/base/_variables.scss in REM
 const childComponents = [About, Projects, Contact];
 const children = ["about", "projects", "contact", "blog"];
+const jpChildren = ['ホーム', 'プロジェクト', 'コンタクト', 'ブログ(英語)']
 
 
 const PortfolioPage = ({ghData}) => {
     const {emailStatus, sendEmail} = useEmail();
+    const [ language, setLanguage ] = useState('en');
+
     return (
         <>
-            <NavBar children={children}/>
+            <NavBar
+                children={language === 'en' ? children : jpChildren}
+                language={language}
+                onLangChange={lang => setLanguage(lang)}/>
             {
                 ghData.loading ? <Loader/> :
                     ghData.fetched &&
@@ -35,6 +41,7 @@ const PortfolioPage = ({ghData}) => {
                                         ghData={ghData.data}
                                         emailStatus={emailStatus}
                                         sendEmail={data => sendEmail(data)}
+                                        language={language}
                                     />
                                     <Divider
                                         children={children}

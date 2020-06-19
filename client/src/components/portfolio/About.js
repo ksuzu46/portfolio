@@ -7,13 +7,13 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import { Element } from "react-scroll";
 import config from "../../../config.js";
+import jpConfig from "../../../jpConfig";
 import Icons from "../Icons";
 import ghAvatar from "../../../assets/images/gh_avatar.png"
 
 
-const About = ({ ghData }) =>
+const About = ({ ghData, language }) =>
 {
-    const { myName, aboutMe, linkedinUrl, myGmail, where } = config;
     return (
         <Element name="about" className="about">
             <Container>
@@ -23,13 +23,13 @@ const About = ({ ghData }) =>
                         alt=""
                     />
                 </div>
-                <h1 className="about-heading">{ myName }</h1>
-                <div className="about-where">{ where }</div>
+                <h1 className="about-heading">{ language === 'en' ? config.myName : jpConfig.myName }</h1>
+                <div className="about-where">{ language === 'en' ? config.where : jpConfig.where }</div>
                 <Icons
                     parent="about"
                     ghData={ ghData }
                 />
-                <p className="about-text">{ aboutMe }</p>
+                <p className="about-text">{ language === 'en' ? config.aboutMe : jpConfig.aboutMe }</p>
             </Container>
         </Element>
     )

@@ -15,7 +15,6 @@ import ContributionsPage from "./components/blog/ContributionsPage";
 export const App = (props) =>
 {
     const ghData = useGhFetch();
-    console.log(ghData);
     return (
         <div className="page">
             <Switch>

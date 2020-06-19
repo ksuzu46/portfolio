@@ -9,9 +9,11 @@ import { capitalize } from "../../lib";
 
 
 const inputSections = [ 'firstName', 'lastName', 'email', 'message' ];
+const jpInputSections = ['名', '姓', 'Eメール', 'メッセージ']
 
 export const ContactForm = (props) =>
 {
+    const { isEnglish } = props;
     const onChange = ((section, e) =>
     {
         switch(section)
@@ -30,7 +32,7 @@ export const ContactForm = (props) =>
     return (
         <>
             {
-                inputSections.map((section) =>
+                isEnglish ? inputSections.map((section) =>
                     <FormGroup
                         key={ section }
                         controlId={ `${ section }Validation` }
@@ -59,6 +61,36 @@ export const ContactForm = (props) =>
                                   Your message is empty
                               </FormControl.Feedback>
                           </> }
+                    </FormGroup>
+                ): jpInputSections.map((section) =>
+                    <FormGroup
+                        key={ section }
+                        controlId={ `${ section }Validation` }
+                        className="contact-form-group">
+                        { section !== 'message' ? <>
+                            <FormControl
+                                required
+                                className="contact-form-control"
+                                onChange={ e => onChange(section, e) }
+                                type={ section === 'Eメール' ? 'email' : 'text' }
+                                placeholder={ section }
+                            />
+                            <FormControl.Feedback type="invalid">
+                                { `${ section }を入力してください` }
+                            </FormControl.Feedback>
+                        </> : <>
+                            <FormControl
+                                required
+                                className="contact-form-control
+                                             contact-form-control-textarea"
+                                onChange={ e => onChange(section, e) }
+                                as="textarea"
+                                placeholder="メッセージを入力してください"
+                            />
+                            <FormControl.Feedback type="invalid">
+                                メッセージを入力してください
+                            </FormControl.Feedback>
+                        </> }
                     </FormGroup>
                 )
             }
