@@ -36,7 +36,7 @@ const jpConfig =
                 特定の種の樹木の数、区ごと、または任意の座標から指定された距離内にある樹木などに
                 関する情報を表示できます。また、特定の種、例えば
                 「oak」と入力すると、「pin oak」、「sawtooth oak」、「scarlet oak」など、
-                市内に生息する名前に「oak」を含む種の合計なども出力可能です。`,
+                市内に生息する名前に「oak」を含む種の合計なども出力できます。`,
                 homepageUrl: ``,
                 url: `https://github.com/Ks5810/nyc-trees`
             }, {
