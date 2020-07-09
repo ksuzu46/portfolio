@@ -7,6 +7,7 @@ import React from "react";
 import { Button, Container } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 import parse from 'html-react-parser';
+import Moment from 'react-moment';
 import { animateScroll as scroll } from "react-scroll";
 
 
@@ -29,8 +30,13 @@ const BlogPost = ({ posts }) =>
             {
                 post ? (
                     <Container>
-                        <h3 id="post" className="blog-post-heading">
-                            { post.subtitle }</h3>
+                        <div id="post" className="blog-post-heading-wrapper">
+                            <h3 className="blog-post-heading"> { post.subtitle }
+                            </h3>
+                            <h6 className="blog-post-heading-date">
+                                    <Moment format="MM/DD/YYYY">{id}</Moment>
+                            </h6>
+                        </div>
                         <div className="blog-post-body">
                             <div className="markdown-body-custom">
                                 { parse(post.body) }

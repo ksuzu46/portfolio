@@ -54,6 +54,7 @@ const NavBar = ({ children, language, onLangChange }) =>
                                                 key={ child }
                                                 child={ child }
                                                 path={ path }
+                                                isEnglish={isEnglish}
                                                 setExpanded={ () => setExpanded(
                                                     false) }
                                             />

@@ -12,6 +12,7 @@ import {Link, Redirect, Route, Switch, useRouteMatch} from "react-router-dom";
 import TextTruncate from "react-text-truncate";
 import {stripHtml} from "../../lib";
 import {scroller} from "react-scroll";
+import Moment from "react-moment";
 
 const children = ["home", "blog", "contributions"];
 const statuses = ["Date (new)", "Date (old)", "Title"];
@@ -98,9 +99,14 @@ const BlogPage = ({ghData}) => {
                                             <div className="blog-card">
                                                 <div
                                                     className="article-details">
+                                                    <div className="article-details-wrapper">
                                                     <h3 className="post-title">
                                                         {entry.text.subtitle}
                                                     </h3>
+                                                    <h6 className="post-date">
+                                                        <Moment format="D MMM YYYY">{entry.name}</Moment>
+                                                    </h6>
+                                                    </div>
                                                     <div
                                                         className="post-description">
                                                         <TextTruncate
