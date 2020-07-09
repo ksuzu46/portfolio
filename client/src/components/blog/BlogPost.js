@@ -34,7 +34,7 @@ const BlogPost = ({ posts }) =>
                             <h3 className="blog-post-heading"> { post.subtitle }
                             </h3>
                             <h6 className="blog-post-heading-date">
-                                    <Moment format="MM/DD/YYYY">{id}</Moment>
+                                    <Moment format="D MMM YYYY">{id}</Moment>
                             </h6>
                         </div>
                         <div className="blog-post-body">
