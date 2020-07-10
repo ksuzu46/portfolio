@@ -2,7 +2,7 @@
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   line-height: 1.5;
-  color: #24292e;
+  color: $primary;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
   font-size: 16px;
   line-height: 1.5;
@@ -28,7 +28,7 @@
     margin-top: 0;
     margin-bottom: 0;
     .octicon-link {
-      color: #1b1f23;
+      color: $octicon-link;
       vertical-align: middle;
       visibility: hidden;
     }
@@ -61,7 +61,7 @@
 
   a {
     background-color: initial;
-    color: #0366d6;
+    color: $anchor;
     text-decoration: none;
 
     &:active {
@@ -129,7 +129,7 @@
     overflow: hidden;
     background: transparent;
     border: 0;
-    border-bottom: 1px solid #dfe2e5;
+    border-bottom: 1px solid $border-color;
 
     &:after {
       display: table;
@@ -161,12 +161,12 @@
     padding: 3px 5px;
     font: 11px SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
     line-height: 10px;
-    color: #444d56;
+    color: $kbd;
     vertical-align: middle;
-    background-color: #fafbfc;
-    border: 1px solid #d1d5da;
+    background-color: $kbd-bg;
+    border: 1px solid $border-color;
     border-radius: 3px;
-    box-shadow: inset 0 -1px 0 #d1d5da;
+    box-shadow: inset 0 -1px 0 $box-shadow;
   }
 
 
@@ -262,11 +262,11 @@
   &:checked + .radio-label {
     position: relative;
     z-index: 1;
-    border-color: #0366d6;
+    border-color: $border-color;
   }
 
   .border {
-    border: 1px solid #e1e4e8 !important;
+    border: 1px solid $border-color !important;
   }
 
   .border-0 {
@@ -274,7 +274,7 @@
   }
 
   .border-bottom {
-    border-bottom: 1px solid #e1e4e8 !important;
+    border-bottom: 1px solid $border-color !important;
   }
 
   .rounded-1 {
@@ -282,11 +282,11 @@
   }
 
   .bg-white {
-    background-color: #fff !important;
+    background-color: $back-ground !important;
   }
 
   .bg-gray-light {
-    background-color: #fafbfc !important;
+    background-color: $bg-gray-light !important;
   }
 
   .text-gray-light {
@@ -368,12 +368,7 @@
 
   .pl-e,
   .pl-en {
-    color: #6f42c1;
-  }
-
-  .pl-s .pl-s1,
-  .pl-smi {
-    color: #24292e;
+    color: $entity;
   }
 
   .pl-ent {
@@ -611,14 +606,13 @@
     height: .25em;
     padding: 0;
     margin: 24px 0;
-    background-color: #e1e4e8;
+    background-color: $border-color;
     border: 0;
   }
 
   blockquote {
     padding: 0 1em;
-    color: #6a737d;
-    border-left: .25em solid #dfe2e5;
+    border-left: .25em solid $block-quote-left-border;
   }
 
   blockquote > :first-child {
@@ -648,28 +642,30 @@
   h1,
   h2 {
     padding-bottom: .3em;
-    border-bottom: 1px solid #eaecef;
-  }
-
-  h2 {
+    border-bottom: 1px solid $border-color;
     font-size: 1.5em;
   }
 
   h3 {
+    padding-bottom: .25em;
     font-size: 1.25em;
+    border-bottom: 1px solid $border-color;
   }
 
   h4 {
+    padding-bottom: .2em;
     font-size: 1em;
+    border-bottom: 1px solid $border-color;
   }
 
   h5 {
+    padding-bottom: .2em;
     font-size: .875em;
+    border-bottom: 1px solid $border-color;
   }
 
   h6 {
-    font-size: .85em;
-    color: #6a737d;
+    font-size: .75em;
   }
 
   ol,
@@ -757,7 +753,7 @@
     padding: .2em .4em;
     margin: 0;
     font-size: 85%;
-    background-color: rgba(27, 31, 35, .05);
+    background-color: $code-bg;
     border-radius: 3px;
   }
 
@@ -790,7 +786,6 @@
     overflow: auto;
     font-size: 85%;
     line-height: 1.45;
-    background-color: #f6f8fa;
     border-radius: 3px;
   }
 
@@ -949,5 +944,201 @@
   .task-list-item input {
     margin: 0 .2em .25em -1.6em;
     vertical-align: middle;
+  }
+
+  pre, pre {
+    color: $primary;
+    background-color: $code-bg;
+    border-radius: $border-radius;
+  }
+
+  .pl-c /* comment, punctuation.definition.comment, string.comment */
+  {
+    color: $comment;
+  }
+
+  .pl-c1 /* constant, entity.name.constant, variable.other.constant, variable.language, support, meta.property-name, support.constant, support.variable, meta.module-reference, markup.quote, markup.raw, meta.diff.header */
+  {
+    color: $constant;
+  }
+
+  .pl-s .pl-v /* string variable */
+  {
+    color: $string-variable;
+  }
+
+  .pl-e /* entity */
+  ,
+  .pl-en /* entity.name */
+  {
+    color: $entity;
+  }
+
+  .pl-smi /* variable.parameter.function, storage.modifier.package, storage.modifier.import, storage.type.java, variable.other */
+  {
+    color: $param;
+  }
+
+  .pl-s .pl-s1 /* string source */
+  {
+    color: $string;
+  }
+
+  .pl-ent /* entity.name.tag */
+  {
+    color: $entity-name-tag;
+  }
+
+  .pl-k /* keyword, storage, storage.type */
+  {
+    color: $keyword;
+  }
+
+  .pl-s /* string */
+  {
+    color: $string;
+  }
+
+  .pl-s .pl-pse .pl-s1 /* string punctuation.section.embedded source */
+  {
+    color: $string;
+  }
+
+  .pl-pds /* punctuation.definition.string, source.regexp, string.regexp.character-class */
+  {
+    color: $string;
+  }
+
+  .pl-sr /* string.regexp */
+  {
+    .pl-cce /* string.regexp constant.character.escape */
+    {
+      color: $string-regexp;
+    }
+
+    .pl-sre /* string.regexp source.ruby.embedded */
+    {
+      color: inherit;
+    }
+
+    .pl-sra /* string.regexp string.regexp.arbitrary-repetition */
+    {
+      color: inherit;
+    }
+  }
+
+  .pl-v /* variable */
+  {
+    color: $variable;
+  }
+
+  .pl-ml /* markup.list, sublimelinter.mark.warning */
+  {
+    color: $markup-list;
+  }
+
+  .pl-bu /* invalid.broken, invalid.deprecated, invalid.unimplemented, message.error, brackethighlighter.unmatched, sublimelinter.mark.error */
+  {
+    color: $invalid;
+  }
+
+  .pl-ii /* invalid.illegal */
+  {
+    color: $primary;
+    background-color: $invalid;
+  }
+
+  .pl-c2 /* carriage-return */
+  {
+    color: $primary;
+    background-color: $invalid;
+  }
+
+  .pl-c2::before /* carriage-return */
+  {
+    content: "^M";
+  }
+
+  .pl-sr .pl-cce /* string.regexp constant.character.escape */
+  {
+    font-weight: bold;
+    color: $string-regexp;
+  }
+
+  .pl-mh /* markup.heading */
+  {
+    color: $markup-heading;
+  }
+  .pl-mh .pl-en /* markup.heading entity.name */
+  {
+    color: $markup-heading;
+  }
+  .pl-ms /* meta.separator */
+  {
+    font-weight: bold;
+    color: $separator;
+  }
+
+  .pl-mi /* markup.italic */
+  {
+    font-style: italic;
+    color: $markup-italic;
+  }
+
+  .pl-mb /* markup.bold */
+  {
+    font-weight: bold;
+    color: $markup-bold;
+  }
+
+  .pl-md /* markup.deleted, meta.diff.header.from-file, punctuation.definition.deleted */
+  {
+    color: $markup-deleted;
+    background-color: $markup-deleted-bg;
+  }
+
+  .pl-mi1 /* markup.inserted, meta.diff.header.to-file, punctuation.definition.inserted */
+  {
+    color: $markup-inserted;
+    background-color: $markup-inserted-bg;
+  }
+
+  .pl-mc /* markup.changed, punctuation.definition.changed */
+  {
+    color: $markup-changed;
+    background-color: $markup-inserted-bg;
+  }
+
+  .pl-mi2 /* markup.ignored, markup.untracked */
+  {
+    color: $markup-ignored;
+    background-color: $markup-ignored-bg;
+  }
+
+  .pl-mdr /* meta.diff.range */
+  {
+    font-weight: bold;
+    color: $meta-diff-range;
+  }
+
+  .pl-mo /* meta.output */
+  {
+    color: $meta-output;
+  }
+
+  .pl-ba /* brackethighlighter.tag, brackethighlighter.curly, brackethighlighter.round, brackethighlighter.square, brackethighlighter.angle, brackethighlighter.quote */
+  {
+    color: $bracken-highlighter;
+  }
+
+  .pl-sg /* sublimelinter.gutter-mark */
+  {
+    color: $gutter-mark;
+  }
+
+  .pl-corl /* constant.other.reference.link, string.other.link */
+  {
+    text-decoration: underline;
+    color: $constant-link;
   }
 }
