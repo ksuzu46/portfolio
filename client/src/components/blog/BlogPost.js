@@ -55,7 +55,7 @@ const BlogPost = ({ posts }) =>
                     <br/>
                     <p>Could not find the post you are looking for :(</p>
                     <Link to="/blog">
-                        <Button className="link">Go to Blog Top</Button>
+                        <Button className="link">Blog Top</Button>
                     </Link>
                 </Container>
             }

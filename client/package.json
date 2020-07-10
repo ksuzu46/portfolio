@@ -5,6 +5,7 @@
   "author": "Keisuke Suzuki",
   "license": "MIT",
   "scripts": {
+    "prod" : "webpack --config ./webpack/webpack.prod.config.js --watch",
     "build:prod": "webpack --config ./webpack/webpack.prod.config.js",
     "build:dev": "webpack --config ./webpack/webpack.dev.config.js",
     "dev-server": "webpack-dev-server --config ./webpack/webpack.dev.config.js"

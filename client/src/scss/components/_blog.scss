@@ -102,23 +102,15 @@
   @extend .markdown-body;
   font-size: 1.1rem;
   @include media-breakpoint-up(md){
-    font-size: 1.5rem;
-  }
-  a {
-    //font-weight: bolder;
-    text-decoration: underline;
-    color: $link-color;
-    &:hover {
-      color: darken($link-color, 10%);
-    }
+    font-size: 1.4rem;
   }
   color: $primary;
   font-family: $font-family-sans-serif;
 
   table {
-    color: $primary;
-    box-shadow: none;
-    outline: 0;
+    @include media-breakpoint-down(sm){
+      font-size: 0.8rem;
+    }
     thead {
       border: 0 none;
       tr{
@@ -142,7 +134,10 @@
 
     tbody {
       tr {
-        padding: 1rem 0.5rem;
+        padding: 0.5rem 1rem;
+        @include media-breakpoint-down(sm) {
+          padding: 0.2rem 0.3rem;
+        }
         align-items: center;
         border-width: 0;
         background-color: $back-ground-list;
@@ -152,12 +147,12 @@
         }
 
         td {
+          padding: 0.5rem 1rem;
           @include media-breakpoint-down(sm) {
-            padding: 0.5rem;
+            padding: 0.2rem 0.3rem;
           }
           border-width: 0;
           text-align: center;
-          padding: 1rem 0.5rem;
         }
       }
     }
