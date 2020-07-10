@@ -945,11 +945,29 @@
     margin: 0 .2em .25em -1.6em;
     vertical-align: middle;
   }
+  code {
+    padding: .05em .3em;
+    font-family: $font-family-monospace;
+    color: $code-color;
+    background-color: $code-bg;
+    border-radius: $border-radius !important;
+  }
+
+  pre {
+    background-color: $pre-bg;
+    font-family: $font-family-monospace;
+    color: $primary;
+    border-radius: $border-radius !important;
+  }
+
+  pre code {
+    color: $primary;
+    background-color: $pre-bg;
+    border-radius: $border-radius !important;
+  }
 
   pre, pre {
-    color: $primary;
-    background-color: $code-bg;
-    border-radius: $border-radius;
+    border-radius: $border-radius !important;
   }
 
   .pl-c /* comment, punctuation.definition.comment, string.comment */
