@@ -8,10 +8,12 @@ import { Link } from "react-router-dom"
 import { Nav } from "react-bootstrap";
 import { animateScroll as scroll, Link as ScrollLink } from "react-scroll";
 import { capitalize, getBaseURI, removeSlash } from "../lib";
-
+import config from "../../config"
+import {Redirect} from "react-router";
 
 const NavBarItem = ({ child, setExpanded, path }) =>
 {
+    const { blogUrl } = config;
     const scrollLink = (child) => (
         <ScrollLink
             className="nav-link"
@@ -28,40 +30,19 @@ const NavBarItem = ({ child, setExpanded, path }) =>
         </ScrollLink>
     );
     
-    const scrollToTop = (child) => (
-        <a className="nav-link" onClick={ () =>
-        {
-            setExpanded()
-            scroll.scrollToTop();
-        } }>
-            { capitalize(child) }
-        </a>
-    );
-    
     const link = (to, child) => (
-        <Link
-            to={ child === 'home' ? '/' : to }
+        <a
             className="nav-link"
-            onClick={ () => {
-                scroll.scrollToTop();
-                setExpanded()
-            } }>
-            { capitalize(child) }
-        </Link>
+            href={to}>
+            {capitalize(child)}
+        </a>
     )
     
     return (
         <Nav.Item className="nav-item">
-            {
-                path === '/' ? (
-                    child === 'blog' ?
-                    link(`/${ child }`, child) : scrollLink(child)
-                ) : (
-                    child === removeSlash(getBaseURI(path)) ?
-                    scrollToTop(child) : link(`/${ child }`, child)
-                )
-            }
-        </Nav.Item>)
+            { child === 'blog' ? link(blogUrl, child) : scrollLink(child) }
+        </Nav.Item>
+    )
 };
 
 export default NavBarItem;

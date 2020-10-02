@@ -1,10 +1,8 @@
 import React from "react";
 import config from "../../config";
 import { scroller } from "react-scroll";
-import { Col } from "react-bootstrap";
 
-
-const { linkedinUrl, myGmail } = config;
+const { linkedinUrl} = config;
 
 const Icons = ({ ghData, parent, scrollToContact }) =>
 {

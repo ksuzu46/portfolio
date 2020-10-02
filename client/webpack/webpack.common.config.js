@@ -19,7 +19,7 @@ module.exports = {
         rules: [ {
             test: /\.js$/,
             exclude: /node_modules/,
-            use: [ 'babel-loader', "eslint-loader" ]
+            use: [ 'babel-loader' ]
         }, {
             test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
             loader: "url-loader",

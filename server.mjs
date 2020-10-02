@@ -13,7 +13,6 @@ import nodemailer from 'nodemailer';
 import bodyParser from 'body-parser';
 import { confirmationContent, messageContent } from './email';
 import { fetchGhData } from './ghGraphQL.mjs';
-import { convertToGFM } from "./ghGraphQL";
 
 
 const app = express();
@@ -58,12 +57,11 @@ api.get('/gh', async(req, res) =>
     try
     {
         const fetchedData = await fetchGhData();
-        const newData = await convertToGFM(fetchedData);
         if(!cachedBody)
         {
-            res.send(newData);
+            res.send(fetchedData);
         }
-        await memCache.put('ghData', newData);
+        await memCache.put('ghData', fetchedData);
     } catch(error)
     {
         res.send(error);

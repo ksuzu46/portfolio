@@ -32,10 +32,8 @@ export const useGhFetch = () =>
                     let data = {
                         bio: "",
                         bioHTML: "",
-                        blogEntries: [],
                         email: "",
                         projects: [],
-                        contributions: ""
                     };
                     if(tmp.data)
                     {

@@ -8,9 +8,10 @@ const config =
              both independently and in a team. Looking for an entry level
              position to enhance my skills as a software developer.`,
         linkedinUrl: "https://www.linkedin.com/in/keisuke-suzuki-b77600bb/",
-        myGmail: "e40keisuke@gmail.com",
+        myGmail: "keisuke.suzuki46@gmail.com",
         where: "New York, NY",
-        mailerUrl: process.env.MAILER_URL
+        mailerUrl: process.env.MAILER_URL,
+        blogUrl: "https://blog.ksuzu.net"
         
     };
 
