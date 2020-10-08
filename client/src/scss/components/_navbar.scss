@@ -5,11 +5,12 @@
  */
 
 .navbar {
-  @include media-breakpoint-down(sm) {
+  @include media-breakpoint-down(xs) {
     padding: 1rem;
   }
-  padding: $m-size;
-  background-color: $secondary;
+  padding: $s-size;
+  background-color: $back-ground;
+  border-bottom: solid 1px $section;
   font-family: $headings-font-family;
   font-weight: $headings-font-weight;
   outline: none;
@@ -31,10 +32,6 @@
   }
 
   .navbar-nav {
-    padding: 1rem;
-    @include media-breakpoint-down(sm) {
-      padding: 0;
-    }
     color: $primary;
     &:active &:focus {
       color: $focus;
@@ -71,33 +68,6 @@
     }
     i {
       background: none;
-    }
-  }
-
-
-  @include media-breakpoint-up(lg) {
-    padding: 1.5rem 0;
-    transition: padding-top 0.3s, padding-bottom 0.3s;
-
-    .navbar-brand {
-      font-size: 1.75em;
-      transition: font-size 0.3s;
-    }
-    .navbar-nav {
-      margin-top: 1rem;
-    }
-    .navbar-shrink {
-      padding-top: 0.9rem;
-      padding-bottom: 0.9rem;
-
-      .navbar-brand {
-        font-size: 1.5em;
-
-        &:active,
-        &:focus {
-          color: $focus;
-        }
-      }
     }
   }
 }

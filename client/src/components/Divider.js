@@ -17,23 +17,6 @@ const Divider = ({ children, index }) =>
         <Container>
             <div className="divider">
                 <div className="divider-line"/>
-                <div className="divider-icon">
-                    <Link
-                        className="divider-button"
-                        activeClass="active"
-                        to={ child }
-                        spy={ true }
-                        smooth={ true }
-                        offset={ -80 }
-                        duration={ 500 }
-                        isDynamic={ true }>
-                        <i className={
-                            isBottom ? "icon-up-big"
-                                     : "icon-down-big"
-                        }/>
-                    </Link>
-                </div>
-                <div className="divider-line"/>
             </div>
         </Container>
     );

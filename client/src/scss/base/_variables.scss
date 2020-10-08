@@ -10,11 +10,12 @@ $navy: #0f3b64 !default;
 $purple-baseline: #161748 !default;
 $pink-highlight: #f95d9b !default;
 $blue-light: #39a0ca !default;
-$back-ground: #292e47 !default;
+$back-ground: #171927 !default;
 $focus: #689cc5 !default;
 $back-ground-list: #434d6d !default;
 $nav-focus: #e1b2c4;
 $link-color: rgba(103, 154, 101, 0.97) !default;
+$section: #24283d !default;
 
 // Navbar size
 $s-size: 2.7rem;
@@ -28,7 +29,7 @@ $container-l-size: 5.0rem;
 
 
 // Override Bootstrap colors
-$primary: #b9b9c1 !default;
+$primary: #9e9ea9 !default;
 $secondary: #0C102D !default;
 $success: #93dbe9 !default;
 $danger: $pink-highlight !default;
@@ -50,106 +51,7 @@ $font-family-monospace: "Source Code Pro", monospace !default;
 $headings-font-weight: 700 !default;
 
 // Override Bootstrap border variables
+$border-radius: 4px !default;
 $border-width: 0.05rem !default;
-$border-radius: 0.5rem !default;
 $border-radius-lg: 0.75rem !default;
 $border-radius-sm: 0.25rem !default;
-
-// Github Markdown color variables
-$text-gray-light: darken($primary, 30%);
-$octicon-link: darken($primary, 40%);
-$kbd: $primary;
-$bg-gray-light: $back-ground;
-$anchor: #03a5d6;
-$kbd-bg: $back-ground;
-$border-color: darken($primary, 20%);
-$box-shadow: darken($primary, 25%);
-$pre-bg:darken($back-ground, 5%);
-$code-bg: darken($back-ground, 1%);
-$code-color: darken($nav-focus, 10%);
-$bg-white: $back-ground;
-
-$block-quote-left-border: darken($primary, 10%);
-
-$pl-token-bg: #ffea7f;
-
-// Syntax Highlighting
-$variable: #7B9FE3; // Default variable
-
-// comment, punctuation.definition.comment, string.comment
-$comment: #48A396;
-
-// constant, entity.name.constant, variable.other.constant, variable.language,
-// support, meta.property-name, support.constant, support.variable,
-// meta.module-reference, markup.quote, markup.raw, meta.diff.header
-$constant: #398DB4;
-
-// string variable
-$string-variable: $variable;
-
-// entity, entity.name
-$entity: #69BE83;
-
-// variable.parameter.function, storage.modifier.package,
-// storage.modifier.import, storage.type.java, variable.other
-$param: $variable;
-
-// string source
-$string: #BD86B7;
-
-// punctuation.definition.string, source.regexp, string.regexp.character-class
-$string-regexp: #3387CC;
-
-// entity.name.tag
-$entity-name-tag: $entity;
-
-// keyword, storage, storage.type
-$keyword: #8E88B1;
-
-// markup.list, sublimelinter.mark.warning
-$markup-list: #fb8532;
-
-// meta.separator
-$separator: $primary;
-
-// invalid.broken, invalid.deprecated, invalid.unimplemented, message.error,
-// brackethighlighter.unmatched, sublimelinter.mark.error
-$invalid: #BC3F3C;
-
-// markup.heading entity.name
-$markup-heading: $primary;
-
-$markup-italic: $primary;
-$markup-bold: $primary;
-
-// markup.deleted, meta.diff.header.from-fil#2f363de, punctuation.definition.deleted
-$markup-deleted: $invalid;
-$markup-deleted-bg: $back-ground;
-
-// markup.inserted, meta.diff.header.to-file, punctuation.definition.inserted
-$markup-inserted: #176f2c;
-$markup-inserted-bg: $back-ground;
-
-// markup.changed, punctuation.definition.changed
-$markup-changed: #b08800;
-$markup-changed-bg: $back-ground;
-
-// markup.ignored, markup.untracked
-$markup-ignored: #2f363d;
-$markup-ignored-bg: $back-ground;
-
-// meta.diff.range
-$meta-diff-range: #b392f0;
-
-// meta.output
-$meta-output: $primary;
-
-// brackethighlighter.tag, brackethighlighter.curly, brackethighlighter.round,
-// brackethighlighter.square, brackethighlighter.angle, brackethighlighter.quote
-$bracken-highlighter: #e36209;
-
-// sublimelinter.gutter-mark
-$gutter-mark: #6a737d;
-
-// constant.other.reference.link, string.other.link
-$constant-link: $constant;

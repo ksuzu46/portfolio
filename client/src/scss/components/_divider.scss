@@ -5,44 +5,14 @@
 
 
 .divider {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
   .divider-line {
-    width: 70%;
+    width: 100%;
     height: 0.5rem;
-    background-color: $secondary !important;
-    border-radius: 1rem;
-
-    &:first-child {
-      margin-right: 1rem;
-    }
-
-    &:last-child {
-      margin-left: 1rem;
-    }
-  }
-
-  .divider-icon {
-    color: $secondary !important;
-    font-size: 2.5rem;
-    @include media-breakpoint-down(sm) {
-      font-size: 1.5rem;
-    }
-  }
-
-  .divider-button {
-    border: none;
-
-    &:active,
-    &:focus {
-      outline: 0;
-      box-shadow: none !important;
-    }
-
-    &:hover {
-      color: $primary;
+    background-color: $section;
+    border-radius: $border-radius;
+    @include media-breakpoint-down(xs) {
+      height: 0.2rem;
+      border-radius: 0;
     }
   }
 }

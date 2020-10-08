@@ -5,31 +5,38 @@
 
 .about {
   @extend .section;
+  padding-top: $xl-size;
+  @include media-breakpoint-down(xs){
+    padding-top: $s-size;
+  }
   font-family: $headings-font-family;
   font-weight: $headings-font-weight;
   color: $primary;
 
   .about-heading {
+    padding: 1.5rem 0;
     text-align: center;
-    font-size: 2.75rem;
+    font-size: 2.5rem;
     line-height: 2.75rem;
   }
 
   .about-where {
     font-size: 1.2rem;
+    padding-bottom: 0.5rem;
     font-weight: lighter;
     text-align: center;
   }
 
   .about-icons {
     display: flex;
+    padding: 0.5rem 0;
     flex-direction: row;
     justify-content: center;
-
+    color: $primary;
     .about-social {
-      padding: 0 1.5rem;
-      color: $secondary;
-      font-size: 3rem;
+      padding: 0 1rem;
+      color: $primary;
+      font-size: 4rem;
 
       &:focus {
         outline: 0;
@@ -37,7 +44,7 @@
       }
 
       &:hover {
-        color: $primary;
+        color: $section;
       }
     }
   }
@@ -45,6 +52,7 @@
   .about-text {
     text-align: center;
     font-weight: normal;
+    font-size: 1.5rem;
   }
 
   .about-avatar {
@@ -54,39 +62,28 @@
   }
 
 
-  @include media-breakpoint-down(sm) {
-    padding-top: $s-size;
+  @include media-breakpoint-down(xs) {
+    padding-top: $m-size;
     .about-heading {
+      padding: 0.5rem 0;
       font-size: 1.7rem;
       line-height: 1.7rem;
     }
+    .about-where {
+      padding-bottom: 0.5rem;
+    }
     .about-text {
-      padding: 0.5rem;
-      font-size: 1rem;;
+      padding: 0.5rem 0;
+      font-size: 1.2rem;
     }
     .about-icons {
-      padding: 0.5rem;
+      padding: 0 1rem;
+      .about-social {
+        padding: 0 0.5rem;
+        color: $primary;
+        font-size: 2.5rem;
+      }
     }
 
-  }
-  @include media-breakpoint-up(lg) {
-    padding-top: $l-size;
-    padding-bottom: 2rem;
-
-    align-items: center;
-    align-content: center;
-    .about-heading {
-      font-size: 2.75rem;
-      line-height: 2.75rem;
-    }
-
-    .about-text {
-      padding: 1rem;
-      font-size: 22px;
-    }
-
-    .about-subheading {
-      font-size: 1.5rem;
-    }
   }
 }

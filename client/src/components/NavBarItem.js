@@ -22,6 +22,7 @@ const NavBarItem = ({ child, setExpanded, path }) =>
             to={ child }
             spy={ true }
             smooth={ true }
+            // offset={ -140 }
             offset={ -140 }
             duration={ 700 }
             delay={ 0 }
