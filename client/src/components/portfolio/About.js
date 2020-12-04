@@ -24,7 +24,6 @@ const About = ({ ghData, language }) =>
                     />
                 </div>
                 <h1 className="about-heading">{ language === 'en' ? config.myName : jpConfig.myName }</h1>
-                <div className="about-where">{ language === 'en' ? config.where : jpConfig.where }</div>
                 <Icons
                     parent="about"
                     ghData={ ghData }

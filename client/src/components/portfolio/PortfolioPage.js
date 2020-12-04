@@ -17,17 +17,16 @@ import Divider from "../Divider";
 // Navbar size setting in src/styles/scss/base/_variables.scss in REM
 const childComponents = [About, Projects, Contact];
 const children = ["about", "projects", "contact", "blog"];
-const jpChildren = ['ホーム', 'プロジェクト', 'コンタクト', 'ブログ(英語)']
 
 
 const PortfolioPage = ({ghData}) => {
     const {emailStatus, sendEmail} = useEmail();
-    const [ language, setLanguage ] = useState('en');
+    const [ language, setLanguage ] = useState('jp');
 
     return (
         <>
             <NavBar
-                children={language === 'en' ? children : jpChildren}
+                children={children}
                 language={language}
                 onLangChange={lang => setLanguage(lang)}/>
             {
