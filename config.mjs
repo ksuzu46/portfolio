@@ -1,10 +1,10 @@
 /**
  * config.mjs
- * @author [Keisuke Suzuki](https://github.com/Ks5810)
+ * @author [Keisuke Suzuki](https://github.com/ksuzu46)
  */
 
 const gqlUrl = "https://api.github.com/graphql";
 const gfmUrl = "https://api.github.com/markdown";
-const ghUsername = `"Ks5810"`;
+const ghUsername = `"ksuzu46"`;
 
 export { gqlUrl, gfmUrl, ghUsername }

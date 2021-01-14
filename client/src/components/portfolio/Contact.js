@@ -1,6 +1,6 @@
 /**
  * Contact.js
- * @author [Keisuke Suzuki](https://github.com/Ks5810)
+ * @author [Keisuke Suzuki](https://github.com/ksuzu46)
  */
 
 import React, { useState } from "react";

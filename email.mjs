@@ -1,6 +1,6 @@
 /**
  * email.mjs
- * @author [Keisuke Suzuki](https://github.com/Ks5810)
+ * @author [Keisuke Suzuki](https://github.com/ksuzu46)
  */
 
 const messageContent = (senderFirstName, senderLastName, message, email) =>

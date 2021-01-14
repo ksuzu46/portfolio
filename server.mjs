@@ -1,6 +1,6 @@
 /**
  * server.mjs
- * @author [Keisuke Suzuki](https://github.com/Ks5810)
+ * @author [Keisuke Suzuki](https://github.com/ksuzu46)
  * @description Express app serving nodemailer and react frontend
  */
 

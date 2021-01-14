@@ -16,7 +16,7 @@ const jpConfig =
                 された履歴書を出力します。基本的な情報を登録し求人情報を指定することで、
                 その求人に最適な履歴書が生成されます。`,
                 homepageUrl: ``,
-                url: `https://github.com/Ks5810/plug-and-play-resume`
+                url: `https://github.com/ksuzu46/plug-and-play-resume`
             }, {
                 name: `nyc-subway-entrances`,
                 description: `ニューヨーク市内の地下鉄の駅に関するデータを処理する
@@ -26,7 +26,7 @@ const jpConfig =
                 アクセスが可能な路線の集合が等しく、駅間の距離が0.28 km未満)にも対応しました。
                 `,
                 homepageUrl: ``,
-                url: `https://github.com/Ks5810/nyc-subway-entrances`
+                url: `https://github.com/ksuzu46/nyc-subway-entrances`
             }, {
                 name: `NYC Trees`,
                 description: `ニューヨーク市の通りにある68万本以上
@@ -36,14 +36,14 @@ const jpConfig =
                 「oak」と入力すると、「pin oak」、「sawtooth oak」、「scarlet oak」など、
                 市内に生息する名前に「oak」を含む種の合計なども出力できます。`,
                 homepageUrl: ``,
-                url: `https://github.com/Ks5810/nyc-trees`
+                url: `https://github.com/ksuzu46/nyc-trees`
             }, {
                 name: `ポートフォリオ`,
                 description: `(このページ) React, Webpack, Express.jsなどの技術を使用した、
                 ポートフォリオ用のプログレッシブウェブアプリケーション。リバースプロキシに
                 Nginxを使用し、AWSのEC2インスタンス上にデプロイしました。`,
                 homepageUrl: `https://ksuzu.net`,
-                url: `https://github.com/Ks5810/portfolio`
+                url: `https://github.com/ksuzu46/portfolio`
             }, {
                 name: `Network Experiment`,
                 description: `ルータ間の最短経路を見つけるネットワーキングコースのプロジェクト。
@@ -51,13 +51,13 @@ const jpConfig =
                 エッジの負の重みも処理可能です。各ノードまでの距離の出力、アルゴリズムの実行、実行結果の出力
                 が可能なインターフェースを実装しました。`,
                 homepageUrl: ``,
-                url: `https://github.com/Ks5810/network-experiment`
+                url: `https://github.com/ksuzu46/network-experiment`
             }, {
                 name: `トラベルマップ`,
                 description: `Laravelを使用し、ユーザーの旅行先を管理するウェブアプリケーションを作成しました。
                 Google Maps Places APIを利用し住所の入力から地図上に目的地をマークすることを可能にしました。`,
                 homepageUrl: `https://travelmap.ksuzu.net`,
-                url: `https://github.com/Ks5810/travel-destinations`
+                url: `https://github.com/ksuzu46/travel-destinations`
             },
         ]
     };
