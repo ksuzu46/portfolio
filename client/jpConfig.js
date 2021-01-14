@@ -1,12 +1,10 @@
 const jpConfig =
     {
         myName: '鈴木 佳輔',
-        aboutMe: `ソフトウェアエンジニアとしてのフルタイムのポジションを探しています。2020年5月に米国の大学を卒業しました。
-                プログラミング言語はC++とJavaScriptが得意です。
-                フロントエンドの技術に興味があります。`,
+        aboutMe: `新米ソフトウェアエンジニア`,
         linkedinUrl: "https://www.linkedin.com/in/keisuke-suzuki-b77600bb/",
         myGmail: "keisuke.suzuki.46@gmail.com",
-        where: "ニューヨーク市",
+        where: "大阪府",
         mailerUrl: process.env.MAILER_URL,
 
         projects: [
